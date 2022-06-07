@@ -1,3 +1,5 @@
+import {Row } from "react-bootstrap"
+import axios from "axios";
 import SingleNumber from "./SingleNumber";
 
 const NumberList =({ value }) => {
