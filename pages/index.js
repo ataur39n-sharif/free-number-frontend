@@ -8,7 +8,6 @@ import NumberList from '../Components/Homepage/NumberList'
 import NoNumberList from '../Components/Homepage/NumberList/NoNumberList'
 
 export default function Home({ data }) {
-  console.log(data);
 
   return (
     <div className={styles.container}>

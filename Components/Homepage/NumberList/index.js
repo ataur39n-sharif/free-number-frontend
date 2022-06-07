@@ -1,8 +1,7 @@
-import {Row } from "react-bootstrap"
-import axios from "axios";
+import { Row } from "react-bootstrap"
 import SingleNumber from "./SingleNumber";
 
-const NumberList =({ value }) => {
+const NumberList = ({ value }) => {
     let arr = Object.entries(value)
 
     return (
