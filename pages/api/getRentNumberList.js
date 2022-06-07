@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export default async function (req, res) {
+export default async function numbList(req, res) {
     const api = `https://api.sms-activate.org/stubs/handler_api.php?api_key=${process.env.SMS_API_SECRET}c&action=getRentList`
 
     try {
