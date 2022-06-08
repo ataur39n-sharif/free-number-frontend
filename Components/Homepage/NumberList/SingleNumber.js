@@ -25,7 +25,7 @@ const SingleNumber = ({ data }) => {
                     <Card.Text id="country_name" className="text-secondary">
                         {info?.name}
                     </Card.Text>
-                    <Link href={`/number/${data[1].phone}`}>
+                    <Link href={`/number/${data[1].id}`}>
                         <Button variant="outline-primary">
                             Receive SMS Online
                         </Button>
