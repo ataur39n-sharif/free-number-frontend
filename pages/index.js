@@ -3,6 +3,7 @@ import NumberList from '../Components/Homepage/NumberList'
 import NoNumberList from '../Components/Homepage/NumberList/NoNumberList'
 
 export default function Home({ data }) {
+  console.log('console from home',data);
   return (
     <div>
       <Head>
