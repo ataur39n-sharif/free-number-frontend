@@ -1,14 +1,20 @@
 import moment from "moment";
 import { useRouter } from "next/router"
-import { Table, Toast, ToastContainer } from "react-bootstrap";
+import { Button, Table, Toast, ToastContainer } from "react-bootstrap";
 import copy from 'copy-text-to-clipboard';
 import { FaCopy } from 'react-icons/fa';
-import { useState } from "react";
+import {AiOutlineReload} from 'react-icons/ai'
+import { useEffect, useState } from "react";
 
 const NumberPage = ({ data, allRentList }) => {
     const [show, setShow] = useState(false);
     const router = useRouter()
     const { id } = router.query
+
+    const loadAgain = () => {
+        window.location.reload(false)
+    }
+
     const temp = {
         status: 'success',
         quantity: '2',
@@ -39,9 +45,13 @@ const NumberPage = ({ data, allRentList }) => {
     console.log();
     return (
         <div className="container mt-5 text-center">
-            <div className="numberInfo">
+            <div className="numberInfo m-5">
                 <h5><strong>+{currentNum[1].phone} <FaCopy onClick={() => handleCopy()} /></strong></h5>
+
+                <Button className="m-5" variant="outline-primary" onClick={() => loadAgain()}> <AiOutlineReload/> Update Message</Button>
+
             </div>
+            {/* Sms list */}
             <Table responsive striped borderless size="xl">
                 <thead className="table-primary">
                     <tr>
@@ -72,12 +82,13 @@ const NumberPage = ({ data, allRentList }) => {
                     }
                 </tbody>
             </Table>
+            {/* toast section */}
             <ToastContainer className="p-3" position={'top-end'}>
                 <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
                     <Toast.Header>
-                        <strong className="m-auto">Copied !!</strong>
+                        <strong className="m-auto text-success">Copied !!</strong>
                     </Toast.Header>
-                    <Toast.Body>Number: +{currentNum[1].phone}</Toast.Body>
+                    <Toast.Body bg="light">Number: +{currentNum[1].phone}</Toast.Body>
                 </Toast>
             </ToastContainer>
         </div >

@@ -50,7 +50,7 @@ const NumberList = ({ value }) => {
         }
     }
 
-    let arr = Object.entries(tempValue)
+    let arr = Object.entries(value)
     
     return (
         <div className="container">

@@ -20,7 +20,8 @@ export default function Home({ data }) {
             data.status === 'error' && <NoNumberList />
           }
           {
-            data.status === 'success' && <NumberList value={data.values} />
+            data.status === 'success' && 
+            <NumberList value={data.values} />
           }
         </section>
       </main>
@@ -41,7 +42,7 @@ export default function Home({ data }) {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const result = await fetch(`${process.env.CURRENT_SITE_LINK}/api/getRentNumberList`)
   const value = await result.json()
 
