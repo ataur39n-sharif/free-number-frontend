@@ -50,8 +50,8 @@ const NumberList = ({ value }) => {
         }
     }
 
-    let arr = Object.entries(value)
-    
+    const arr = Object.entries(value)
+
     return (
         <div className="container">
             <Row lg={4} md={2} sm={1}>

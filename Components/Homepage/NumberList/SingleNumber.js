@@ -16,12 +16,12 @@ const SingleNumber = ({ data }) => {
     useEffect(() => {
         if (phoneNumber) {
             const list = Object.entries(countryList)
-            const data = list.find(each => each[0] === phoneNumber.country.toLocaleLowerCase())
+            const data = list.find(each => each[0] === phoneNumber.country.toLowerCase())
             if (data) {
                 const tempSchema = {
                     country_name: data[1].name,
                     country_code: phoneNumber.country,
-                    img: `/images/${phoneNumber.country.toLocaleLowerCase()}.png`
+                    img: `/images/${phoneNumber.country.toLowerCase()}.png`
                 }
                 setInfo(tempSchema)
             }

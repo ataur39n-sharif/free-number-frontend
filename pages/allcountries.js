@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react"
 import parsePhoneNumber from 'libphonenumber-js'
-import axios from "axios"
+import { countryList } from "../utils/countries/countries"
+import NumberList from "../Components/Homepage/NumberList"
+import NoNumberList from "../Components/Homepage/NumberList/NoNumberList"
+import { Button, Card, Col, Row } from "react-bootstrap"
+import Link from "next/link"
 
 const AllCountries = ({ data }) => {
     const [allData, setAllData] = useState([])
@@ -51,67 +55,53 @@ const AllCountries = ({ data }) => {
         }
     }
     useEffect(() => {
-        if (data.status === 'success') {
-            const tempArray = Object.entries(data.values)
-            tempArray.map(each => {
-                const num = parsePhoneNumber(`+${each[1].phone}`)
-                axios.get(`https://restcountries.com/v2/alpha/${num.country}`)
-                    .then(res => {
-                        const countryInfo = {
-                            country: res.data.name,
-                            flag: res.data.flags.png,
-                            country_code: num.country,
-                            numbers: [num.number]
-                        }
-                        const previousValue = allData.find(each => each?.country_code === countryInfo.country_code)
-                        console.log('line 67',previousValue);
-                        if (!previousValue) {
-                            let tempValue = [...allData]
-                            tempValue.push(countryInfo)
-                            setAllData(tempValue)
-                        } else {
-                            let tempValue = { ...previousValue }
-
-                            const alreadyListed = tempValue.numbers.find(each => each === num.number)
-                            console.log('line 75',alreadyListed);
-                            if (!alreadyListed) {
-                                const tempAllData = [...allData]
-                                tempAllData.find(each => {
-                                    if (each.country_code === countryInfo.country_code) {
-                                        each.numbers.push(num.number)
-                                    }
-                                })
-                                console.log('line 83', tempAllData);
-                                setAllData(tempAllData)
-
-                            }
-
-                        }
-
-                    })
-                    .catch(err => console.log(err))
-            })
-        }
+        const list = Object.entries(countryList)
+        let currentData = [...allData]
+        list.map(each => {
+            const dataSchema = {
+                country_name: each[1].name.toUpperCase(),
+                country_code: each[0],
+                img: `/images/${each[0]}.png`
+            }
+            currentData.push(dataSchema)
+        })
+        setAllData(currentData)
     }, [])
 
-    console.log(data);
-    console.log(allData);
     return (
         <div>
-            this is all country list
+            <section id='numberList'>
+                {
+                    <div className="container">
+                        <Row lg={4} md={2} sm={1}>
+                            {
+                                allData.map((each, i) => {
+                                    return (
+                                        <Col style={{ minWidth: '18rem' }} className="m-auto mt-4" key={i}>
+                                            <Card className="text-center">
+                                                <Card.Img className="p-3" id="country_flag" height="180" src={each?.img} alt="Country_Flag" />
+                                                <Card.Body>
+                                                    {/* <Card.Title id="phone_no">{each?.phone_number}</Card.Title> */}
+                                                    <Card.Text id="country_name" className="text-secondary">
+                                                        {each?.country_name}
+                                                    </Card.Text>
+                                                    <Link href={`/number-list/${each?.country_code}`}>
+                                                        <Button variant="outline-primary">
+                                                            Get Numbers
+                                                        </Button>
+                                                    </Link>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                    )
+                                })
+                            }
+                        </Row>
+                    </div>
+                }
+            </section>
         </div>
     )
 }
 
 export default AllCountries
-
-export async function getStaticProps() {
-    const result = await fetch(`${process.env.CURRENT_SITE_LINK}/api/getRentNumberList`)
-    const value = await result.json()
-
-    return {
-        props: {
-            data: value || null
-        }
-    }
-}

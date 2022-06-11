@@ -1,13 +1,21 @@
 import moment from "moment";
 import { useRouter } from "next/router"
-import { Button, Table, Toast, ToastContainer } from "react-bootstrap";
+import { Button, Stack, Table, Toast, ToastContainer } from "react-bootstrap";
 import copy from 'copy-text-to-clipboard';
 import { FaCopy } from 'react-icons/fa';
-import {AiOutlineReload} from 'react-icons/ai'
+import { AiOutlineReload } from 'react-icons/ai'
 import { useEffect, useState } from "react";
+import { countryList } from "../../utils/countries/countries";
+import { parsePhoneNumber } from "libphonenumber-js";
+import Link from "next/link";
 
 const NumberPage = ({ data, allRentList }) => {
     const [show, setShow] = useState(false);
+    const [countryInfo, setCountryInfo] = useState({
+        country_name: "",
+        country_code: "",
+        img: ""
+    })
     const router = useRouter()
     const { id } = router.query
 
@@ -21,7 +29,7 @@ const NumberPage = ({ data, allRentList }) => {
         values: {
             0: {
                 phoneFrom: "79180230628",
-                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque reiciendis dolorem rem earum quidem repudiandae dignissimos minima officia minus ullam, maxime adipisci? Atque sequi ducimus nam natus voluptatum consequuntur molestiae!",
+                text: "ignissimos minima officia minus ullam, maxime adipisci? Atque sequi ducimus nam natus voluptatum consequuntur molestiae!",
                 service: "ot",
                 date: "2020-01-30 14:31:58"
             },
@@ -36,22 +44,46 @@ const NumberPage = ({ data, allRentList }) => {
     const tempData = Object.entries(temp.values)
     const allNumList = allRentList ? Object.entries(allRentList.values) : []
     const currentNum = allNumList.find(each => each[1].id === id)
+    const phoneNumber = parsePhoneNumber(`+${currentNum[1].phone}`)
+
+    useEffect(() => {
+        if (phoneNumber) {
+            const list = Object.entries(countryList)
+            const data = list.find(each => each[0] === phoneNumber.country.toLocaleLowerCase())
+            if (data) {
+                const tempSchema = {
+                    country_name: data[1].name,
+                    country_code: phoneNumber.country,
+                    img: `/images/${phoneNumber.country.toLocaleLowerCase()}.png`
+                }
+                setCountryInfo(tempSchema)
+            }
+        }
+    }, [])
 
     const handleCopy = () => {
         copy(`+${currentNum[1].phone}`)
         setShow(true)
     }
+    const handleMove = (code) => {
+        window.location.replace(`/number-list/${code}`)
+    }
 
-    console.log();
     return (
         <div className="container mt-5 text-center">
-            <div className="numberInfo m-5">
+            <div className="numberInfo m-3">
+                <h1 style={{ 'cursor': 'pointer' }} onClick={() => handleMove(countryInfo?.country_code)}>
+                    <img src={countryInfo.img} alt="country_flag" height="25" className="m-2" />
+                    <strong>{`${countryInfo.country_name} Phone Number`}</strong>
+                </h1>
+
                 <h5><strong>+{currentNum[1].phone} <FaCopy onClick={() => handleCopy()} /></strong></h5>
 
-                <Button className="m-5" variant="outline-primary" onClick={() => loadAgain()}> <AiOutlineReload/> Update Message</Button>
+                <Button className="m-5" variant="outline-primary" onClick={() => loadAgain()}> <AiOutlineReload /> Update Message</Button>
 
             </div>
             {/* Sms list */}
+
             <Table responsive striped borderless size="xl">
                 <thead className="table-primary">
                     <tr>

@@ -9,7 +9,7 @@ const NavBar = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ms-auto">
                         <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/number">Number</Nav.Link>
+                        {/* <Nav.Link href="/number">Number</Nav.Link> */}
                         <Nav.Link href="/allcountries">All Countries</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
