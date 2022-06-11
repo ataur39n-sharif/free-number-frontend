@@ -98,7 +98,7 @@ const NumberPage = ({ data, allRentList }) => {
                         tempData.map((each, i) => {
                             return (
                                 <tr key={i}>
-                                    <td>+{each[1].phoneFrom.slice(0, 7)}****</td>
+                                    <td>+{each[1].phoneFrom?.slice(0, 7)}****</td>
                                     <td>{moment(each[1].date).fromNow()}</td>
                                     <td colSpan={2}>{each[1].text}</td>
                                 </tr>
