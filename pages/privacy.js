@@ -6,8 +6,8 @@ const Privacy = () => {
         setUrl(window?.location?.origin)
     },[])
     return (
-        <div className="container m-5">
-            <h1>Terms of Use & Privacy Policy</h1>
+        <div className="container mt-5">
+            <h1 className="text-center">Terms of Use & Privacy Policy</h1>
             <div>
                 <h5>Terms of Use : </h5>
                 <div className="m-4">
