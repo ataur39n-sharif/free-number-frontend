@@ -41,10 +41,11 @@ const IndividualCountryNumList = ({ data }) => {
     })
 
     return (
-        <div className="container">
-            <Row lg={4} md={2} sm={1}>
-                {
-                    currentData.length ?
+        <div >
+            {
+                data.status === 'success' &&
+                <Row lg={4} md={2} sm={1} className="container">
+                    {
                         currentData.map((each, i) => {
                             return (
                                 <Col style={{ minWidth: '18rem' }} className="m-auto mt-4" key={i}>
@@ -64,9 +65,13 @@ const IndividualCountryNumList = ({ data }) => {
                                     </Card>
                                 </Col>
                             )
-                        }) : <NoNumberList />
-                }
-            </Row>
+                        })
+                    }
+                </Row>
+            }
+            {
+                data.status === 'error' && <NoNumberList />
+            }
         </div>
     )
 }

@@ -1,7 +1,10 @@
 const NoNumberList = () => {
     return (
-        <div className="text-center">
-            <p>There is no number</p>
+        <div className="p-5 d-flex align-items-center"  style={{ minHeight: '85vh' }}>
+            <div className="text-center m-auto">
+                <h1>Sorry !!</h1>
+                <p>Currently No Number AvailAble</p>
+            </div>
         </div>
     )
 }
