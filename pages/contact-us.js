@@ -16,31 +16,31 @@ const Contact = () => {
                 <Col md={8}>
                     <form onSubmit={handleSubmit(onSubmit)} className="m-5">
 
-                        <div class="form-floating mb-3">
+                        <div className="form-floating mb-3">
                             <input className="form-control mb-3" placeholder="Alex Jhon" id="name" {...register("name", { required: true })} />
-                            <label for="name">Name</label>
+                            <label htmlFor="name">Name</label>
                         </div>
 
-                        <div class="form-floating mb-3">
+                        <div className="form-floating mb-3">
                             <input className="form-control mb-3" type="email" placeholder="abc@mail.com" id="email" {...register("email", { required: true })} />
-                            <label for="email">Enter email address</label>
+                            <label htmlFor="email">Enter email address</label>
                         </div>
 
-                        <div class="form-floating mb-3">
-                            <textarea style={{ minHeight: '30vh' }} className="form-control mb-3" placeholder="Your message" id="message" {...register("message", { required: true })} />
-                            <label for="message">Your message details</label>
+                        <div className="form-floating mb-3">
+                            <textarea style={{ minHeight: "30vh" }} className="form-control mb-3" placeholder="Your message" id="message" {...register("message", { required: true })} />
+                            <label htmlFor="message">Your message details</label>
                         </div>
 
                         <button className="btn btn-success m-2" type="submit" >Send Message</button>
                     </form>
                 </Col>
             </Row>
-            <ToastContainer className="p-3" position={'top-end'}>
+            <ToastContainer className="p-3" position={"top-end"}>
                 <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
                     <Toast.Header>
                         <strong className="m-auto text-success">Success !!</strong>
                     </Toast.Header>
-                    <Toast.Body bg="light">Thank You for your message. We will try to response you within 3 working day's.</Toast.Body>
+                    <Toast.Body bg="light">Thank You for your message. We will try to response you within 3 working day{"'"}s.</Toast.Body>
                 </Toast>
             </ToastContainer>
         </div>
