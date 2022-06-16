@@ -20,7 +20,8 @@ export default function Home({ data }) {
 
         <section id='numberList' >
           {
-            data.status === 'error' && <NoNumberList className='container' />
+            data.status === 'error' &&
+            <NoNumberList className='container' />
           }
           {
             data.status === 'success' &&

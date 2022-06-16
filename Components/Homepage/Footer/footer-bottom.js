@@ -3,11 +3,11 @@ import { Card, Col, Row } from "react-bootstrap"
 const FooterBottom = () => {
     return (
         <div className="container text-center mt-4">
-            <h5>Look at the reasons for choosing us</h5>
+            <h3>Look at the reasons for choosing us</h3>
             <p>We think for you more, everything is to better meet your needs, everything is for a better user experience.</p>
             <Row>
                 <Col md={6} sm={12}>
-                    <Card border="light">
+                    <Card style={{border:"none"}} >
                         <Card.Body>
                             {/* <Card.Title>Receive SMS</Card.Title> */}
                             <Card.Text>
@@ -17,7 +17,7 @@ const FooterBottom = () => {
                     </Card>
                 </Col>
                 <Col md={6} sm={12}>
-                    <Card border="light">
+                    <Card style={{border:"none"}}>
                         <Card.Body>
                             {/* <Card.Title>Private</Card.Title> */}
                             <Card.Text>
@@ -27,7 +27,7 @@ const FooterBottom = () => {
                     </Card>
                 </Col>
                 <Col md={6} sm={12}>
-                    <Card border="light">
+                    <Card style={{border:"none"}}>
                         <Card.Body>
                             {/* <Card.Title>Free</Card.Title> */}
                             <Card.Text>
@@ -37,7 +37,7 @@ const FooterBottom = () => {
                     </Card>
                 </Col>
                 <Col md={6} sm={12}>
-                    <Card border="light">
+                    <Card style={{border:"none"}}>
                         <Card.Body>
                             {/* <Card.Title>Temporary</Card.Title> */}
                             <Card.Text>

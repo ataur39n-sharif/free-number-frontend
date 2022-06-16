@@ -72,7 +72,7 @@ const NumberPage = ({ data, allRentList }) => {
     return (
         <div className="container mt-5">
             <div className="numberInfo m-3  text-center">
-                <h1 style={{ 'cursor': 'pointer' }} onClick={() => handleMove(countryInfo?.country_code)}>
+                <h1 style={{ 'cursor': 'pointer' }} onClick={() => handleMove(countryInfo?.country_code.toLowerCase())}>
                     <img src={countryInfo.img} alt="country_flag" height="25" className="m-2" />
                     <strong>{`${countryInfo.country_name} Phone Number`}</strong>
                 </h1>

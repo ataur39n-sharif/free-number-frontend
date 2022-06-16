@@ -66,7 +66,7 @@ const AllCountries = ({ data }) => {
             currentData.push(dataSchema)
         })
         setAllData(currentData)
-    }, [allData])
+    }, [])
 
     return (
         <div>
