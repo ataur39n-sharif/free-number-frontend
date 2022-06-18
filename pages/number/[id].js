@@ -108,6 +108,7 @@ const NumberPage = ({ data, allRentList }) => {
                         No message found !!
                     </span>
                 </Row>
+            }
             {/* <Table responsive striped borderless size="xl" className=" text-center">
                 <thead className="table-primary">
                     <tr>
