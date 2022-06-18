@@ -93,17 +93,21 @@ const NumberPage = ({ data, allRentList }) => {
                 data.status === 'success' &&
                 allData?.smsList?.map((each, i) => {
                     return (
-                        // <tr key={i}>
-                        <Row className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
+                        <Row key={i} className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
                             <span className="p-2">
                                 [{each[1].phoneFrom}] - [{moment(each[1].date).from(moment(countryInfo.current_time).format("YYYY-MM-DD HH:mm:ss"))}] - {each[1].text}
                             </span>
                         </Row>
                     )
                 })
-
-
             }
+            {
+                data.status === 'error' &&
+                <Row key={i} className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
+                    <span className="p-2">
+                        No message found !!
+                    </span>
+                </Row>
             {/* <Table responsive striped borderless size="xl" className=" text-center">
                 <thead className="table-primary">
                     <tr>
