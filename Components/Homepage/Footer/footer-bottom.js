@@ -1,50 +1,28 @@
 import { Card, Col, Row } from "react-bootstrap"
+import CountUp from 'react-countup';
+
 
 const FooterBottom = () => {
     return (
-        <div className="container text-center mt-4">
-            <h3>Look at the reasons for choosing us</h3>
-            <p>We think for you more, everything is to better meet your needs, everything is for a better user experience.</p>
-            <Row>
-                <Col md={6} sm={12}>
-                    <Card style={{border:"none"}} >
-                        <Card.Body>
-                            {/* <Card.Title>Receive SMS</Card.Title> */}
-                            <Card.Text>
-                                Keep adding new numbers - we add new numbers every week for your convenience.The virtual numbers displayed are temporary and disposable with completely new ones provisioned on a regular basis.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
+        <div className="container text-center mt-4 ">
+            <Row className="m-3">
+                <Col md={4} sm={4}>
+                    <div>
+                        <strong style={{ fontSize: "xxx-large" }}><CountUp start={0} delay={1} end={49} /></strong>
+                        <p>+Countries</p>
+                    </div>
                 </Col>
-                <Col md={6} sm={12}>
-                    <Card style={{border:"none"}}>
-                        <Card.Body>
-                            {/* <Card.Title>Private</Card.Title> */}
-                            <Card.Text>
-                                Not only to receive text messages - we also offer a free SMS delivery service, you can send text messages to the US and Canada free of charge on our website.We promise to send text messages is completely free.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
+                <Col md={4} sm={4}>
+                    <div>
+                        <strong style={{ fontSize: "xxx-large" }}><CountUp start={0} delay={1} end={300} /></strong>
+                        <p>+Phone Numbers</p>
+                    </div>
                 </Col>
-                <Col md={6} sm={12}>
-                    <Card style={{border:"none"}}>
-                        <Card.Body>
-                            {/* <Card.Title>Free</Card.Title> */}
-                            <Card.Text>
-                                Ultra-fast receiving speed - We understand that the most important thing in the Internet era is speed. Whether it is SMS receiving or SMS sending, we provide a fast and efficient solution. In the case of guaranteed delivery, we are committed to higher speed. Sending ability.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col md={6} sm={12}>
-                    <Card style={{border:"none"}}>
-                        <Card.Body>
-                            {/* <Card.Title>Temporary</Card.Title> */}
-                            <Card.Text>
-                                Perfect data support - Verify Facebook, Twitter, Google, and many more. All our numbers can receive messages globally even if the sender is in a different country.If you require free online service in a country not currently being listed, please check back later as we continuously add new locations and numbers.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
+                <Col md={4} sm={4}>
+                    <div>
+                        <strong style={{ fontSize: "xxx-large" }}><CountUp start={0} delay={1} end={42000} /></strong>
+                        <p>+Text Messages</p>
+                    </div>
                 </Col>
             </Row>
         </div>

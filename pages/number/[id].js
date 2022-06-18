@@ -1,6 +1,6 @@
 import moment from "moment";
 import { useRouter } from "next/router"
-import { Button, Stack, Table, Toast, ToastContainer } from "react-bootstrap";
+import { Button, Row, Stack, Table, Toast, ToastContainer } from "react-bootstrap";
 import copy from 'copy-text-to-clipboard';
 import { FaCopy } from 'react-icons/fa';
 import { AiOutlineReload } from 'react-icons/ai'
@@ -82,14 +82,29 @@ const NumberPage = ({ data, allRentList }) => {
         <div className="container mt-5">
             <div className="numberInfo m-3  text-center">
                 <h1 style={{ 'cursor': 'pointer' }} onClick={() => handleMove(countryInfo?.country_code.toLowerCase())}>
-                    <img src={countryInfo.img} alt="country_flag" height="25" className="m-2" />
-                    <strong>{`${countryInfo.country_name} Phone Number`}</strong>
+                    <img src={countryInfo.img} alt="country_flag" height="45" className="m-2" />
+                    <p><strong>{`${countryInfo.country_name} Phone Number`}</strong></p>
                 </h1>
                 <h5><strong>+{allData?.currentNum} <FaCopy onClick={() => handleCopy(allData.currentNum)} /></strong></h5>
-                <Button className="m-5" variant="outline-primary" onClick={() => loadAgain()}> <AiOutlineReload /> Update Message</Button>
+                <Button className="m-5" variant="outline-primary" onClick={() => loadAgain()}> <AiOutlineReload /> Refresh this page</Button>
             </div>
             {/* Sms list */}
-            <Table responsive striped borderless size="xl" className=" text-center">
+            {
+                data.status === 'success' &&
+                allData?.smsList?.map((each, i) => {
+                    return (
+                        // <tr key={i}>
+                        <Row className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
+                            <span className="p-2">
+                                [{each[1].phoneFrom}] - [{moment(each[1].date).from(moment(countryInfo.current_time).format("YYYY-MM-DD HH:mm:ss"))}] - {each[1].text}
+                            </span>
+                        </Row>
+                    )
+                })
+
+
+            }
+            {/* <Table responsive striped borderless size="xl" className=" text-center">
                 <thead className="table-primary">
                     <tr>
                         <th>From</th>
@@ -102,11 +117,16 @@ const NumberPage = ({ data, allRentList }) => {
                         data.status === 'success' &&
                         allData?.smsList?.map((each, i) => {
                             return (
-                                <tr key={i}>
-                                    <td>{each[1].phoneFrom}</td>
-                                    <td>{moment(each[1].date).from(moment(countryInfo.current_time).format("YYYY-MM-DD H:m:s"))}</td>
-                                    <td colSpan={2}>{each[1].text}</td>
-                                </tr>
+                                // <tr key={i}>
+                                <div>
+                                    <span>
+                                        [{each[1].phoneFrom}] - [{moment(each[1].date).from(moment(countryInfo.current_time).format("YYYY-MM-DD HH:mm:ss"))}]
+                                    </span>
+                                </div>
+                                // <td>{each[1].phoneFrom}</td>
+                                // <td>{moment(each[1].date).from(moment(countryInfo.current_time).format("YYYY-MM-DD H:m:s"))}</td>
+                                // <td colSpan={2}>{each[1].text}</td>
+                                // </tr>
                             )
                         })
 
@@ -118,7 +138,7 @@ const NumberPage = ({ data, allRentList }) => {
                         </tr>
                     }
                 </tbody>
-            </Table>
+            </Table> */}
 
             {/* blog */}
             <SingleNumPageBlog countryName={countryInfo.country_name} />

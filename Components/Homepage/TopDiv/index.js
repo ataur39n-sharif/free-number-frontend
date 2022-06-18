@@ -4,9 +4,10 @@ const TopDiv = () => {
     return (
         <Row className="container text-center m-auto">
             <Col className="mt-3">
-                <h1 className="p-2">Receive SMS Online and Receive SMS Free</h1>
+                <h1 className="p-2">Receive SMS Online from our Free Virtual Phone Number</h1>
                 <p>
-                    RECEIVE SMS ONLINE(RECEIVE-SMS.CC) RECEIVE SMS FROM ALL OVER THE WORLD TO OUR PHONE NUMBERS。OUR VIRTUAL PHONE NUMBERS ALLOW YOU TO VERIFY AND REGISTER FOR VARIOUS WEBSITES, ABSOLUTELY FREE. VERIFY FACEBOOK, TWITTER, GOOGLE, AND MANY MORE. THE PHONE NUMBERS ARE DISPOSABLE AND ALL MESSAGES ARE DISCARDED AFTER 7 DAYS. PROVIDED VIRTUAL PHONE NUMBERS ARE REFRESHED WITH NEW ONES EVERY MONTH. ALL OUR NUMBERS CAN RECEIVE MESSAGES GLOBALLY EVEN IF THE SENDER IS IN A DIFFERENT COUNTRY.
+                    We provide free temporary phone numbers to Receive SMS Online. <br />
+                    You can Receive SMS Verification code from all the countries and for Facebook, Gmail, WhatsApp, Twitter and more
                 </p>
             </Col>
         </Row>

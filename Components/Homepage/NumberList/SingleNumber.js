@@ -30,21 +30,18 @@ const SingleNumber = ({ data }) => {
 
     return (
         <Col style={{ minWidth: '18rem' }} className="m-auto mt-4">
-            <Card className="text-center">
-                <Card.Img className="p-3" id="country_flag" src={info?.img} style={{minHeight:"25vh"}} alt="Country_Flag" />
-                <Card.Body>
-                    <Card.Title id="phone_no">{phoneNumber?.number}</Card.Title>
-                    <Card.Text id="country_name" className="text-secondary">
-                        {info?.country_name}
-                    </Card.Text>
-                    <Link href={`/number/${data[1].id}`}>
-                        <Button variant="outline-primary">
-                            Receive SMS Online
-                        </Button>
-                    </Link>
-                </Card.Body>
-            </Card>
-        </Col>
+            <Link href={`/number/${data[1].id}`}>
+                <Card className="text-center">
+                    <Card.Img className="p-3" id="country_flag" src={info?.img} style={{ minHeight: "25vh" }} alt="Country_Flag" />
+                    <Card.Body>
+                        <Card.Title id="phone_no">{phoneNumber?.number}</Card.Title>
+                        <Card.Text id="country_name" className="text-secondary">
+                            {info?.country_name}
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+            </Link>
+        </Col >
     )
 }
 

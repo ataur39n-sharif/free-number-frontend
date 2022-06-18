@@ -6,7 +6,9 @@ import NumberList from '../Components/Homepage/NumberList'
 import NoNumberList from '../Components/Homepage/NumberList/NoNumberList'
 import TopDiv from '../Components/Homepage/TopDiv'
 
+
 export default function Home({ data }) {
+
   return (
     <>
       <Head>
@@ -31,6 +33,7 @@ export default function Home({ data }) {
       </main>
 
       <section className='mt-4'>
+
         <FooterTop />
         <FooterBottom />
       </section>
