@@ -46,9 +46,8 @@ const NumberPage = ({ data, allRentList }) => {
                     d.setMinutes(d.getMinutes() + utc_offset)
 
                     // let select_country = getTimezone(country["time-zone-in-capital"])
-                    let select_country = 3*60
+                    let select_country = 3 * 60
                     d.setMinutes(d.getMinutes() + select_country)
-                    console.log(d)
 
                     const tempSchema = {
                         country_name: data[1].name,
@@ -79,30 +78,6 @@ const NumberPage = ({ data, allRentList }) => {
         window.location.reload(false)
     }
 
-    console.log(countryInfo.current_time)
-
-    // var d = new Date()
-    // console.log('now : ' + d);
-
-    // var utc_offset = d.getTimezoneOffset()
-    // d.setMinutes(d.getMinutes() + utc_offset)
-    // console.log("UTC:" + d)
-
-    // var mumbai_offset = 5.5 * 60
-    // d.setMinutes(d.getMinutes() + mumbai_offset)
-    // console.log('mumbai:' + d);
-
-    // var russia_offset = countryInfo?.timezone?.utcOffset
-    // d.setMinutes(d.getMinutes() + russia_offset)
-    // console.log('Russia :' + d);
-
-
-// console.log(data);
-
-    // console.log(moment("2022-06-13 16:53:52").utc().format("YYYY-MM-DD HH:mm:ss"))
-    // console.log('this one',moment().locale('').format("YYYY-MM-DD HH:mm:ss"))
-    // console.log(Date.UTC("2022-06-13 15:36:40"));
-
     return (
         <div className="container mt-5">
             <div className="numberInfo m-3  text-center">
@@ -110,11 +85,8 @@ const NumberPage = ({ data, allRentList }) => {
                     <img src={countryInfo.img} alt="country_flag" height="25" className="m-2" />
                     <strong>{`${countryInfo.country_name} Phone Number`}</strong>
                 </h1>
-
                 <h5><strong>+{allData?.currentNum} <FaCopy onClick={() => handleCopy(allData.currentNum)} /></strong></h5>
-
                 <Button className="m-5" variant="outline-primary" onClick={() => loadAgain()}> <AiOutlineReload /> Update Message</Button>
-
             </div>
             {/* Sms list */}
             <Table responsive striped borderless size="xl" className=" text-center">

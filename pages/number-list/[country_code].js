@@ -3,12 +3,15 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { Button, Card, Col, Row } from "react-bootstrap"
+import { AiOutlineReload } from "react-icons/ai"
+import NumberListBlog from "../../Components/Blogs/NumberList"
 import NoNumberList from "../../Components/Homepage/NumberList/NoNumberList"
 import { countryList } from "../../utils/countries/countries"
 
 const IndividualCountryNumList = ({ data }) => {
     const [allData, setAllData] = useState([])
     const [currentData, setCurrentData] = useState([])
+    const [countryInfo, setCountryInfo] = useState({})
     const router = useRouter()
     const { country_code } = router.query
 
@@ -45,35 +48,67 @@ const IndividualCountryNumList = ({ data }) => {
         }
     }, [allData])
 
+    useEffect(() => {
+        const list = Object.entries(countryList)
+        const data = list.find(each => each[0] === country_code)
+        const tempData = {
+            country_name: data[1].name,
+            flag: `/images/${country_code.toLowerCase()}.png`,
+        }
+        setCountryInfo(tempData)
+    }, [])
+
+    //selected countries number list 
+    const handleMove = (code) => {
+        window.location.replace(`/number-list/${code}`)
+    }
+    //update message
+    const loadAgain = () => {
+        window.location.reload(false)
+    }
+
     return (
         <div className="m-5">
+            <div>
+                <div className="numberInfo m-3  text-center">
+                    <h1 style={{ 'cursor': 'pointer' }} onClick={() => handleMove(country_code.toLowerCase())}>
+                        <img src={countryInfo?.flag} alt="country_flag" height="25" className="m-2" />
+                        <strong>{`${countryInfo?.country_name} Phone Number`}</strong>
+                    </h1>
+                    {/* <Button className="m-5" variant="outline-primary" onClick={() => loadAgain()}> <AiOutlineReload /> Update List</Button> */}
+                </div>
+            </div>
             {
                 currentData?.length > 0 &&
-                <Row lg={4} md={2} sm={1} className="container">
-                    {
-                        currentData?.map((each, i) => {
-                            return (
-                                <Col style={{ minWidth: '18rem' }} className="m-auto mt-4" key={i}>
-                                    <Card className="text-center">
-                                        <Card.Img className="p-3" id="country_flag" src={each?.img} alt="Country_Flag" />
-                                        <Card.Body>
-                                            <Card.Title id="phone_no">{each?.phone_number}</Card.Title>
-                                            <Card.Text id="country_name" className="text-secondary">
-                                                {each?.country_name}
-                                            </Card.Text>
-                                            <Link href={`/number/${each?.number_id}`}>
-                                                <Button variant="outline-primary">
-                                                    Receive SMS Online
-                                                </Button>
-                                            </Link>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            )
-                        })
-                    }
-                </Row>
+                <>
+                    <Row lg={4} md={2} sm={1} className="container">
+                        {
+                            currentData?.map((each, i) => {
+                                return (
+                                    <Col style={{ minWidth: '18rem' }} className="m-auto mt-4" key={i}>
+                                        <Card className="text-center">
+                                            <Card.Img className="p-3" id="country_flag" src={each?.img} alt="Country_Flag" />
+                                            <Card.Body>
+                                                <Card.Title id="phone_no">{each?.phone_number}</Card.Title>
+                                                <Card.Text id="country_name" className="text-secondary">
+                                                    {each?.country_name}
+                                                </Card.Text>
+                                                <Link href={`/number/${each?.number_id}`}>
+                                                    <Button variant="outline-primary">
+                                                        Receive SMS Online
+                                                    </Button>
+                                                </Link>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                )
+                            })
+                        }
+                    </Row>
+                    <NumberListBlog country_code={country_code} />
+                </>
             }
+
             {
                 currentData?.length <= 0 &&
                 <NoNumberList country_code={country_code} />

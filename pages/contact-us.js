@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { Col, Row, Toast, ToastContainer } from "react-bootstrap";
 import { useForm } from "react-hook-form";
@@ -5,9 +6,18 @@ import { useForm } from "react-hook-form";
 const Contact = () => {
     const [show, setShow] = useState(false);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => {
-        console.log(data)
-        setShow(true)
+    const onSubmit = async (data) => {
+        try {
+            const { name, email, message } = data
+            const sendMail = await axios.post('/api/contact-us', {
+                name, email, message
+            })
+            console.log(sendMail);
+            setShow(true)
+        } catch (error) {
+            console.log(error);
+            setShow(true)
+        }
     };
     return (
         <div className="container">

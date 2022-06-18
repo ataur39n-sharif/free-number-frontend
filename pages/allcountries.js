@@ -71,6 +71,11 @@ const AllCountries = ({ data }) => {
     return (
         <div>
             <section id='numberList'>
+                <div className="text-center bg-dark text-light d-flex justify-content-center align-items-center" style={{ minHeight: "10vh" }}>
+                    <div>
+                        <h3 className="">Countries (regions) that can currently receive text messages online</h3>
+                    </div>
+                </div>
                 {
                     <div className="container">
                         <Row lg={4} md={2} sm={1}>
