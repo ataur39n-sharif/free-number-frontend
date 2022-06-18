@@ -6,9 +6,11 @@ import { FaCopy } from 'react-icons/fa';
 import { AiOutlineReload } from 'react-icons/ai'
 import { useEffect, useState } from "react";
 import { countryList } from "../../utils/countries/countries";
+import countryWithTimezone from "../../utils/countries_timezone/country-codes.json"
 import { parsePhoneNumber } from "libphonenumber-js";
 import Link from "next/link";
 import SingleNumPageBlog from "../../Components/Blogs/NumberPage/SingleNumPageBlog";
+import { getTimezone } from "countries-and-timezones";
 
 const NumberPage = ({ data, allRentList }) => {
     const router = useRouter()
@@ -18,7 +20,9 @@ const NumberPage = ({ data, allRentList }) => {
     const [countryInfo, setCountryInfo] = useState({
         country_name: "",
         country_code: "",
-        img: ""
+        current_time: "",
+        timezone: {},
+        img: "",
     })
     const [allData, setAllData] = useState({})
 
@@ -35,9 +39,22 @@ const NumberPage = ({ data, allRentList }) => {
                 const list = Object.entries(countryList)
                 const data = list.find(each => each[0] === numberInfo.country.toLocaleLowerCase())
                 if (data) {
+                    const country = countryWithTimezone.find(each => each.iso2 === numberInfo.country)
+
+                    let d = new Date()
+                    let utc_offset = d.getTimezoneOffset()
+                    d.setMinutes(d.getMinutes() + utc_offset)
+
+                    // let select_country = getTimezone(country["time-zone-in-capital"])
+                    let select_country = 3*60
+                    d.setMinutes(d.getMinutes() + select_country)
+                    console.log(d)
+
                     const tempSchema = {
                         country_name: data[1].name,
                         country_code: numberInfo.country,
+                        current_time: d,
+                        timeZone: getTimezone(country["time-zone-in-capital"]),
                         img: `/images/${numberInfo.country.toLocaleLowerCase()}.png`
                     }
                     setCountryInfo(tempSchema)
@@ -62,12 +79,29 @@ const NumberPage = ({ data, allRentList }) => {
         window.location.reload(false)
     }
 
+    console.log(countryInfo.current_time)
 
+    // var d = new Date()
+    // console.log('now : ' + d);
+
+    // var utc_offset = d.getTimezoneOffset()
+    // d.setMinutes(d.getMinutes() + utc_offset)
+    // console.log("UTC:" + d)
+
+    // var mumbai_offset = 5.5 * 60
+    // d.setMinutes(d.getMinutes() + mumbai_offset)
+    // console.log('mumbai:' + d);
+
+    // var russia_offset = countryInfo?.timezone?.utcOffset
+    // d.setMinutes(d.getMinutes() + russia_offset)
+    // console.log('Russia :' + d);
+
+
+// console.log(data);
 
     // console.log(moment("2022-06-13 16:53:52").utc().format("YYYY-MM-DD HH:mm:ss"))
     // console.log('this one',moment().locale('').format("YYYY-MM-DD HH:mm:ss"))
     // console.log(Date.UTC("2022-06-13 15:36:40"));
-
 
     return (
         <div className="container mt-5">
@@ -98,7 +132,7 @@ const NumberPage = ({ data, allRentList }) => {
                             return (
                                 <tr key={i}>
                                     <td>{each[1].phoneFrom}</td>
-                                    <td>{moment(each[1].date).from(moment().format("YYYY-MM-DD HH:mm:ss"))}</td>
+                                    <td>{moment(each[1].date).from(moment(countryInfo.current_time).format("YYYY-MM-DD H:m:s"))}</td>
                                     <td colSpan={2}>{each[1].text}</td>
                                 </tr>
                             )
@@ -115,7 +149,7 @@ const NumberPage = ({ data, allRentList }) => {
             </Table>
 
             {/* blog */}
-            <SingleNumPageBlog countryName={countryInfo.country_name}/>
+            <SingleNumPageBlog countryName={countryInfo.country_name} />
 
             {/* toast section */}
             <ToastContainer className="p-3" position={'top-end'}>
