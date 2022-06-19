@@ -88,6 +88,7 @@ const IndividualCountryNumList = ({ data }) => {
                                     <Col lg={4} md={6} sm={12} style={{ minWidth: '15rem' }} className="m-auto mt-5" key={i}>
                                         <Link href={`/number/${each?.number_id}`}>
                                             <Card
+                                                id="card_section"
                                                 className="text-center"
                                                 style={{ height: "30vh" }}
                                             >
