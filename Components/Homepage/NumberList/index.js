@@ -30,7 +30,7 @@ const NumberList = ({ value }) => {
           })}
         </Row>
       </div>
-      <div className="pagination-handler">
+      <div className="pagination-handler mt-5">
         <button onClick={gotoPrevious} className="previous-btn btn">
           Previous
         </button>

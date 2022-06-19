@@ -15,7 +15,6 @@ import TopDiv from "../Components/Homepage/TopDiv";
 
 export default function Home({ data }) {
 
- 
   return (
     <>
       <Head>
@@ -71,7 +70,7 @@ export default function Home({ data }) {
         </div>
       </main>
 
-      <section className="mt-4">
+      <section id="footer_section" className="mt-4 p-3 text-light">
         <FooterTop />
         <FooterBottom />
       </section>

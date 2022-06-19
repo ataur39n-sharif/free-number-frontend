@@ -8,7 +8,7 @@ const NoNumberList = () => {
     const { country_code } = router.query
 
     return (
-        <div className="p-5" id="no_number_list">
+        <div id="no_number_list">
             <div className=" d-flex align-items-center" style={{ minHeight: '25vh' }}>
                 <div className="text-center m-auto">
                     <h1>Sorry !!</h1>
