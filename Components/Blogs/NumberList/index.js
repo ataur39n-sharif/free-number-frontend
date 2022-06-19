@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { countryList } from "../../../utils/countries/countries"
 
-const NumberListBlog = ({country_code}) => {
+const NumberListBlog = ({ country_code }) => {
     const [countryInfo, setCountryInfo] = useState({})
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const NumberListBlog = ({country_code}) => {
                 <h3 className="text-center m-5">About Receive SMS Online {countryInfo?.name}</h3>
                 <div>
                     <p>
-                        1). The service we provide is free forever. You can receive SMS online {countryInfo?.name} from all over the world, without registration, and without any additional conditions. You can use free {countryInfo?.name} phone number to register the website or app whatsapp,google voice,yahoo,apple id,telegram,gmail,facebook,twitter,instagram and more.
+                        1). The service we provide is free forever. You can receive SMS online {countryInfo?.name} from all over the world, without registration, and without any additional conditions. You can use free {countryInfo?.name} phone number to register the website or app whatsapp,google voice,yahoo, apple id, telegram, gmail, facebook, twitter, instagram and more.
                     </p>
                     <p>
                         2). Increase your online privacy by avoiding exposing your mobile number on any website. By placing one of our {countryInfo?.name} mobile numbers to receive the SMS verification code, you will then obtain the respective code in the list of messages received by this number, then just copy your code and complete the SMS verification request.
