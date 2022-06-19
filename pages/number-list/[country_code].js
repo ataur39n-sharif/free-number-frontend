@@ -72,8 +72,8 @@ const IndividualCountryNumList = ({ data }) => {
             <div>
                 <div className="numberInfo m-3  text-center">
                     <h1 style={{ 'cursor': 'pointer' }} onClick={() => handleMove(country_code.toLowerCase())}>
-                        <img src={countryInfo?.flag} alt="country_flag" height="25" className="m-2" />
-                        <strong>{`${countryInfo?.country_name} Phone Number`}</strong>
+                        <img src={countryInfo?.flag} alt="country_flag" height="35" className="m-2" />
+                        <p><strong>{`${countryInfo?.country_name} Phone Number`}</strong></p>
                     </h1>
                     {/* <Button className="m-5" variant="outline-primary" onClick={() => loadAgain()}> <AiOutlineReload /> Update List</Button> */}
                 </div>
