@@ -8,11 +8,9 @@ import Link from "next/link"
 import Pagination from 'react-bootstrap/Pagination';
 
 const AllCountries = ({ data }) => {
-    // const [pageNo, setPageNo] = useState(1)
     const [allData, setAllData] = useState([])
     const list = Object.entries(countryList)
 
-    let active = 1;
 
     useEffect(() => {
         let currentData = [...allData]
@@ -24,18 +22,9 @@ const AllCountries = ({ data }) => {
             }
             currentData.push(dataSchema)
         })
-        setAllData(currentData.slice((active - 1) * 20, active * 20))
-    }, [active])
+        setAllData(currentData)
+    }, [])
 
-
-    let items = [];
-    for (let number = 1; number <= Math.ceil(list.length / 20); number++) {
-        items.push(
-            <Pagination.Item key={number} active={number === active}>
-                {number}
-            </Pagination.Item>,
-        );
-    }
 
     return (
         <div>
@@ -46,7 +35,6 @@ const AllCountries = ({ data }) => {
                         <p>We currently provide Free 49 Regions Virtual Temporary Phone Numbers.</p>
                     </div>
                 </div>
-                <Pagination>{items}</Pagination>
                 {
                     <div className="container">
                         <Row lg={4} md={6} sm={1}>
@@ -55,7 +43,7 @@ const AllCountries = ({ data }) => {
                                     return (
                                         <Col lg={3} md={6} sm={1} style={{ minWidth: '18rem' }} className="m-auto mt-4" key={i}>
                                             <Link href={`/number-list/${each?.country_code}`}>
-                                                <Card className="text-center">
+                                                <Card id="card_section" className="text-center">
                                                     <Card.Img className="p-3" id="country_flag" height="180" src={each?.img} alt="Country_Flag" />
                                                     <Card.Body>
                                                         {/* <Card.Title id="phone_no">{each?.phone_number}</Card.Title> */}
@@ -72,23 +60,6 @@ const AllCountries = ({ data }) => {
                         </Row>
                     </div>
                 }
-                <Pagination>
-                    <Pagination.First />
-                    <Pagination.Prev />
-                    <Pagination.Item>{1}</Pagination.Item>
-                    <Pagination.Ellipsis />
-
-                    <Pagination.Item>{10}</Pagination.Item>
-                    <Pagination.Item>{11}</Pagination.Item>
-                    <Pagination.Item active>{12}</Pagination.Item>
-                    <Pagination.Item>{13}</Pagination.Item>
-                    <Pagination.Item disabled>{14}</Pagination.Item>
-
-                    <Pagination.Ellipsis />
-                    <Pagination.Item>{20}</Pagination.Item>
-                    <Pagination.Next />
-                    <Pagination.Last />
-                </Pagination>
             </section>
         </div>
     )

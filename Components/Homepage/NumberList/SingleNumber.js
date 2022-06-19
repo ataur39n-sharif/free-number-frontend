@@ -31,7 +31,11 @@ const SingleNumber = ({ data }) => {
     return (
         <Col style={{ minWidth: '18rem' }} className="m-auto mt-4">
             <Link href={`/number/${data[1].id}`}>
-                <Card className="text-center">
+                <Card
+                    id="card_section"
+                    className="text-center"
+                    // style={{ borderLeft: "5px solid gray", borderRight: "5px solid gray", }}
+                >
                     <Card.Img className="p-3" id="country_flag" src={info?.img} style={{ minHeight: "25vh" }} alt="Country_Flag" />
                     <Card.Body>
                         <Card.Title id="phone_no">{phoneNumber?.number}</Card.Title>
