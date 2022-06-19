@@ -90,7 +90,7 @@ const NumberPage = ({ data, allRentList }) => {
             </div>
             {/* Sms list */}
             <div>
-                <Row className="m-3 text-center">
+                <Row className="m-3 text-center bg-info p-2">
                     <Col md={3}>From</Col>
                     <Col md={3}>Time</Col>
                     <Col md={6}>Message</Col>
@@ -99,7 +99,7 @@ const NumberPage = ({ data, allRentList }) => {
                     data.status === 'success' &&
                     allData?.smsList?.map((each, i) => {
                         return (
-                            <Row key={i} className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
+                            <Row key={i} className="m-3 text-center bg-light border border-primary" style={{ borderRadius: "15px" }}>
                                 <Col md={3} sm={12} className="p-2">
                                     [{each[1].phoneFrom}]
                                 </Col>
