@@ -20,7 +20,7 @@ const AllCountries = ({ data }) => {
       };
       currentData.push(dataSchema);
     });
-    setAllData(currentData.slice(0,100));
+    setAllData(currentData);
   }, []);
 
   // pagination handler using buttons
