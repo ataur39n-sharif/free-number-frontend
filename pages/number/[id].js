@@ -100,25 +100,47 @@ const NumberPage = ({ data, allRentList }) => {
     return (
         <div className="container mt-5">
             <div className="numberInfo m-3  text-center">
-                <h1 style={{ 'cursor': 'pointer' }} onClick={() => handleMove(countryInfo?.country_code.toLowerCase())}>
-                    <img src={countryInfo.img} alt="country_flag" height="45" className="m-2" />
-                    <p><strong>{`${countryInfo.country_name} Phone Number`}</strong></p>
-                </h1>
-                <p>Receive SMS Online For Free</p>
-
-                <h5><strong>+{allData?.currentNum} <FaCopy onClick={() => handleCopy(allData.currentNum)} /></strong></h5>
-                <Button className="m-5" variant="outline-primary" onClick={() => loadAgain()}> <AiOutlineReload /> Refresh this page</Button>
+                <div
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleMove(countryInfo?.country_code.toLowerCase())}
+                >
+                    <img
+                        src={countryInfo.img}
+                        alt="country_flag"
+                        height="45"
+                        className="m-2"
+                    />
+                    <h1>
+                        <strong>{`${countryInfo.country_name} Phone Number`}</strong>
+                    </h1>
+                    <p>Receive SMS Online for Free</p>
+                </div>
+                <h5>
+                    <strong>
+                        +{allData?.currentNum}{" "}
+                        <FaCopy onClick={() => handleCopy(allData.currentNum)} />
+                    </strong>
+                </h5>
+                <Button
+                    className="m-5"
+                    variant="outline-primary"
+                    onClick={() => loadAgain()}
+                >
+                    {" "}
+                    <AiOutlineReload /> Refresh this page
+                </Button>
             </div>
             {/* Sms list */}
             <div>
+
                 <Row className="m-3 text-center bg-info p-2">
                     <Col md={3}>From</Col>
                     <Col md={3}>Time</Col>
                     <Col md={6}>Message</Col>
                 </Row>
-                {
-                    data.status === 'success' &&
-                    allData?.smsList?.map((each, i) => {
+
+                {data.status === "success" &&
+                    allData?.smsList?.slice(pIndex, pIndex + 20).map((each, i) => {
                         return (
                             <Row key={i} className="m-3 text-center bg-light border border-primary" style={{ borderRadius: "15px" }}>
                                 <Col md={3} sm={12} className="p-2">
@@ -129,42 +151,6 @@ const NumberPage = ({ data, allRentList }) => {
                                 </Col>
                                 <Col md={6} sm={12} className="p-2">
                                     {each[1].text}
-                                </Col>
-                            </Row>
-                        )
-                    })
-                }
-                {
-                    data.status === 'error' &&
-                    <Row className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
-                        <span className="p-2">
-                            No message found !!
-                        </span>
-                    </Row>
-                }
-            </div>
-
-            {/* Sms list */}
-            <div>
-                {data.status === "success" &&
-                    allData?.smsList?.slice(pIndex, pIndex + 20).map((each, i) => {
-                        return (
-                            <Row
-                                key={i}
-                                className="m-3 text-center bg-light"
-                                style={{ borderRadius: "15px" }}
-                            >
-                                <Col md={5} sm={12} className="p-2">
-                                    [{each[1].phoneFrom}] - [
-                                    {moment(each[1].date).from(
-                                        moment(countryInfo.current_time).format(
-                                            "YYYY-MM-DD HH:mm:ss"
-                                        )
-                                    )}
-                                    ]
-                                </Col>
-                                <Col md={7} sm={12} className="p-2">
-                                    - {each[1].text}
                                 </Col>
                             </Row>
                         );
@@ -183,13 +169,14 @@ const NumberPage = ({ data, allRentList }) => {
                 allData?.smsList?.length > 0 &&
                 <div className="pagination-handler">
                     <button onClick={gotoPrevious} className="previous-btn btn">Previous</button>
-                    {btnGurbageArray.map((pageNumber, i) => {
-                        return (
-                            <button key={i} onClick={() => goto(pageNumber * 20)} className={`${pIndex / 20 === pageNumber && "current-page"} btn px-3 py-1`}>
-                                {pageNumber + 1}
-                            </button>
-                        );
-                    })}
+                    {
+                        btnGurbageArray.map((pageNumber, i) => {
+                            return (
+                                <button key={i} onClick={() => goto(pageNumber * 20)} className={`${pIndex / 20 === pageNumber && "current-page"} btn px-3 py-1`}>
+                                    {pageNumber + 1}
+                                </button>
+                            );
+                        })}
                     <button onClick={gotoNext} className="next-btn btn">Next</button>
                 </div>
             }
