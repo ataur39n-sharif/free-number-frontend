@@ -85,7 +85,7 @@ const IndividualCountryNumList = ({ data }) => {
                         {
                             currentData?.map((each, i) => {
                                 return (
-                                    <Col lg={4} md={6} sm={12} style={{ minWidth: '13rem' }}  className="m-auto mt-4" key={i}>
+                                    <Col lg={4} md={6} sm={12} style={{ minWidth: '15rem' }}  className="m-auto mt-4" key={i}>
                                         <Card className="text-center">
                                             <Card.Img className="p-3" id="country_flag" src={each?.img} alt="Country_Flag" />
                                             <Card.Body>
