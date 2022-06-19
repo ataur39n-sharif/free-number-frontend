@@ -81,7 +81,7 @@ const IndividualCountryNumList = ({ data }) => {
             {
                 currentData?.length > 0 &&
                 <>
-                    <Row className="container">
+                    <Row className="container m-auto">
                         {
                             currentData?.map((each, i) => {
                                 return (
