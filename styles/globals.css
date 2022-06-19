@@ -30,3 +30,9 @@ a {
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8399A2", endColorstr="#EEF2F3", GradientType=1 ); */
 
 }
+
+#top_div {
+  background-image: url('/image/top_div_cover_photo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

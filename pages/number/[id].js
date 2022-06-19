@@ -1,6 +1,6 @@
 import moment from "moment";
 import { useRouter } from "next/router"
-import { Button, Row, Stack, Table, Toast, ToastContainer } from "react-bootstrap";
+import { Button, Col, Row, Stack, Table, Toast, ToastContainer } from "react-bootstrap";
 import copy from 'copy-text-to-clipboard';
 import { FaCopy } from 'react-icons/fa';
 import { AiOutlineReload } from 'react-icons/ai'
@@ -89,26 +89,31 @@ const NumberPage = ({ data, allRentList }) => {
                 <Button className="m-5" variant="outline-primary" onClick={() => loadAgain()}> <AiOutlineReload /> Refresh this page</Button>
             </div>
             {/* Sms list */}
-            {
-                data.status === 'success' &&
-                allData?.smsList?.map((each, i) => {
-                    return (
-                        <Row key={i} className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
-                            <span className="p-2">
-                                [{each[1].phoneFrom}] - [{moment(each[1].date).from(moment(countryInfo.current_time).format("YYYY-MM-DD HH:mm:ss"))}] - {each[1].text}
-                            </span>
-                        </Row>
-                    )
-                })
-            }
-            {
-                data.status === 'error' &&
-                <Row key={i} className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
-                    <span className="p-2">
-                        No message found !!
-                    </span>
-                </Row>
-            }
+            <div>
+                {
+                    data.status === 'success' &&
+                    allData?.smsList?.map((each, i) => {
+                        return (
+                            <Row key={i} className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
+                                <Col md={5} sm={12} className="p-2">
+                                    [{each[1].phoneFrom}] - [{moment(each[1].date).from(moment(countryInfo.current_time).format("YYYY-MM-DD HH:mm:ss"))}]
+                                </Col>
+                                <Col md={7} sm={12} className="p-2">
+                                    - {each[1].text}
+                                </Col>
+                            </Row>
+                        )
+                    })
+                }
+                {
+                    data.status === 'error' &&
+                    <Row key={i} className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
+                        <span className="p-2">
+                            No message found !!
+                        </span>
+                    </Row>
+                }
+            </div>
             {/* <Table responsive striped borderless size="xl" className=" text-center">
                 <thead className="table-primary">
                     <tr>
