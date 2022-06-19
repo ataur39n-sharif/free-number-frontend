@@ -90,6 +90,10 @@ const NumberPage = ({ data, allRentList }) => {
             </div>
             {/* Sms list */}
             <div>
+                <Row className="m-3 text-center">
+                    <Col md={4}>From - Time</Col>
+                    <Col md={8}>Message</Col>
+                </Row>
                 {
                     data.status === 'success' &&
                     allData?.smsList?.map((each, i) => {
@@ -107,7 +111,7 @@ const NumberPage = ({ data, allRentList }) => {
                 }
                 {
                     data.status === 'error' &&
-                    <Row key={i} className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
+                    <Row className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
                         <span className="p-2">
                             No message found !!
                         </span>

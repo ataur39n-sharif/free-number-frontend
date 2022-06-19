@@ -15,7 +15,6 @@ import TopDiv from "../Components/Homepage/TopDiv";
 
 export default function Home({ data }) {
 
- 
   return (
     <>
       <Head>

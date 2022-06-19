@@ -34,9 +34,10 @@ const SingleNumber = ({ data }) => {
                 <Card
                     id="card_section"
                     className="text-center"
+                    style={{ height: "30vh" }}
                 // style={{ borderLeft: "5px solid gray", borderRight: "5px solid gray", }}
                 >
-                    <Card.Img className="p-3" id="country_flag" src={info?.img} style={{ minHeight: "25vh" }} alt="Country_Flag" />
+                    <Card.Img className="p-3" id="country_flag" src={info?.img} style={{ minHeight: "17vh",minWidth:"30px" }} alt="Country_Flag" />
                     <Card.Body>
                         <Card.Title id="phone_no">{phoneNumber?.number}</Card.Title>
                         <Card.Text id="country_name" className="text-secondary">
