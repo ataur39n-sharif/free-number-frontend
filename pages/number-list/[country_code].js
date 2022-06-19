@@ -85,21 +85,22 @@ const IndividualCountryNumList = ({ data }) => {
                         {
                             currentData?.map((each, i) => {
                                 return (
-                                    <Col lg={4} md={6} sm={12} style={{ minWidth: '15rem' }}  className="m-auto mt-4" key={i}>
-                                        <Card className="text-center">
-                                            <Card.Img className="p-3" id="country_flag" src={each?.img} alt="Country_Flag" />
-                                            <Card.Body>
-                                                <Card.Title id="phone_no">{each?.phone_number}</Card.Title>
-                                                <Card.Text id="country_name" className="text-secondary">
-                                                    {each?.country_name}
-                                                </Card.Text>
-                                                <Link href={`/number/${each?.number_id}`}>
-                                                    <Button variant="outline-primary">
-                                                        Receive SMS Online
-                                                    </Button>
-                                                </Link>
-                                            </Card.Body>
-                                        </Card>
+                                    <Col lg={4} md={6} sm={12} style={{ minWidth: '15rem' }} className="m-auto mt-5" key={i}>
+                                        <Link href={`/number/${each?.number_id}`}>
+                                            <Card
+                                                className="text-center"
+                                                style={{ height: "30vh" }}
+                                            >
+                                                <Card.Img className="p-3" id="country_flag" src={each?.img} style={{ minHeight: "17vh", minWidth: "30px" }} alt="Country_Flag" />
+                                                <Card.Body>
+                                                    <Card.Title id="phone_no">{each?.phone_number}</Card.Title>
+                                                    <Card.Text id="country_name" className="text-secondary">
+                                                        {each?.country_name}
+                                                    </Card.Text>
+                                                </Card.Body>
+                                            </Card>
+                                        </Link>
+
                                     </Col>
                                 )
                             })
@@ -113,7 +114,7 @@ const IndividualCountryNumList = ({ data }) => {
                 currentData?.length <= 0 &&
                 <NoNumberList country_code={country_code} />
             }
-        </div>
+        </div >
     )
 }
 

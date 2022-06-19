@@ -4,7 +4,7 @@ import CountUp from 'react-countup';
 
 const FooterBottom = () => {
     return (
-        <div className="container text-center mt-4 ">
+        <div className="container text-center mt-5 ">
             <Row className="m-3">
                 <Col md={4} sm={4}>
                     <div>

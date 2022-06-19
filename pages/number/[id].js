@@ -91,19 +91,23 @@ const NumberPage = ({ data, allRentList }) => {
             {/* Sms list */}
             <div>
                 <Row className="m-3 text-center">
-                    <Col md={4}>From - Time</Col>
-                    <Col md={8}>Message</Col>
+                    <Col md={3}>From</Col>
+                    <Col md={3}>Time</Col>
+                    <Col md={6}>Message</Col>
                 </Row>
                 {
                     data.status === 'success' &&
                     allData?.smsList?.map((each, i) => {
                         return (
                             <Row key={i} className="m-3 text-center bg-light" style={{ borderRadius: "15px" }}>
-                                <Col md={5} sm={12} className="p-2">
-                                    [{each[1].phoneFrom}] - [{moment(each[1].date).from(moment(countryInfo.current_time).format("YYYY-MM-DD HH:mm:ss"))}]
+                                <Col md={3} sm={12} className="p-2">
+                                    [{each[1].phoneFrom}]
                                 </Col>
-                                <Col md={7} sm={12} className="p-2">
-                                    - {each[1].text}
+                                <Col md={3} sm={12} className="p-2">
+                                    [{moment(each[1].date).from(moment(countryInfo.current_time).format("YYYY-MM-DD HH:mm:ss"))}]
+                                </Col>
+                                <Col md={6} sm={12} className="p-2">
+                                    {each[1].text}
                                 </Col>
                             </Row>
                         )
