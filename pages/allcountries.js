@@ -28,7 +28,7 @@ const AllCountries = ({ data }) => {
   const gotoPrevious = () => pIndex > 20 ? setPIndex(pIndex - 20) : setPIndex(0);
   const goto = (num) => {
     setPIndex(num);
-    
+
   };
   const middleBtnAmount = Math.ceil(allData.length / 20);
   let btnGurbageArray = [];
@@ -40,10 +40,11 @@ const AllCountries = ({ data }) => {
     <div>
       <section id="numberList">
         <div
+          id="country_list_top"
           className="text-center bg-dark text-light d-flex justify-content-center align-items-center"
           style={{ minHeight: "10vh" }}
         >
-          <div>
+          <div className=" mt-5 p-5">
             <h3 className="">All Regions Phone Number List</h3>
             <p>
               We currently provide Free 49 Regions Virtual Temporary Phone
@@ -51,7 +52,7 @@ const AllCountries = ({ data }) => {
             </p>
           </div>
         </div>
-        
+
         {
           <div className="container">
             <Row lg={4} md={6} sm={1}>

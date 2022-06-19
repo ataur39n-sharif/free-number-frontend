@@ -85,6 +85,8 @@ const NumberPage = ({ data, allRentList }) => {
                     <img src={countryInfo.img} alt="country_flag" height="45" className="m-2" />
                     <p><strong>{`${countryInfo.country_name} Phone Number`}</strong></p>
                 </h1>
+                <p>Receive SMS Online For Free</p>
+
                 <h5><strong>+{allData?.currentNum} <FaCopy onClick={() => handleCopy(allData.currentNum)} /></strong></h5>
                 <Button className="m-5" variant="outline-primary" onClick={() => loadAgain()}> <AiOutlineReload /> Refresh this page</Button>
             </div>
