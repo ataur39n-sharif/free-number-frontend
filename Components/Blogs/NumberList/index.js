@@ -6,8 +6,10 @@ const NumberListBlog = ({ country_code }) => {
 
     useEffect(() => {
         const list = Object.entries(countryList)
-        const data = list.find(each => each[0] === country_code.toLowerCase())
-        setCountryInfo(data[1])
+        const data = list.find(each => each[0] === country_code?.toLowerCase())
+        if (data) {
+            setCountryInfo(data[1])
+        }
     }, [])
     return (
         <div>
