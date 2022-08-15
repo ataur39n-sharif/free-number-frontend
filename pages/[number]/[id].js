@@ -3,6 +3,7 @@ import { getTimezone } from "countries-and-timezones";
 import { parsePhoneNumber } from "libphonenumber-js";
 import moment from "moment";
 import { useRouter } from "next/router";
+import { useRef } from "react";
 import { useEffect, useState } from "react";
 import { Button, Col, Row, Toast, ToastContainer } from "react-bootstrap";
 import { AiOutlineReload } from "react-icons/ai";
@@ -11,10 +12,9 @@ import SingleNumPageBlog from "../../Components/Blogs/NumberPage/SingleNumPageBl
 import { countryList } from "../../utils/countries/countries";
 import countryWithTimezone from "../../utils/countries_timezone/country-codes.json";
 
-const NumberPage = ({ data, allRentList }) => {
+const NumberPage = ({ data }) => {
     const router = useRouter();
     const { id } = router.query;
-
     console.log(data);
 
     const [show, setShow] = useState(false);
@@ -26,11 +26,13 @@ const NumberPage = ({ data, allRentList }) => {
         img: "",
     });
     const [allData, setAllData] = useState({});
+    const [refreshCount, setRefreshCount] = useState(10)
 
 
     useEffect(() => {
+        // setRefreshCount(10)
         const smsList = data?.length ? Object.entries(data) : [];
-        const numberInfo = parsePhoneNumber(`+${id}`);
+        const numberInfo = typeof (id) === 'number' ? parsePhoneNumber(`+${id}`) : 0;
         setAllData({ ...allData, smsList });
 
         if (numberInfo) {
@@ -71,7 +73,28 @@ const NumberPage = ({ data, allRentList }) => {
         }
     }, []);
 
-    console.log(allData);
+    //auto reload every 10s
+    // useEffect(() => {
+    //     setInterval(() => {
+    //         loadAgain()
+    //     }, 10000)
+    // }, [])
+
+    //auto reload time counter
+    // useEffect(() => {
+    //     const timer = setInterval(() => {
+    //         if (refreshCount === 0) {
+    //             setRefreshCount(10)
+    //         } else {
+    //             setRefreshCount(refreshCount - 1)
+    //         }
+    //     }, 1000)
+
+    //     return () => {
+    //         clearInterval(timer)
+    //     }
+
+    // }, [refreshCount])
 
     //number copy
     const handleCopy = (number) => {
@@ -80,17 +103,19 @@ const NumberPage = ({ data, allRentList }) => {
     };
     //selected countries number list
     const handleMove = (code) => {
-        window.location.replace(`/number-list/${code}`);
+        router.replace(`/number-list/${code}`);
     };
     //update message
     const loadAgain = () => {
-        window.location.reload(false);
+        // router.reload(false)
+        router.reload()
+        // window.location.reload(false);
     };
+
 
     // pagination index handler
     const [pIndex, setPIndex] = useState(0);
 
-    console.log(allData)
     // pagination handler using buttons
     const gotoNext = () => pIndex < allData?.smsList?.length - 20 && setPIndex(pIndex + 20);
     const gotoPrevious = () =>
@@ -134,7 +159,7 @@ const NumberPage = ({ data, allRentList }) => {
                     onClick={() => loadAgain()}
                 >
                     {" "}
-                    <AiOutlineReload /> Refresh this page
+                    <AiOutlineReload /> Refresh this page ({refreshCount})
                 </Button>
             </div>
             {/* Sms list */}
@@ -188,49 +213,15 @@ const NumberPage = ({ data, allRentList }) => {
                     <button onClick={gotoNext} className="next-btn btn">Next</button>
                 </div>
             }
-            {/* <Table responsive striped borderless size="xl" className=" text-center">
-                <thead className="table-primary">
-                    <tr>
-                        <th>From</th>
-                        <th>Time</th>
-                        <th>Message</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        data.status === 'success' &&
-                        allData?.smsList?.map((each, i) => {
-                            return (
-                                // <tr key={i}>
-                                <div>
-                                    <span>
-                                        [{each[1].phoneFrom}] - [{moment(each[1].date).from(moment(countryInfo.current_time).format("YYYY-MM-DD HH:mm:ss"))}]
-                                    </span>
-                                </div>
-                                // <td>{each[1].phoneFrom}</td>
-                                // <td>{moment(each[1].date).from(moment(countryInfo.current_time).format("YYYY-MM-DD H:m:s"))}</td>
-                                // <td colSpan={2}>{each[1].text}</td>
-                                // </tr>
-                            )
-                        })
-
-
-                    }
-                    {data.status === 'error' &&
-                        < tr >
-                            <td colSpan={4} className="table-warning">No data</td>
-                        </tr>
-                    }
-                </tbody>
-            </Table> */}
 
             {/* blog */}
             <SingleNumPageBlog countryName={countryInfo.country_name} />
 
             {/* toast section */}
-            <ToastContainer
+
+            {/* <ToastContainer
                 className="p-3"
-                position={"top-end"}
+                position={"center"}
                 style={{ zIndex: "100" }}
             >
                 <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
@@ -239,7 +230,7 @@ const NumberPage = ({ data, allRentList }) => {
                     </Toast.Header>
                     <Toast.Body bg="light">Number: +{id}</Toast.Body>
                 </Toast>
-            </ToastContainer>
+            </ToastContainer> */}
         </div>
     );
 };
@@ -251,11 +242,6 @@ export async function getServerSideProps(context) {
         `https://test-api.ataur.dev/all-sms/${context.query.id}`
     );
     const { success, msgList } = await result.json();
-
-    // const rentList = await fetch(
-    //     `${process.env.CURRENT_SITE_LINK}/api/getRentNumberList`
-    // );
-    // const list = await rentList.json();
 
     return {
         props: {

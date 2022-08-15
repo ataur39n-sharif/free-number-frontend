@@ -66,6 +66,7 @@ export default function Home({ data }) {
             >
               <TelegramIcon size={38} />
             </TelegramShareButton>
+            <div><button>abc</button></div>
           </div>
         </div>
       </main>
@@ -79,17 +80,23 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps() {
-  const result = await fetch(`https://numbers.messagebird.com/v1/phone-numbers`, {
-    method: "get",
-    headers: {
-      'Authorization': 'AccessKey XM7Qv4P6xzebLjyNueNHahiu0'
-    }
-  });
-  const value = await result.json();
+  let data = null;
+  try {
+    const result = await fetch(`https://numbers.messagebird.com/v1/phone-numbers`, {
+      method: "get",
+      headers: {
+        'Authorization': 'AccessKey XM7Qv4P6xzebLjyNueNHahiu0'
+      }
+    });
+    const value = await result.json();
+    data = value
+  } catch (error) {
+    data = null
+  }
 
   return {
     props: {
-      data: value || null,
+      data
     },
   };
 }

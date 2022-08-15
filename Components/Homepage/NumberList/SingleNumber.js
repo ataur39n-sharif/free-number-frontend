@@ -6,10 +6,10 @@ import Link from "next/link";
 import { countryList } from "../../../utils/countries/countries";
 
 const SingleNumber = ({ data }) => {
-    console.log(data);
     const [info, setInfo] = useState({
         country_name: "",
         country_code: "",
+        country_slug: "",
         img: ""
     })
     const phoneNumber = parsePhoneNumber(`+${data[1].number}`)
@@ -22,6 +22,7 @@ const SingleNumber = ({ data }) => {
                 const tempSchema = {
                     country_name: data[1].name,
                     country_code: phoneNumber.country,
+                    country_slug: data[1].slug,
                     img: `/images/${phoneNumber.country.toLowerCase()}.png`
                 }
                 setInfo(tempSchema)
@@ -31,7 +32,7 @@ const SingleNumber = ({ data }) => {
 
     return (
         <Col style={{ minWidth: '18rem' }} className="m-auto mt-4">
-            <Link href={`/number/${data[1].number}`}>
+            <Link href={`/free-${info.country_slug}-number/${data[1].number}`}>
                 <Card
                     id="card_section"
                     className="text-center"

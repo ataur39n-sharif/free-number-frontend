@@ -5,8 +5,6 @@ import SingleNumber from "./SingleNumber";
 const NumberList = ({ value }) => {
   const arr = Object.entries(value);
 
-  console.log(arr);
-
   // pagination index handler
   const [pIndex, setPIndex] = useState(0);
 

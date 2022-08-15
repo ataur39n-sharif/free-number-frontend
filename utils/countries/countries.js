@@ -1,3 +1,360 @@
+
+export const countryList = {
+    "ru": {
+        "name": "Russia",
+        "size": {
+            "height": 600,
+            "width": 900
+        },
+        "slug": "russia"
+    },
+    "ua": {
+        "name": "Ukraine",
+        "size": {
+            "height": 800,
+            "width": 1200
+        },
+        "slug": "ukraine"
+    },
+    "uk": {
+        "name": "United Kingdom",
+        "size": {
+            "height": 600,
+            "width": 1200
+        },
+        "slug": "united-kingdom"
+    },
+    "gb": {
+        "name": "United Kingdom",
+        "size": {
+            "height": 600,
+            "width": 1200
+        },
+        "slug": "united-kingdom"
+    },
+    "lv": {
+        "name": "Latvia",
+        "size": {
+            "height": 600,
+            "width": 1200
+        },
+        "slug": "latvia"
+    },
+    "es": {
+        "name": "Spain",
+        "size": {
+            "height": 500,
+            "width": 750
+        },
+        "slug": "spain"
+    },
+    "ee": {
+        "name": "Estonia",
+        "size": {
+            "height": 630,
+            "width": 990
+        },
+        "slug": "estonia"
+    },
+    "fr": {
+        "name": "France",
+        "size": {
+            "height": 600,
+            "width": 900
+        },
+        "slug": "france"
+    },
+    "lt": {
+        "name": "Lithuania",
+        "size": {
+            "height": 600,
+            "width": 1000
+        },
+        "slug": "lithuania"
+    },
+    "ma": {
+        "name": "Morocco",
+        "size": {
+            "height": 600,
+            "width": 900
+        },
+        "slug": "morocco"
+    },
+    "fi": {
+        "name": "Finland",
+        "size": {
+            "height": 1100,
+            "width": 1800
+        },
+        "slug": "finland"
+    },
+    "se": {
+        "name": "Sweden",
+        "size": {
+            "height": 1000,
+            "width": 1600
+        },
+        "slug": "sweden"
+    },
+    "dk": {
+        "name": "Denmark",
+        "size": {
+            "height": 280,
+            "width": 370
+        },
+        "slug": "denmark"
+    },
+    "it": {
+        "name": "Italy",
+        "size": {
+            "height": 1000,
+            "width": 1500
+        },
+        "slug": "italy"
+    },
+    "pt": {
+        "name": "Portugal",
+        "size": {
+            "height": 400,
+            "width": 600
+        },
+        "slug": "portugal"
+    },
+    "co": {
+        "name": "Colombia",
+        "size": {
+            "height": 600,
+            "width": 900
+        },
+        "slug": "colombia"
+    },
+    "ml": {
+        "name": "Mali",
+        "size": {
+            "height": 300,
+            "width": 450
+        },
+        "slug": "mali"
+    },
+    "us": {
+        "name": "United States",
+        "size": {
+            "height": 650,
+            "width": 1235
+        },
+        "slug": "united-states"
+    },
+    "kz": {
+        "name": "Kazakhstan",
+        "size": {
+            "height": 300,
+            "width": 600
+        },
+        "slug": "kazakhstan"
+    },
+    "id": {
+        "name": "Indonesia",
+        "size": {
+            "height": 800,
+            "width": 1200
+        },
+        "slug": "indonesia"
+    },
+    "ro": {
+        "name": "Romania",
+        "size": {
+            "height": 400,
+            "width": 600
+        },
+        "slug": "romania"
+    },
+    "ma": {
+        "name": "Morocco",
+        "size": {
+            "height": 600,
+            "width": 900
+        },
+        "slug": "morocco"
+    },
+    "de": {
+        "name": "Germany",
+        "size": {
+            "height": 600,
+            "width": 1000
+        },
+        "slug": "germany"
+    },
+    "nl": {
+        "name": "Netherlands",
+        "size": {
+            "height": 600,
+            "width": 900
+        },
+        "slug": "netherlands"
+    },
+    "cy": {
+        "name": "Cyprus",
+        "size": {
+            "height": 180,
+            "width": 275
+        },
+        "slug": "cyprus"
+    },
+    "md": {
+        "name": "Moldova",
+        "size": {
+            "height": 900,
+            "width": 1800
+        },
+        "slug": "moldova"
+    },
+    "gr": {
+        "name": "Greece",
+        "size": {
+            "height": 400,
+            "width": 600
+        },
+        "slug": "greece"
+    },
+    "ca": {
+        "name": "Canada",
+        "size": {
+            "height": 500,
+            "width": 1000
+        },
+        "slug": "canada"
+    },
+    "au": {
+        "name": "Australia",
+        "size": {
+            "height": 640,
+            "width": 1280
+        },
+        "slug": "australia"
+    },
+    "be": {
+        "name": "Belgium",
+        "size": {
+            "height": 390,
+            "width": 450
+        },
+        "slug": "belgium"
+    },
+    "il": {
+        "name": "Israel",
+        "size": {
+            "height": 480,
+            "width": 660
+        },
+        "slug": "israel"
+    },
+    "no": {
+        "name": "Norway",
+        "size": {
+            "height": 800,
+            "width": 1100
+        },
+        "slug": "norway"
+    },
+    "pl": {
+        "name": "Poland",
+        "size": {
+            "height": 800,
+            "width": 1280
+        },
+        "slug": "poland"
+    },
+    "hr": {
+        "name": "Croatia",
+        "size": {
+            "height": 600,
+            "width": 1200
+        },
+        "slug": "croatia"
+    },
+    "cz": {
+        "name": "Czech Republic",
+        "size": {
+            "height": 600,
+            "width": 900
+        },
+        "slug": "czech-republic"
+    },
+    "hn": {
+        "name": "Honduras",
+        "size": {
+            "height": 500,
+            "width": 1000
+        },
+        "slug": "honduras"
+    },
+    "hu": {
+        "name": "Hungary",
+        "size": {
+            "height": 600,
+            "width": 1200
+        },
+        "slug": "hungary"
+    },
+    "mx": {
+        "name": "Mexico",
+        "size": {
+            "height": 480,
+            "width": 840
+        },
+        "slug": "mexico"
+    },
+    "ph": {
+        "name": "Philippines",
+        "size": {
+            "height": 450,
+            "width": 900
+        },
+        "slug": "philippines"
+    },
+    "za": {
+        "name": "South Africa",
+        "size": {
+            "height": 600,
+            "width": 900
+        },
+        "slug": "south-africa"
+    },
+    "th": {
+        "name": "Thailand",
+        "size": {
+            "height": 600,
+            "width": 900
+        },
+        "slug": "thailand"
+    },
+    "ch": {
+        "name": "Switzerland",
+        "size": {
+            "height": 1000,
+            "width": 1000
+        },
+        "slug": "switzerland"
+    },
+    "at": {
+        "name": "Austria",
+        "size": {
+            "height": 600,
+            "width": 900
+        },
+        "slug": "austria"
+    },
+    "uz": {
+        "name": "Uzbekistan",
+        "size": {
+            "height": 250,
+            "width": 500
+        },
+        "slug": "uzbekistan"
+    },
+
+}
+
 // export const countryList = {
 //     "ad": {
 //         "name": "Andorra",
@@ -1744,351 +2101,3 @@
 //         "slug": "zimbabwe"
 //     }
 // }
-
-export const countryList = {
-    "ru": {
-        "name": "Russia",
-        "size": {
-            "height": 600,
-            "width": 900
-        },
-        "slug": "russia"
-    },
-    "ua": {
-        "name": "Ukraine",
-        "size": {
-            "height": 800,
-            "width": 1200
-        },
-        "slug": "ukraine"
-    },
-    "uk": {
-        "name": "United Kingdom",
-        "size": {
-            "height": 600,
-            "width": 1200
-        },
-        "slug": "united-kingdom"
-    },
-    "lv": {
-        "name": "Latvia",
-        "size": {
-            "height": 600,
-            "width": 1200
-        },
-        "slug": "latvia"
-    },
-    "es": {
-        "name": "Spain",
-        "size": {
-            "height": 500,
-            "width": 750
-        },
-        "slug": "spain"
-    },
-    "ee": {
-        "name": "Estonia",
-        "size": {
-            "height": 630,
-            "width": 990
-        },
-        "slug": "estonia"
-    },
-    "fr": {
-        "name": "France",
-        "size": {
-            "height": 600,
-            "width": 900
-        },
-        "slug": "france"
-    },
-    "lt": {
-        "name": "Lithuania",
-        "size": {
-            "height": 600,
-            "width": 1000
-        },
-        "slug": "lithuania"
-    },
-    "ma": {
-        "name": "Morocco",
-        "size": {
-            "height": 600,
-            "width": 900
-        },
-        "slug": "morocco"
-    },
-    "fi": {
-        "name": "Finland",
-        "size": {
-            "height": 1100,
-            "width": 1800
-        },
-        "slug": "finland"
-    },
-    "se": {
-        "name": "Sweden",
-        "size": {
-            "height": 1000,
-            "width": 1600
-        },
-        "slug": "sweden"
-    },
-    "dk": {
-        "name": "Denmark",
-        "size": {
-            "height": 280,
-            "width": 370
-        },
-        "slug": "denmark"
-    },
-    "it": {
-        "name": "Italy",
-        "size": {
-            "height": 1000,
-            "width": 1500
-        },
-        "slug": "italy"
-    },
-    "pt": {
-        "name": "Portugal",
-        "size": {
-            "height": 400,
-            "width": 600
-        },
-        "slug": "portugal"
-    },
-    "co": {
-        "name": "Colombia",
-        "size": {
-            "height": 600,
-            "width": 900
-        },
-        "slug": "colombia"
-    },
-    "ml": {
-        "name": "Mali",
-        "size": {
-            "height": 300,
-            "width": 450
-        },
-        "slug": "mali"
-    },
-    "us": {
-        "name": "United States",
-        "size": {
-            "height": 650,
-            "width": 1235
-        },
-        "slug": "united-states"
-    },
-    "kz": {
-        "name": "Kazakhstan",
-        "size": {
-            "height": 300,
-            "width": 600
-        },
-        "slug": "kazakhstan"
-    },
-    "id": {
-        "name": "Indonesia",
-        "size": {
-            "height": 800,
-            "width": 1200
-        },
-        "slug": "indonesia"
-    },
-    "ro": {
-        "name": "Romania",
-        "size": {
-            "height": 400,
-            "width": 600
-        },
-        "slug": "romania"
-    },
-    "ma": {
-        "name": "Morocco",
-        "size": {
-            "height": 600,
-            "width": 900
-        },
-        "slug": "morocco"
-    },
-    "de": {
-        "name": "Germany",
-        "size": {
-            "height": 600,
-            "width": 1000
-        },
-        "slug": "germany"
-    },
-    "nl": {
-        "name": "Netherlands",
-        "size": {
-            "height": 600,
-            "width": 900
-        },
-        "slug": "netherlands"
-    },
-    "cy": {
-        "name": "Cyprus",
-        "size": {
-            "height": 180,
-            "width": 275
-        },
-        "slug": "cyprus"
-    },
-    "md": {
-        "name": "Moldova",
-        "size": {
-            "height": 900,
-            "width": 1800
-        },
-        "slug": "moldova"
-    },
-    "gr": {
-        "name": "Greece",
-        "size": {
-            "height": 400,
-            "width": 600
-        },
-        "slug": "greece"
-    },
-    "ca": {
-        "name": "Canada",
-        "size": {
-            "height": 500,
-            "width": 1000
-        },
-        "slug": "canada"
-    },
-    "au": {
-        "name": "Australia",
-        "size": {
-            "height": 640,
-            "width": 1280
-        },
-        "slug": "australia"
-    },
-    "be": {
-        "name": "Belgium",
-        "size": {
-            "height": 390,
-            "width": 450
-        },
-        "slug": "belgium"
-    },
-    "il": {
-        "name": "Israel",
-        "size": {
-            "height": 480,
-            "width": 660
-        },
-        "slug": "israel"
-    },
-    "no": {
-        "name": "Norway",
-        "size": {
-            "height": 800,
-            "width": 1100
-        },
-        "slug": "norway"
-    },
-    "pl": {
-        "name": "Poland",
-        "size": {
-            "height": 800,
-            "width": 1280
-        },
-        "slug": "poland"
-    },
-    "hr": {
-        "name": "Croatia",
-        "size": {
-            "height": 600,
-            "width": 1200
-        },
-        "slug": "croatia"
-    },
-    "cz": {
-        "name": "Czech Republic",
-        "size": {
-            "height": 600,
-            "width": 900
-        },
-        "slug": "czech-republic"
-    },
-    "hn": {
-        "name": "Honduras",
-        "size": {
-            "height": 500,
-            "width": 1000
-        },
-        "slug": "honduras"
-    },
-    "hu": {
-        "name": "Hungary",
-        "size": {
-            "height": 600,
-            "width": 1200
-        },
-        "slug": "hungary"
-    },
-    "mx": {
-        "name": "Mexico",
-        "size": {
-            "height": 480,
-            "width": 840
-        },
-        "slug": "mexico"
-    },
-    "ph": {
-        "name": "Philippines",
-        "size": {
-            "height": 450,
-            "width": 900
-        },
-        "slug": "philippines"
-    },
-    "za": {
-        "name": "South Africa",
-        "size": {
-            "height": 600,
-            "width": 900
-        },
-        "slug": "south-africa"
-    },
-    "th": {
-        "name": "Thailand",
-        "size": {
-            "height": 600,
-            "width": 900
-        },
-        "slug": "thailand"
-    },
-    "ch": {
-        "name": "Switzerland",
-        "size": {
-            "height": 1000,
-            "width": 1000
-        },
-        "slug": "switzerland"
-    },
-    "at": {
-        "name": "Austria",
-        "size": {
-            "height": 600,
-            "width": 900
-        },
-        "slug": "austria"
-    },
-    "uz": {
-        "name": "Uzbekistan",
-        "size": {
-            "height": 250,
-            "width": 500
-        },
-        "slug": "uzbekistan"
-    },
-
-}
