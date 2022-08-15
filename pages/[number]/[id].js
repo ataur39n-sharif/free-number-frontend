@@ -15,7 +15,6 @@ import countryWithTimezone from "../../utils/countries_timezone/country-codes.js
 const NumberPage = ({ data }) => {
     const router = useRouter();
     const { id } = router.query;
-    console.log(data);
 
     const [show, setShow] = useState(false);
     const [countryInfo, setCountryInfo] = useState({
@@ -173,7 +172,6 @@ const NumberPage = ({ data }) => {
 
                 {data?.length &&
                     allData?.smsList?.slice(pIndex, pIndex + 20).map((each, i) => {
-                        console.log("object", each);
                         return (
                             <Row key={i} className="m-3 text-center bg-light border border-primary" style={{ borderRadius: "15px" }}>
                                 <Col md={3} sm={12} className="p-2">
