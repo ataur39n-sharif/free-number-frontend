@@ -6,6 +6,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+
 a {
   color: inherit;
   text-decoration: none;
@@ -31,11 +32,11 @@ a {
 
 }
 
-#top_div {
+/* #top_div {
   background-image: url('/image/top_div_cover_photo.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
 
 #footer_section {
   background-image: url('/image/top_div_cover_photo.jpg');
