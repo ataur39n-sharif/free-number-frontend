@@ -99,7 +99,8 @@ const NumberPage = ({ data }) => {
     //number copy
     const handleCopy = (number) => {
         copy(`+${number}`);
-        setShow(true);
+        // setShow(true);
+        alert('Copied !')
     };
     //selected countries number list
     const handleMove = (code) => {
@@ -107,9 +108,7 @@ const NumberPage = ({ data }) => {
     };
     //update message
     const loadAgain = () => {
-        // router.reload(false)
         router.reload()
-        // window.location.reload(false);
     };
 
 
@@ -153,6 +152,7 @@ const NumberPage = ({ data }) => {
                         <FaCopy onClick={() => handleCopy(id)} />
                     </strong>
                 </h5>
+                <small>(click copy icon to copy number)</small>
                 <Button
                     className="m-5"
                     variant="outline-primary"
