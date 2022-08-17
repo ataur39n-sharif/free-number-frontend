@@ -31,44 +31,26 @@ const NumberPage = ({ data }) => {
     useEffect(() => {
         // setRefreshCount(10)
         const smsList = data?.length ? Object.entries(data) : [];
-        const numberInfo = typeof (id) === 'number' ? parsePhoneNumber(`+${id}`) : 0;
-        setAllData({ ...allData, smsList });
 
+        //valid a phone number
+        const num = Number(id)
+        const num_length = Number.isInteger(num) ? Array.from(String(num), Number) : 0;
+
+        const numberInfo = Number.isInteger(num) && num_length.length > 9 ? parsePhoneNumber(`+${id}`) : 0;
+        setAllData({ ...allData, smsList });
         if (numberInfo) {
             const list = Object.entries(countryList);
             const data = list.find(
-                (each) => each[0] === numberInfo.country.toLocaleLowerCase()
+                (each) => each[0] === numberInfo?.country?.toLocaleLowerCase()
             );
             const tempSchema = {
                 country_name: data ? data[1].name : numberInfo.country,
                 country_code: numberInfo.country,
                 // current_time: d,
                 // timeZone: getTimezone(country["time-zone-in-capital"]),
-                img: `/images/${numberInfo.country.toLocaleLowerCase()}.png`,
+                img: `/images/${numberInfo?.country?.toLocaleLowerCase()}.png`,
             };
             setCountryInfo(tempSchema);
-            if (data) {
-                const country = countryWithTimezone.find(
-                    (each) => each.iso2 === numberInfo.country
-                );
-
-                let d = new Date();
-                let utc_offset = d.getTimezoneOffset();
-                d.setMinutes(d.getMinutes() + utc_offset);
-
-                // let select_country = getTimezone(country["time-zone-in-capital"])
-                let select_country = 3 * 60;
-                d.setMinutes(d.getMinutes() + select_country);
-
-                // const tempSchema = {
-                //     country_name: data[1].name,
-                //     country_code: numberInfo.country,
-                //     current_time: d,
-                //     timeZone: getTimezone(country["time-zone-in-capital"]),
-                //     img: `/images/${numberInfo.country.toLocaleLowerCase()}.png`,
-                // };
-                // setCountryInfo(tempSchema);
-            }
         }
     }, []);
 
@@ -141,24 +123,26 @@ const NumberPage = ({ data }) => {
                         className="m-2"
                     />
                     <h1>
-                        <strong>{`${countryInfo.country_name} Phone Number`}</strong>
+                        <strong>{`${countryInfo.country_name ? countryInfo.country_name : "Invalid country"} Phone Number`}</strong>
                     </h1>
                     <p>Receive SMS Online for Free</p>
                 </div>
-                <h5>
-                    <strong>
-                        +{id}{" "}
-                        <FaCopy onClick={() => handleCopy(id)} />
-                    </strong>
-                </h5>
-                <small>(click copy icon to copy number)</small>
+                <div>
+                    <h5>
+                        <strong>
+                            +{id}{" "}
+                            <FaCopy onClick={() => handleCopy(id)} />
+                        </strong>
+                    </h5>
+                </div>
+
                 <Button
                     className="m-5"
                     variant="outline-primary"
                     onClick={() => loadAgain()}
                 >
                     {" "}
-                    <AiOutlineReload /> Refresh this page ({refreshCount})
+                    <AiOutlineReload /> Refresh this page
                 </Button>
             </div>
             {/* Sms list */}

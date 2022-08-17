@@ -59,7 +59,10 @@ export default function Home({ data }) {
               alt="top_div_bg_img"
               objectFit="cover"
               layout="fill"
-              quality={100}
+              // sizes="(min-width: 75em) 33vw,
+              // (min-width: 48em) 50vw,
+              // 100vw"
+              quality={50}
             />
           </div>
           <TopDiv />
@@ -102,7 +105,7 @@ export default function Home({ data }) {
               <TelegramIcon size={38} />
             </TelegramShareButton>
             <div>
-              <span onClick={() => setShowShareList(true)}><img src="/image/more.png" alt="" style={{ height: 38 }} /></span>
+              <span onClick={() => setShowShareList(true)}><Image src="/image/more.png" alt="" height={38} width="40vw" /></span>
             </div>
             {
               showShareList &&
