@@ -1,3 +1,4 @@
+import DashBoard from "../Dashboard";
 import HomePageBlog from "../EditPage/HomePageBlog";
 import IndexPage from "../EditPage/IndexPage";
 import NumberPageBlog from "../EditPage/NumberPageBlog/Index";
@@ -32,7 +33,7 @@ const ChooseComponent = ({ pathName }) => {
             return <SocialMedia mediaName={"mail"} />;
 
         default:
-            return (<div>"this is other page"</div>)
+            return <DashBoard />
     }
 }
 

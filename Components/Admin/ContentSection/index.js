@@ -71,8 +71,8 @@ const ContentSection = () => {
                     }}
                 >
                     {
-                        pathList.map((eachPath) => {
-                            return (<Breadcrumb.Item>{eachPath}</Breadcrumb.Item>)
+                        pathList.map((eachPath,i) => {
+                            return (<Breadcrumb.Item key={i}>{eachPath}</Breadcrumb.Item>)
                         })
                     }
                 </Breadcrumb>
