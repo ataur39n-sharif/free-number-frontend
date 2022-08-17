@@ -135,6 +135,7 @@ export default function Home({ data }) {
                           title={
                             "next-share is a social share buttons for your next React apps."
                           }
+                          hashtags={"#nextshare"}
                         >
                           <TwitterIcon size={42} className="m-2" round />
                         </TwitterShareButton>
@@ -167,13 +168,14 @@ export default function Home({ data }) {
                         </RedditShareButton>
                       </Col>
                       <Col>
-                        <LinkedinShareButton url={'https://github.com/next-share'}>
+                        <LinkedinShareButton url={'https://github.com/next-share'} title={""}>
                           <LinkedinIcon size={42} className="m-2" round />
                         </LinkedinShareButton>
                       </Col>
                       <Col>
                         <FacebookMessengerShareButton
                           url={'https://github.com/next-share'}
+                          title={""}
                           appId={''}
                         >
                           <FacebookMessengerIcon size={42} className="m-2" round />
@@ -182,6 +184,7 @@ export default function Home({ data }) {
                       <Col>
                         <EmailShareButton
                           url={'https://github.com/next-share'}
+                          title={""}
                           subject={'Next Share'}
                           body="body"
                         >
@@ -191,6 +194,7 @@ export default function Home({ data }) {
                       <Col>
                         <VKShareButton
                           url={'https://github.com/next-share'}
+                          title=""
                         // image={'./next-share.png'}
                         >
                           <VKIcon size={42} className="m-2" round />
