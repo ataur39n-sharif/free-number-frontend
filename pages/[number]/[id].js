@@ -3,20 +3,17 @@ import { getTimezone } from "countries-and-timezones";
 import { parsePhoneNumber } from "libphonenumber-js";
 import moment from "moment";
 import { useRouter } from "next/router";
-import { useRef } from "react";
 import { useEffect, useState } from "react";
 import { Button, Col, Row, Toast, ToastContainer } from "react-bootstrap";
 import { AiOutlineReload } from "react-icons/ai";
 import { FaCopy } from "react-icons/fa";
 import SingleNumPageBlog from "../../Components/Blogs/NumberPage/SingleNumPageBlog";
 import { countryList } from "../../utils/countries/countries";
-import countryWithTimezone from "../../utils/countries_timezone/country-codes.json";
+
 
 const NumberPage = ({ data }) => {
     const router = useRouter();
     const { id } = router.query;
-
-    const [show, setShow] = useState(false);
     const [countryInfo, setCountryInfo] = useState({
         country_name: "",
         country_code: "",

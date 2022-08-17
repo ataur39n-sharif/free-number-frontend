@@ -4,6 +4,7 @@ import NavBar from '../Components/Homepage/Navbar';
 import "../styles/all_countries.css";
 import '../styles/globals.css';
 import "../styles/social_share.css";
+import 'antd/dist/antd.css'; 
 
 function MyApp({ Component, pageProps }) {
   
