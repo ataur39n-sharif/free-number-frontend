@@ -5,7 +5,7 @@ import NumberPageBlog from "../EditPage/NumberPageBlog/Index";
 import SocialMedia from "../SocialMedia";
 
 const ChooseComponent = ({ pathName }) => {
-    console.log('choose comp', pathName);
+    // console.log('choose comp', pathName);
     switch (pathName) {
         case 'index_page':
             return <IndexPage />

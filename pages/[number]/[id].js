@@ -2,6 +2,7 @@ import copy from "copy-text-to-clipboard";
 import { getTimezone } from "countries-and-timezones";
 import { parsePhoneNumber } from "libphonenumber-js";
 import moment from "moment";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Button, Col, Row, Toast, ToastContainer } from "react-bootstrap";
@@ -107,98 +108,102 @@ const NumberPage = ({ data }) => {
     }
 
     return (
-        <div className="container mt-5">
-            <div className="numberInfo m-3  text-center">
-                <div
-                    style={{ cursor: "pointer" }}
-                    onClick={() => handleMove(countryInfo?.country_code.toLowerCase())}
-                >
-                    <img
-                        src={countryInfo.img}
-                        alt="country_flag"
-                        height="45"
-                        className="m-2"
-                    />
-                    <h1>
-                        <strong>{`${countryInfo.country_name ? countryInfo.country_name : "Invalid country"} Phone Number`}</strong>
-                    </h1>
-                    <p>Receive SMS Online for Free</p>
-                </div>
-                <div>
-                    <h5>
-                        <strong>
-                            +{id}{" "}
-                            <FaCopy onClick={() => handleCopy(id)} />
-                        </strong>
-                    </h5>
-                </div>
-
-                <Button
-                    className="m-5"
-                    variant="outline-primary"
-                    onClick={() => loadAgain()}
-                >
-                    {" "}
-                    <AiOutlineReload /> Refresh this page
-                </Button>
-            </div>
-            {/* Sms list */}
-            <div>
-
-                <Row className="m-3 text-center bg-info p-2">
-                    <Col md={3}>From</Col>
-                    <Col md={3}>Time</Col>
-                    <Col md={6}>Message</Col>
-                </Row>
-
-                {data?.length &&
-                    allData?.smsList?.slice(pIndex, pIndex + 20).map((each, i) => {
-                        return (
-                            <Row key={i} className="m-3 text-center bg-light border border-primary" style={{ borderRadius: "15px" }}>
-                                <Col md={3} sm={12} className="p-2">
-                                    [{typeof (each[1].sender) === "number" ? `+{each[1].sender}` : each[1].sender}]
-                                </Col>
-                                <Col md={3} sm={12} className="p-2">
-                                    [{moment(each[1].createdAt).from(moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"))}]
-                                </Col>
-                                <Col md={6} sm={12} className="p-2">
-                                    {each[1].message}
-                                </Col>
-                            </Row>
-                        );
-                    })}
-                {data === null && (
-                    <Row
-                        // key={i}
-                        className="m-3 text-center bg-light"
-                        style={{ borderRadius: "15px" }}
+        <>
+        <Head>
+            <title> free {countryInfo?.country_name} number +{id} </title>
+        </Head>
+            <div className="container mt-5">
+                <div className="numberInfo m-3  text-center">
+                    <div
+                        style={{ cursor: "pointer" }}
+                        onClick={() => handleMove(countryInfo?.country_code.toLowerCase())}
                     >
-                        <span className="p-2">No message found !!</span>
+                        <img
+                            src={countryInfo.img}
+                            alt="country_flag"
+                            height="45"
+                            className="m-2"
+                        />
+                        <h1>
+                            <strong>{`${countryInfo.country_name ? countryInfo.country_name : "Invalid country"} Phone Number`}</strong>
+                        </h1>
+                        <p>Receive SMS Online for Free</p>
+                    </div>
+                    <div>
+                        <h5>
+                            <strong>
+                                +{id}{" "}
+                                <FaCopy onClick={() => handleCopy(id)} />
+                            </strong>
+                        </h5>
+                    </div>
+
+                    <Button
+                        className="m-5"
+                        variant="outline-primary"
+                        onClick={() => loadAgain()}
+                    >
+                        {" "}
+                        <AiOutlineReload /> Refresh this page
+                    </Button>
+                </div>
+                {/* Sms list */}
+                <div>
+
+                    <Row className="m-3 text-center bg-info p-2">
+                        <Col md={3}>From</Col>
+                        <Col md={3}>Time</Col>
+                        <Col md={6}>Message</Col>
                     </Row>
-                )}
-            </div>
-            {
-                allData?.smsList?.length > 0 &&
-                <div className="pagination-handler">
-                    <button onClick={gotoPrevious} className="previous-btn btn">Previous</button>
-                    {
-                        btnGurbageArray.map((pageNumber, i) => {
+
+                    {data?.length &&
+                        allData?.smsList?.slice(pIndex, pIndex + 20).map((each, i) => {
                             return (
-                                <button key={i} onClick={() => goto(pageNumber * 20)} className={`${pIndex / 20 === pageNumber && "current-page"} btn px-3 py-1`}>
-                                    {pageNumber + 1}
-                                </button>
+                                <Row key={i} className="m-3 text-center bg-light border border-primary" style={{ borderRadius: "15px" }}>
+                                    <Col md={3} sm={12} className="p-2">
+                                        [{typeof (each[1].sender) === "number" ? `+{each[1].sender}` : each[1].sender}]
+                                    </Col>
+                                    <Col md={3} sm={12} className="p-2">
+                                        [{moment(each[1].createdAt).from(moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"))}]
+                                    </Col>
+                                    <Col md={6} sm={12} className="p-2">
+                                        {each[1].message}
+                                    </Col>
+                                </Row>
                             );
                         })}
-                    <button onClick={gotoNext} className="next-btn btn">Next</button>
+                    {data === null && (
+                        <Row
+                            // key={i}
+                            className="m-3 text-center bg-light"
+                            style={{ borderRadius: "15px" }}
+                        >
+                            <span className="p-2">No message found !!</span>
+                        </Row>
+                    )}
                 </div>
-            }
+                {
+                    allData?.smsList?.length > 0 &&
+                    <div className="pagination-handler">
+                        <button onClick={gotoPrevious} className="previous-btn btn">Previous</button>
+                        {
+                            btnGurbageArray.map((pageNumber, i) => {
+                                return (
+                                    <button key={i} onClick={() => goto(pageNumber * 20)} className={`${pIndex / 20 === pageNumber && "current-page"} btn px-3 py-1`}>
+                                        {pageNumber + 1}
+                                    </button>
+                                );
+                            })}
+                        <button onClick={gotoNext} className="next-btn btn">Next</button>
+                    </div>
+                }
 
-            {/* blog */}
-            <SingleNumPageBlog countryName={countryInfo.country_name} />
+                {/* blog */}
+                <SingleNumPageBlog countryName={countryInfo.country_name} />
 
-            {/* toast section */}
+                {/* toast section */}
 
-            {/* <ToastContainer
+                {/* <ToastContainer
                 className="p-3"
                 position={"center"}
                 style={{ zIndex: "100" }}
@@ -210,7 +215,8 @@ const NumberPage = ({ data }) => {
                     <Toast.Body bg="light">Number: +{id}</Toast.Body>
                 </Toast>
             </ToastContainer> */}
-        </div>
+            </div>
+        </>
     );
 };
 
@@ -220,6 +226,7 @@ export async function getServerSideProps(context) {
     const result = await fetch(
         `https://test-api.ataur.dev/all-sms/${context.query.id}`
     );
+
     const { success, msgList } = await result.json();
 
     return {

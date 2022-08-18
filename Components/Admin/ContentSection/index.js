@@ -77,7 +77,6 @@ const ContentSection = () => {
                     }
                 </Breadcrumb>
 
-                {/* {pageName} */}
                 <ChooseComponent pathName={pageName} />
 
             </Content>
