@@ -12,7 +12,7 @@ import SingleNumPageBlog from "../../Components/Blogs/NumberPage/SingleNumPageBl
 import { countryList } from "../../utils/countries/countries";
 
 
-const NumberPage = ({ data }) => {
+const NumberPage = ({ data, pageData }) => {
     const router = useRouter();
     const { id } = router.query;
     const [countryInfo, setCountryInfo] = useState({
@@ -107,11 +107,15 @@ const NumberPage = ({ data }) => {
         btnGurbageArray.push(i);
     }
 
+    console.log(pageData)
+
     return (
         <>
-        <Head>
-            <title> free {countryInfo?.country_name} number +{id} </title>
-        </Head>
+            <Head>
+                {/* <title> free {countryInfo?.country_name} number +{id} </title> */}
+                <title>{pageData ? pageData?.page_title.replace('country_name', countryInfo?.country_name)?.replace('phone_number', `+${id}`) : "Demo Title"}</title>
+                <meta name="description" content={pageData ? pageData?.meta_description?.replace('country_name', countryInfo?.country_name)?.replace('phone_number', `+${id}`) : "Demo description"} />
+            </Head>
             <div className="container mt-5">
                 <div className="numberInfo m-3  text-center">
                     <div
@@ -226,13 +230,16 @@ export async function getServerSideProps(context) {
     const result = await fetch(
         `https://test-api.ataur.dev/all-sms/${context.query.id}`
     );
-
     const { success, msgList } = await result.json();
+
+    const pageDataReq = await fetch('http://localhost:5000/number-page-data')
+    const pageData = await pageDataReq.json()
 
     return {
         props: {
             data: success && msgList.length ? msgList : null,
             allRentList: null,
+            pageData: pageData.success ? pageData.data : null
         },
     };
 }

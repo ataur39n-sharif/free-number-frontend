@@ -3,8 +3,9 @@ import { Container, Nav, Navbar } from "react-bootstrap"
 const NavBar = () => {
     return (
         <Navbar expand={'md'} style={{ minWidth: '18rem', zIndex: "99" }} bg="dark" variant="dark">
+            <Navbar.Brand href="/"><img className="ms-4" src="/image/free-number-logo.png" alt="" style={{height:"38px"}}/></Navbar.Brand>
             <Container>
-                <Navbar.Brand href="/">Temp-number</Navbar.Brand>
+                {/* <Navbar.Brand href="/">Temp-number</Navbar.Brand> */}
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ms-auto">

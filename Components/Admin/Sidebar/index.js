@@ -56,7 +56,7 @@ const SideBar = () => {
                     // router.push(`${router.pathname}${e.key}`)
                     // console.log(e);
                     // <Link href={`/${e.key}`} />
-                    router.replace(`/admin/${e.key}`)
+                    router.replace(`/asik/${e.key}`)
                     // console.log('clicked');
                 }}
             />

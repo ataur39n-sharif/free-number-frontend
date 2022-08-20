@@ -104,7 +104,7 @@ const IndexPage = ({ pageData }) => {
                     <Input placeholder='keyword1,keyword2,keyword3' />
                 </Form.Item>
 
-                <Form.Item label="Favicon(optional)" valuePropName="fileList">
+                {/* <Form.Item label="Favicon(optional)" valuePropName="fileList">
                     <Upload action={(e) => console.log(e)} listType="picture-card">
                         <div>
                             <PlusOutlined />
@@ -117,7 +117,7 @@ const IndexPage = ({ pageData }) => {
                             </div>
                         </div>
                     </Upload>
-                </Form.Item>
+                </Form.Item> */}
 
                 <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">

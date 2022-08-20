@@ -7,7 +7,7 @@ const AdminLogin = () => {
     const router = useRouter()
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
-        router.push('/admin/dashboard')
+        router.push('/asik/dashboard')
     };
 
     return (
