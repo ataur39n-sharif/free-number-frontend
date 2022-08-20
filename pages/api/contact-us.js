@@ -7,19 +7,19 @@ export default async function Contact(req, res) {
     try {
 
         // create reusable transporter object using the default SMTP transport
-        const transporter = await nodemailer.createTransport({
-            host: process.env.HOST, //email host
-            port: 587, // with ssl = 465 , without ssl = 587
-            // secure: false, // true for 465, false for other ports
+        const transporter = nodemailer.createTransport({
+            host: 'receivesmsonline.io',
+            port: 465,
+            secure: true,
             auth: {
-                user: process.env.USERNAME, // mail address
-                pass: process.env.PASSWORD, // mail password
+                user: 'support@receivesmsonline.io',
+                pass: 'MF7pyWWlwlo8',
             },
         });
 
         const send = await transporter.sendMail({
-            from: `"Name<${process.env.USERNAME}>"`, //use mail
-            to: "reciver@gmail.com", //reciver mail
+            from: `"Name<${process.env.USERNAME}>"`,
+            to: "rahman.sharif39n@gmail.com",
             subject: "Contact - us",
             html: `
             <h5> New message  </h5>

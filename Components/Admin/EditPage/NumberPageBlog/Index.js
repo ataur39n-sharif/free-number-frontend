@@ -59,10 +59,10 @@ const NumberPageBlog = ({ pageData }) => {
                 form={form}
                 name="indexData"
                 initialValues={{
-                    "page_title": pageData?.page_title,
-                    "meta_description": pageData?.meta_description,
-                    "blog_title": pageData?.blog_title,
-                    "blog_description": pageData?.blog_description,
+                    page_title: pageData?.page_title,
+                    meta_description: pageData?.meta_description,
+                    blog_title: pageData?.blog_title,
+                    blog_description: pageData?.blog_description,
                     keywords: pageData?.keywords
                 }}
                 onFinish={onFinish}
