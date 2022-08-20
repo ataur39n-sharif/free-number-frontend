@@ -38,7 +38,7 @@ const HomePageBlog = ({ pageData }) => {
     const onFinish = async (values) => {
         // console.log('Received values of form: ', values);
         try {
-            const updateData = await axios.put('http://localhost:5000/update-homepage-data', {
+            const updateData = await axios.put('https://test-api.ataur.dev/update-homepage-data', {
                 page_title: values?.title,
                 meta_description: values?.meta_description
             })

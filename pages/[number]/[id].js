@@ -232,7 +232,7 @@ export async function getServerSideProps(context) {
     );
     const { success, msgList } = await result.json();
 
-    const pageDataReq = await fetch('http://localhost:5000/number-page-data')
+    const pageDataReq = await fetch('https://test-api.ataur.dev/number-page-data')
     const pageData = await pageDataReq.json()
 
     return {

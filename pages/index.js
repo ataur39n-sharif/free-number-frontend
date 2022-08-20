@@ -226,7 +226,7 @@ export default function Home({ data, indexData }) {
 
 export async function getServerSideProps() {
 
-  const indexDataReq = await fetch('http://localhost:5000/index-data')
+  const indexDataReq = await fetch('https://test-api.ataur.dev/index-data')
   const indexData = await indexDataReq.json()
   const result = await fetch(`https://numbers.messagebird.com/v1/phone-numbers`, {
     method: "get",

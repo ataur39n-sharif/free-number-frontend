@@ -1,8 +1,5 @@
 import nodemailer from 'nodemailer';
 
-
-
-
 export default async function Contact(req, res) {
     try {
 

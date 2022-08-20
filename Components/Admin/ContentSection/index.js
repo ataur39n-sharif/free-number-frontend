@@ -58,7 +58,7 @@ const ContentSection = ({pageData}) => {
 export default ContentSection
 
 export async function getServerSideProps(context) {
-    const res = await fetch('http://localhost:5000/index-data')
+    const res = await fetch('https://test-api.ataur.dev/index-data')
     const pageData = await res.json()
     console.log('data abc', pageData);
     return {

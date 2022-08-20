@@ -39,7 +39,7 @@ const IndexPage = ({ pageData }) => {
 
     const onFinish = async (values) => {
         try {
-            const updateData = await axios.put('http://localhost:5000/update-index-data', {
+            const updateData = await axios.put('https://test-api.ataur.dev/update-index-data', {
                 website_title: values?.title,
                 meta_description: values?.meta_description,
                 keywords: values?.keywords
@@ -132,7 +132,7 @@ const IndexPage = ({ pageData }) => {
 export default IndexPage;
 
 export async function getServerSideProps(context) {
-    const res = await fetch('http://localhost:5000/index-data')
+    const res = await fetch('https://test-api.ataur.dev/index-data')
     const pageData = await res.json()
     console.log('data', data);
     return {
