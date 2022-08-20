@@ -36,7 +36,7 @@ export default function Home({ data, indexData }) {
       <Head>
         <title>{indexData ? indexData?.website_title : 'Demo text'}</title>
         <meta name="description" content={indexData ? indexData?.meta_description : 'Demo description'} />
-        <meta name="keywords" content={indexData ? indexData?.keywords:"keywords list"} />
+        <meta name="keywords" content={indexData ? indexData?.keywords : "keywords list"} />
         <link rel="icon" href="/image/favicon_free-number-logo.png" />
       </Head>
       <main style={{ minWidth: "18rem", maxWidth: "100vw" }}>
@@ -215,7 +215,7 @@ export default function Home({ data, indexData }) {
         </div>
 
 
-        <section id="footer_section" className="mt-4 p-3 text-light">
+        <section id="footer_section" className="mt-4 p-3 text-dark">
           <FooterTop />
           <FooterBottom />
         </section>
