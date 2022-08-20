@@ -2,7 +2,9 @@ import {
     Button,
     Form,
     Input,
+    message,
 } from 'antd';
+import axios from 'axios';
 import React from 'react';
 
 const formItemLayout = {
@@ -30,124 +32,144 @@ const tailFormItemLayout = {
     },
 };
 
-const SocialMedia = ({ mediaName }) => {
+const SocialMedia = ({ mediaName, pageData }) => {
     const [form] = Form.useForm();
 
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
-    };
+    // const onFinish = async (values) => {
+    //     console.log('Received values of form: ', values);
+    //     try {
+    //         const updateData = await axios.put('http://localhost:5000/update-social-media', {
+    //             url: values?.url,
+    //             text_title: values?.title,
+    //             hashTag: values?.hashtag,
+    //             appId: values?.appId,
+    //             media_name: pageData?.media_name,
+    //             subject: values?.subject,
+    //             body: values?.body
+    //         })
+    //         console.log(updateData);
+    //         message.success('Success')
+    //     } catch (error) {
+    //         message.error(error.message)
+    //     }
+    // };
 
-    console.log('social media name', mediaName);
+    console.log('social media page', mediaName);
 
     return (
         <div >
-            <Form
+            {/* <Form
                 {...formItemLayout}
                 form={form}
                 name="indexData"
-                initialValues={{
-                    "title": "abc"
-                }}
+                initialValues={pageData}
                 onFinish={onFinish}
                 scrollToFirstError
+            > */}
+
+            <Form.Item
+                name="media_name"
             >
+                <Input hidden />
+            </Form.Item>
+
+            <Form.Item
+                name="url"
+                label="URL"
+                rules={[
+                    {
+                        type: 'url',
+                        warningOnly: true,
+                    },
+                    {
+                        type: 'string',
+                        min: 6,
+                    },
+                ]}
+            >
+                <Input />
+            </Form.Item>
+
+            <Form.Item
+                name="title"
+                label="Title/Quote"
+            >
+                <Input.TextArea showCount />
+            </Form.Item>
+
+            {
+                mediaName === "fb" &&
                 <Form.Item
-                    name="url"
-                    label="URL"
+                    name="hashtag"
+                    label="Hashtag"
+                >
+                    <Input placeholder='#hashtag1,#hashtag2' />
+                </Form.Item>
+            }
+            {
+                mediaName === "twitter" &&
+                <Form.Item
+                    name="hashtag"
+                    label="Hashtag"
+                >
+                    <Input placeholder='#hashtag1,#hashtag2' />
+                </Form.Item>
+            }
+
+            {
+                mediaName === 'messenger' &&
+                <Form.Item
+                    name="appId"
+                    label="AppId"
                     rules={[
                         {
-                            type: 'url',
-                            warningOnly: true,
-                        },
-                        {
-                            type: 'string',
-                            min: 6,
+                            required: true,
+                            message: 'AppId is required.',
                         },
                     ]}
                 >
                     <Input />
                 </Form.Item>
-
-                <Form.Item
-                    name="title"
-                    label="Title/Quote"
-                >
-                    <Input.TextArea showCount />
-                </Form.Item>
-
-                {
-                    mediaName === "fb" &&
+            }
+            {
+                mediaName === 'mail' &&
+                <>
                     <Form.Item
-                        name="hashtag"
-                        label="Hashtag"
-                    >
-                        <Input placeholder='#hashtag1,#hashtag2' />
-                    </Form.Item>
-                }
-                {
-                    mediaName === "twitter" &&
-                    <Form.Item
-                        name="hashtag"
-                        label="Hashtag"
-                    >
-                        <Input placeholder='#hashtag1,#hashtag2' />
-                    </Form.Item>
-                }
-
-                {
-                    mediaName === 'messenger' &&
-                    <Form.Item
-                        name="appId"
-                        label="AppId"
+                        name="subject"
+                        label="Subject"
                         rules={[
                             {
                                 required: true,
-                                message: 'AppId is required.',
+                                message: 'Subject is required.',
                             },
                         ]}
                     >
                         <Input />
                     </Form.Item>
-                }
-                {
-                    mediaName === 'mail' &&
-                    <>
-                        <Form.Item
-                            name="subject"
-                            label="Subject"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Subject is required.',
-                                },
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            name="body"
-                            label="Body"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Body is required.',
-                                },
-                            ]}
-                        >
-                            <Input.TextArea showCount />
-                        </Form.Item>
-                    </>
+                    <Form.Item
+                        name="body"
+                        label="Body"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Body is required.',
+                            },
+                        ]}
+                    >
+                        <Input.TextArea showCount />
+                    </Form.Item>
+                </>
 
-                }
+            }
 
 
 
-                <Form.Item {...tailFormItemLayout}>
-                    <Button type="primary" htmlType="submit">
-                        Update
-                    </Button>
-                </Form.Item>
-            </Form>
+            <Form.Item {...tailFormItemLayout}>
+                <Button type="primary" htmlType="submit">
+                    Update
+                </Button>
+            </Form.Item>
+            {/* </Form> */}
         </div>
     );
 };

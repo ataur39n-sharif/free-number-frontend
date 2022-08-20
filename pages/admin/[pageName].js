@@ -5,12 +5,10 @@ import ContentSection from '../../Components/Admin/ContentSection';
 import SideBar from '../../Components/Admin/Sidebar';
 const { Header, Content, Footer, Sider } = Layout;
 
-const Admin = ({ Component, pageProps }) => {
+const Admin = ({ pageData }) => {
     const router = useRouter()
 
-    useEffect(() => {
-
-    }, [router])
+    console.log(pageData);
     return (
         <Layout
             style={{
@@ -18,9 +16,21 @@ const Admin = ({ Component, pageProps }) => {
             }}
         >
             <SideBar />
-            <ContentSection />
+            <ContentSection pageData={pageData} />
         </Layout>
     );
 };
 
 export default Admin;
+
+
+export async function getServerSideProps(context) {
+    const res = await fetch('http://localhost:5000/all-page-data')
+    const pageData = await res.json()
+    console.log('data abc', pageData);
+    return {
+        props: {
+            pageData:pageData?.pageData
+        }, // will be passed to the page component as props
+    }
+}

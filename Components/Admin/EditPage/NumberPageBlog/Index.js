@@ -2,7 +2,9 @@ import {
     Button,
     Form,
     Input,
+    message,
 } from 'antd';
+import axios from 'axios';
 import React from 'react';
 
 const formItemLayout = {
@@ -30,14 +32,24 @@ const tailFormItemLayout = {
     },
 };
 
-const NumberPageBlog = () => {
+const NumberPageBlog = ({ pageData }) => {
     const [form] = Form.useForm();
 
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
         console.log('Received values of form: ', values);
+        try {
+            const updateData = await axios.put('http://localhost:5000/update-number-page-data', {
+                page_title: values?.page_title,
+                meta_description: values?.meta_description,
+                blog_title: values?.blog_title,
+                blog_description: values?.blog_description
+            })
+            console.log(updateData);
+            message.success('Success')
+        } catch (error) {
+            message.error(error.message)
+        }
     };
-
-
 
     return (
         <div className='m-auto'>
@@ -46,21 +58,24 @@ const NumberPageBlog = () => {
                 form={form}
                 name="indexData"
                 initialValues={{
-                    "title": "abc"
+                    "page_title": pageData?.page_title,
+                    "meta_description": pageData?.meta_description,
+                    "blog_title": pageData?.blog_title,
+                    "blog_description": pageData?.blog_description
                 }}
                 onFinish={onFinish}
                 scrollToFirstError
             >
                 <h5>Page info :</h5>
                 <Form.Item
-                    name="title"
+                    name="page_title"
                     label="Page title"
                 >
                     <Input />
                 </Form.Item>
 
                 <Form.Item
-                    name="meta-description"
+                    name="meta_description"
                     label="Meta-description"
                 >
                     <Input.TextArea showCount />
@@ -69,18 +84,17 @@ const NumberPageBlog = () => {
                 <h5>Blog info :</h5>
 
                 <Form.Item
-                    name="blog"
+                    name="blog_title"
                     label="Blog title"
                 >
                     <Input />
                 </Form.Item>
 
                 <Form.Item
-                    name="blog-description"
-                    label="Blog-description"
+                    name="blog_description"
+                    label="Blog description"
                 >
                     <Input.TextArea showCount />
-                    <small>"Note : use "country_name" code where country name will set dynamically"</small>
                 </Form.Item>
 
                 <Form.Item {...tailFormItemLayout}>
@@ -89,6 +103,11 @@ const NumberPageBlog = () => {
                     </Button>
                 </Form.Item>
             </Form>
+
+            <div>
+                <h5>Hints :</h5>
+                <p>1 .use "country_name" code where country name will set dynamically</p>
+            </div>
         </div>
     );
 };

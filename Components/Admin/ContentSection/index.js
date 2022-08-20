@@ -6,11 +6,10 @@ import ChooseComponent from "./chooseComponent";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const ContentSection = () => {
+const ContentSection = ({pageData}) => {
     const [pathList, setPathList] = useState([])
     const router = useRouter()
     const { pageName } = router.query
-    console.log(pageName);
     useEffect(() => {
         let finalArr = []
         let listArr = window.location.pathname.split('/')
@@ -22,35 +21,7 @@ const ContentSection = () => {
         setPathList(finalArr)
     }, [router])
 
-    // const checkComponent = () => {
-    //     switch (pageName) {
-    //         case 'index_page' || 'index_page_home':
-    //             return <IndexPage />;
-    //         case 'homepage_blog':
-    //             return;
-    //         case 'number_page':
-    //             return;
-    //         case 'fb':
-    //             return;
-    //         case 'twitter':
-    //             return;
-    //         case 'telegram':
-    //             return;
-    //         case 'pinterest':
-    //             return;
-    //         case 'reddit':
-    //             return;
-    //         case 'linkedin':
-    //             return;
-    //         case 'messenger':
-    //             return;
-    //         case 'mail':
-    //             return;
-
-    //         default:
-    //             return;
-    //     }
-    // }
+    console.log('props',pageData);
 
     return (
         <Layout className="site-layout">
@@ -77,7 +48,7 @@ const ContentSection = () => {
                     }
                 </Breadcrumb>
 
-                <ChooseComponent pathName={pageName} />
+                <ChooseComponent pathName={pageName} pageData={pageData} />
 
             </Content>
         </Layout>
@@ -85,3 +56,15 @@ const ContentSection = () => {
 }
 
 export default ContentSection
+
+export async function getServerSideProps(context) {
+    const res = await fetch('http://localhost:5000/index-data')
+    const pageData = await res.json()
+    console.log('data abc', pageData);
+    return {
+        props: {
+            hello:'hello',
+            pageData: pageData
+        }, // will be passed to the page component as props
+    }
+}

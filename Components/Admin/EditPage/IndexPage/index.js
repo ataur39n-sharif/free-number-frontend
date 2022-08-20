@@ -2,6 +2,7 @@ import {
     Button,
     Form,
     Input,
+    message,
     Upload,
 } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
@@ -35,29 +36,19 @@ const tailFormItemLayout = {
 
 const IndexPage = ({ pageData }) => {
     const [form] = Form.useForm();
-    const [indexPageData, setIndexPageData] = useState({})
 
-    // useEffect(() => {
-    //     const getData = async () => {
-    //         const info = await axios.get('http://localhost:5000/index-data')
-    //         console.log(info.data.data);
-    //         if (info.data.success) {
-    //             setIndexPageData(info.data.data)
-    //         }
-    //         keywords: "keyword1,keyword2,keyword3"
-    //         meta_description: "demo meta_description"
-    //         updatedAt: "2022-08-17T18:40:14.661Z"
-    //         website_title: " update demo_title "
-    //     }
-    //     getData()
-    // }, [])
-    console.log('page data', pageData);
-
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const onFinish = async (values) => {
+        try {
+            const updateData = await axios.put('http://localhost:5000/update-index-data', {
+                website_title: values?.title,
+                meta_description: values?.meta_description,
+                keywords: values?.keywords
+            })
+            message.success('Success')
+        } catch (error) {
+            message.error(error.message)
+        }
     };
-
-    // console.log(indexPageData);
 
     return (
         <div className='m-auto'>
@@ -66,8 +57,9 @@ const IndexPage = ({ pageData }) => {
                 form={form}
                 name="indexData"
                 initialValues={{
-                    // "title": indexPageData ? indexPageData.website_title : "hello",
-                    // "meta_description": indexPageData.meta_description
+                    "title": pageData?.website_title,
+                    "meta_description": pageData?.meta_description,
+                    "keywords": pageData?.keywords
                 }}
                 onFinish={onFinish}
                 scrollToFirstError
@@ -87,7 +79,7 @@ const IndexPage = ({ pageData }) => {
 
 
                 <Form.Item
-                    name="meta-description"
+                    name="meta_description"
                     label="Meta-description"
                     rules={[
                         {

@@ -2,7 +2,9 @@ import {
     Button,
     Form,
     Input,
+    message,
 } from 'antd';
+import axios from 'axios';
 import React from 'react';
 
 const formItemLayout = {
@@ -30,12 +32,23 @@ const tailFormItemLayout = {
     },
 };
 
-const HomePageBlog = () => {
+const HomePageBlog = ({ pageData }) => {
     const [form] = Form.useForm();
 
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const onFinish = async (values) => {
+        // console.log('Received values of form: ', values);
+        try {
+            const updateData = await axios.put('http://localhost:5000/update-homepage-data', {
+                page_title: values?.title,
+                meta_description: values?.meta_description
+            })
+            message.success('Success')
+        } catch (error) {
+            message.error(error.message)
+        }
     };
+
+    console.log('homepage data', pageData);
 
 
 
@@ -46,7 +59,8 @@ const HomePageBlog = () => {
                 form={form}
                 name="indexData"
                 initialValues={{
-                    "title": "abc"
+                    "title": pageData?.page_title,
+                    "meta_description": pageData?.meta_description
                 }}
                 onFinish={onFinish}
                 scrollToFirstError
@@ -59,7 +73,7 @@ const HomePageBlog = () => {
                 </Form.Item>
 
                 <Form.Item
-                    name="meta-description"
+                    name="meta_description"
                     label="Meta-description"
                 >
                     <Input.TextArea showCount />
