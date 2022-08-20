@@ -42,7 +42,8 @@ const NumberPageBlog = ({ pageData }) => {
                 page_title: values?.page_title,
                 meta_description: values?.meta_description,
                 blog_title: values?.blog_title,
-                blog_description: values?.blog_description
+                blog_description: values?.blog_description,
+                keywords: values?.keywords
             })
             console.log(updateData);
             message.success('Success')
@@ -61,7 +62,8 @@ const NumberPageBlog = ({ pageData }) => {
                     "page_title": pageData?.page_title,
                     "meta_description": pageData?.meta_description,
                     "blog_title": pageData?.blog_title,
-                    "blog_description": pageData?.blog_description
+                    "blog_description": pageData?.blog_description,
+                    keywords: pageData?.keywords
                 }}
                 onFinish={onFinish}
                 scrollToFirstError
@@ -79,6 +81,13 @@ const NumberPageBlog = ({ pageData }) => {
                     label="Meta-description"
                 >
                     <Input.TextArea showCount />
+                </Form.Item>
+
+                <Form.Item
+                    name="keywords"
+                    label="Keywords"
+                >
+                    <Input showCount />
                 </Form.Item>
 
                 <h5>Blog info :</h5>
@@ -106,7 +115,9 @@ const NumberPageBlog = ({ pageData }) => {
 
             <div>
                 <h5>Hints :</h5>
-                <p>1 .use "country_name" code where country name will set dynamically</p>
+                <p>1 .use "country_name" code where Country name will set dynamically</p>
+                <p>2 .use "phone_number" code where Phone number will set dynamically</p>
+
             </div>
         </div>
     );
