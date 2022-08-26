@@ -165,7 +165,7 @@ const NumberPage = ({ data, pageData }) => {
                             return (
                                 <Row key={i} className="m-3 text-center bg-light border border-primary" style={{ borderRadius: "15px" }}>
                                     <Col md={3} sm={12} className="p-2">
-                                        [{typeof (each[1].sender) === "number" ? `+{each[1].sender}` : each[1].sender}]
+                                        [{ each[1].sender}]
                                     </Col>
                                     <Col md={3} sm={12} className="p-2">
                                         [{moment(each[1].createdAt).from(moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"))}]

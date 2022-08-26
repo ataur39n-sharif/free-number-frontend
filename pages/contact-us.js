@@ -12,10 +12,10 @@ const Contact = () => {
             const sendMail = await axios.post('/api/contact-us', {
                 name, email, message
             })
-            console.log(sendMail);
+            console.log(sendMail.data);
             setShow(true)
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
             setShow(true)
         }
     };
@@ -44,15 +44,16 @@ const Contact = () => {
                         <button className="btn btn-success m-2" type="submit" >Send Message</button>
                     </form>
                 </Col>
+                <ToastContainer className="mt-5 p-3" position={"top-end"}>
+                    <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+                        <Toast.Header>
+                            <strong className="m-auto text-success">Success !!</strong>
+                        </Toast.Header>
+                        <Toast.Body bg="light">Thank You for your message. We will try to response you within 3 working day{"'"}s.</Toast.Body>
+                    </Toast>
+                </ToastContainer>
             </Row>
-            <ToastContainer className="p-3" position={"top-end"}>
-                <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-                    <Toast.Header>
-                        <strong className="m-auto text-success">Success !!</strong>
-                    </Toast.Header>
-                    <Toast.Body bg="light">Thank You for your message. We will try to response you within 3 working day{"'"}s.</Toast.Body>
-                </Toast>
-            </ToastContainer>
+
         </div>
     )
 }
