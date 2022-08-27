@@ -90,7 +90,7 @@ const NumberPageBlog = ({ pageData }) => {
                     <Input showCount />
                 </Form.Item>
 
-                <h5>Blog info :</h5>
+                {/* <h5>Blog info :</h5>
 
                 <Form.Item
                     name="blog_title"
@@ -104,7 +104,7 @@ const NumberPageBlog = ({ pageData }) => {
                     label="Blog description"
                 >
                     <Input.TextArea showCount />
-                </Form.Item>
+                </Form.Item> */}
 
                 <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">

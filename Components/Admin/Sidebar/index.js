@@ -18,10 +18,18 @@ function getItem(label, key, icon, children) {
 
 const items = [
     getItem('Index Page', 'index_page_home', <HomeOutlined />),
-    getItem('Edit', 'edit', <EditOutlined />, [
-        getItem('Index Page', 'index_page', <FolderOpenOutlined />),
+    getItem('Edit Page', 'edit', <EditOutlined />, [
+        getItem('Home Page', 'index_page', <FolderOpenOutlined />),
+        getItem('Single number page', 'number_page', <NumberOutlined />),
+        getItem('Single country page', 'single_country_page', <NumberOutlined />),
+        getItem('All country page', 'all_country_page', <NumberOutlined />),
+        getItem('Contact us', 'contact_us_page', <NumberOutlined />),
+    ]),
+    getItem('Blog', 'blog', <EditOutlined />, [
         getItem('Homepage', 'homepage_blog', <HomeOutlined />),
-        getItem('Number page', 'number_page', <NumberOutlined />)
+        getItem('Single Number', 'homepage_blog1', <HomeOutlined />),
+        getItem('Number list', 'homepage_blog2', <HomeOutlined />),
+        getItem('Country', 'homepage_blog3', <HomeOutlined />),
     ]),
     getItem('Social Media', 'social_media', <MediumOutlined />, [
         getItem('Facebook', 'fb', <FacebookOutlined />),
@@ -40,9 +48,6 @@ const SideBar = () => {
     const [collapsed, setCollapsed] = useState(false);
     const router = useRouter()
 
-    // useEffect(() => {
-
-    // }, [router])
 
     return (
         <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>

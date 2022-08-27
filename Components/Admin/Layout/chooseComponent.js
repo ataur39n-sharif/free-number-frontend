@@ -1,7 +1,7 @@
 import DashBoard from "../Dashboard";
 import HomePageBlog from "../EditPage/HomePageBlog";
 import IndexPage from "../EditPage/IndexPage";
-import NumberPageBlog from "../EditPage/NumberPageBlog/Index";
+import NumberPageBlog from "../EditPage/SingleNumberPage";
 import SocialMedia from "../SocialMedia";
 
 import {
@@ -40,10 +40,6 @@ const tailFormItemLayout = {
 
 const ChooseComponent = ({ pathName, pageData }) => {
     const [form] = Form.useForm();
-
-    let data = {
-
-    }
 
     const onFinish = async (values) => {
         //console.log('Received values of form: ', values);
