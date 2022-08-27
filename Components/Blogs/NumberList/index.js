@@ -15,21 +15,17 @@ const NumberListBlog = ({ country_code }) => {
         <div>
             <div>
                 <h3 className="text-center m-5">About Receive SMS Online {countryInfo?.name}</h3>
+                {/* <h5 className="text-center m-5">Are you Looking for a way to receive SMS online without giving out your real number?</h5> */}
                 <div>
                     <p>
-                        1). The service we provide is free forever. You can receive SMS online {countryInfo?.name} from all over the world, without registration, and without any additional conditions. You can use free {countryInfo?.name} phone number to register the website or app whatsapp,google voice,yahoo, apple id, telegram, gmail, facebook, twitter, instagram and more.
+                        This is a {countryInfo?.name} disposable/temporary mobile phone number.
+                        The virtual number is a type of online mobile phone number. You can now receive SMS online with a free {countryInfo?.name} temporary number.
                     </p>
                     <p>
-                        2). Increase your online privacy by avoiding exposing your mobile number on any website. By placing one of our {countryInfo?.name} mobile numbers to receive the SMS verification code, you will then obtain the respective code in the list of messages received by this number, then just copy your code and complete the SMS verification request.
-                    </p>
-                    <p>
-                        3). We are not responsible for any possible consequences of using our site. Any illegal activity related to the use of our {countryInfo?.name} temporary phone numbers is strictly prohibited, and your data can be transferred to the appropriate authorities.
-                    </p>
-                    <p>
-                        4). Also, we do not recommend attaching important personal accounts to these free {countryInfo?.name} Virtual phone number, since later these accounts can be retrieved by other users via SMS.
-                    </p>
-                    <p>
-                        5). When used, it means that the above terms have been agreed.
+                        Our service allows you to use our free {countryInfo?.name} phone numbers to receive SMS online. You can receive
+                        verification SMS messages from any website or app. Use this {countryInfo?.name} Temporary phone number to verify
+                        your accounts without using your own phone number. If any website or application requires SMS/Phone number
+                        verification while creating an account, then you can use our free phone numbers for SMS verification.
                     </p>
                 </div>
             </div>
