@@ -36,7 +36,7 @@ const NumberPageBlog = ({ pageData }) => {
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
-        console.log('Received values of form: ', values);
+        //console.log('Received values of form: ', values);
         try {
             const updateData = await axios.put('https://test-api.ataur.dev/update-number-page-data', {
                 page_title: values?.page_title,
@@ -45,7 +45,7 @@ const NumberPageBlog = ({ pageData }) => {
                 blog_description: values?.blog_description,
                 keywords: values?.keywords
             })
-            console.log(updateData);
+            //console.log(updateData);
             message.success('Success')
         } catch (error) {
             message.error(error.message)

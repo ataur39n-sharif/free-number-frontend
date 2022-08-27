@@ -6,7 +6,7 @@ import React from 'react';
 const AdminLogin = () => {
     const router = useRouter()
     const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+        //console.log('Received values of form: ', values);
         router.push('/asik/dashboard')
     };
 

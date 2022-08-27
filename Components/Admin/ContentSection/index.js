@@ -21,7 +21,7 @@ const ContentSection = ({pageData}) => {
         setPathList(finalArr)
     }, [router])
 
-    console.log('props',pageData);
+    //console.log('props',pageData);
 
     return (
         <Layout className="site-layout">
@@ -60,7 +60,7 @@ export default ContentSection
 export async function getServerSideProps(context) {
     const res = await fetch('https://test-api.ataur.dev/index-data')
     const pageData = await res.json()
-    console.log('data abc', pageData);
+    //console.log('data abc', pageData);
     return {
         props: {
             hello:'hello',

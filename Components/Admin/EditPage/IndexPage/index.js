@@ -105,7 +105,7 @@ const IndexPage = ({ pageData }) => {
                 </Form.Item>
 
                 {/* <Form.Item label="Favicon(optional)" valuePropName="fileList">
-                    <Upload action={(e) => console.log(e)} listType="picture-card">
+                    <Upload action={(e) => //console.log(e)} listType="picture-card">
                         <div>
                             <PlusOutlined />
                             <div
@@ -134,7 +134,7 @@ export default IndexPage;
 export async function getServerSideProps(context) {
     const res = await fetch('https://test-api.ataur.dev/index-data')
     const pageData = await res.json()
-    console.log('data', data);
+    //console.log('data', data);
     return {
         props: {
             pageData: pageData?.data

@@ -54,10 +54,10 @@ const SideBar = () => {
                 mode="inline" items={items}
                 onClick={(e) => {
                     // router.push(`${router.pathname}${e.key}`)
-                    // console.log(e);
+                    // //console.log(e);
                     // <Link href={`/${e.key}`} />
                     router.replace(`/asik/${e.key}`)
-                    // console.log('clicked');
+                    // //console.log('clicked');
                 }}
             />
         </Sider>

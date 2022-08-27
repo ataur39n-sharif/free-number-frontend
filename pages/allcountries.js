@@ -11,7 +11,7 @@ const AllCountries = ({ data }) => {
   const [pIndex, setPIndex] = useState(0);
   const activeList = ['AUSTRALIA', 'CANADA', 'CZECH REPUBLIC', 'DENMARK', 'HUNGARY', 'INDONESIA', 'MEXICO', 'NETHERLANDS', 'PORTUGAL', 'ROMANIA', 'SLOVAKIA', 'SWEDEN', 'UNITED KINGDOM', 'UNITED STATES']
 
-  console.log(activeList);
+  //console.log(activeList);
   useEffect(() => {
     let currentData = [];
     list.map((each) => {

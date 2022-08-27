@@ -9,9 +9,9 @@ export default async function testApi(req, res) {
 
     // messagebird.balance.read(function (err, data) {
     //   if (err) {
-    //     return console.log(err);
+    //     return //console.log(err);
     //   }
-    //   console.log(data);
+    //   //console.log(data);
     // });
 
     const result = await axios.get(api,{

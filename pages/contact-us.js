@@ -12,10 +12,10 @@ const Contact = () => {
             const sendMail = await axios.post('/api/contact-us', {
                 name, email, message
             })
-            console.log(sendMail.data);
+            //console.log(sendMail.data);
             setShow(true)
         } catch (error) {
-            console.log(error.message);
+            //console.log(error.message);
             setShow(true)
         }
     };

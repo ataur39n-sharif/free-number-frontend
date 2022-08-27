@@ -15,13 +15,13 @@ const IndividualCountryNumList = ({ data }) => {
     const router = useRouter()
     const { country_code } = router.query
 
-    // console.log(data);
+    // //console.log(data);
 
     useEffect(() => {
         const list = Object.entries(countryList)
         if (data.items.length) {
             const numList = Object.entries(data.items)
-            console.log(numList);
+            //console.log(numList);
             numList.map(each => {
                 const phoneNumber = parsePhoneNumber(`+${each[1].number}`)
                 const data = list.find(each => each[0] === phoneNumber.country.toLowerCase())
@@ -34,7 +34,7 @@ const IndividualCountryNumList = ({ data }) => {
                         country_calling_code: `+${phoneNumber.countryCallingCode}`,
                         img: `/images/${phoneNumber.country.toLowerCase()}.png`,
                     }
-                    console.log(tempSchema);
+                    //console.log(tempSchema);
                     const alreadyListed = allData.find(each => each?.phone_number === tempSchema.phone_number)
                     if (!alreadyListed) {
                         const previous = [...allData]
@@ -88,7 +88,7 @@ const IndividualCountryNumList = ({ data }) => {
                     <Row className="container m-auto">
                         {
                             currentData?.map((each, i) => {
-                                console.log(each);
+                                //console.log(each);
                                 return (
                                     <Col lg={4} md={6} sm={12} style={{ minWidth: '15rem' }} className="m-auto mt-5" key={i}>
                                         <Link href={`/number/${each?.number_id}`}>

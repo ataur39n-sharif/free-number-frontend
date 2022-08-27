@@ -36,7 +36,7 @@ const SocialMedia = ({ mediaName, pageData }) => {
     const [form] = Form.useForm();
 
     // const onFinish = async (values) => {
-    //     console.log('Received values of form: ', values);
+    //     //console.log('Received values of form: ', values);
     //     try {
     //         const updateData = await axios.put('https://test-api.ataur.dev/update-social-media', {
     //             url: values?.url,
@@ -47,14 +47,14 @@ const SocialMedia = ({ mediaName, pageData }) => {
     //             subject: values?.subject,
     //             body: values?.body
     //         })
-    //         console.log(updateData);
+    //         //console.log(updateData);
     //         message.success('Success')
     //     } catch (error) {
     //         message.error(error.message)
     //     }
     // };
 
-    console.log('social media page', mediaName);
+    //console.log('social media page', mediaName);
 
     return (
         <div >
