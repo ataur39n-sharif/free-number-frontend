@@ -12,6 +12,9 @@ import {
 } from 'antd';
 import axios from 'axios';
 import React from 'react';
+import ContactUsPage from "../EditPage/ContactUs";
+import AllCountryPage from "../EditPage/AllCountry";
+import SingleCountryPage from "../EditPage/SingleCountry";
 
 const formItemLayout = {
     labelCol: {
@@ -82,6 +85,19 @@ const ChooseComponent = ({ pathName, pageData }) => {
             return <HomePageBlog pageData={pageData?.homepage} />;
         case 'number_page':
             return <NumberPageBlog pageData={pageData?.numberPage} />;
+        case 'single_country_page':
+            return <SingleCountryPage />;
+        case 'all_country_page':
+            return <AllCountryPage />;
+        case 'contact_us_page':
+            return <ContactUsPage />;
+        case 'homepage_blog':
+            return <NumberPageBlog pageData={pageData?.numberPage} />;
+        case 'single_number_blog':
+            return <NumberPageBlog pageData={pageData?.numberPage} />;
+        case 'single_country_blog':
+            return <NumberPageBlog pageData={pageData?.numberPage} />;
+
         case 'fb':
             const fb = pageData?.socialMedia.find((each) => each.media_name === 'fb')
             setData({
@@ -162,7 +178,7 @@ const ChooseComponent = ({ pathName, pageData }) => {
             setData({
                 url: reddit ? reddit.url : "",
                 title: reddit ? reddit.text_title : "",
-                media_name:'reddit'
+                media_name: 'reddit'
             })
             return (
                 <Form
@@ -180,7 +196,7 @@ const ChooseComponent = ({ pathName, pageData }) => {
             setData({
                 url: linkedin ? linkedin.url : "",
                 title: linkedin ? linkedin.text_title : '',
-                media_name:'linkedin'
+                media_name: 'linkedin'
             })
             return (
                 <Form
@@ -199,7 +215,7 @@ const ChooseComponent = ({ pathName, pageData }) => {
                 url: messenger ? messenger.url : "",
                 title: messenger ? messenger.text_title : "",
                 appId: messenger ? messenger.appId : "",
-                media_name:"messenger"
+                media_name: "messenger"
             })
             return (
                 <Form
@@ -219,7 +235,7 @@ const ChooseComponent = ({ pathName, pageData }) => {
                 title: mail ? mail.text_title : "",
                 subject: mail ? mail.subject : "",
                 body: mail ? mail.body : "",
-                media_name:'mail'
+                media_name: 'mail'
             })
             return (
                 <Form

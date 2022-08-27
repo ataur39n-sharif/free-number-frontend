@@ -27,9 +27,8 @@ const items = [
     ]),
     getItem('Blog', 'blog', <EditOutlined />, [
         getItem('Homepage', 'homepage_blog', <HomeOutlined />),
-        getItem('Single Number', 'homepage_blog1', <HomeOutlined />),
-        getItem('Number list', 'homepage_blog2', <HomeOutlined />),
-        getItem('Country', 'homepage_blog3', <HomeOutlined />),
+        getItem('Single Number', 'single_number_blog', <HomeOutlined />),
+        getItem('Single Country', 'single_country_blog', <HomeOutlined />),
     ]),
     getItem('Social Media', 'social_media', <MediumOutlined />, [
         getItem('Facebook', 'fb', <FacebookOutlined />),
