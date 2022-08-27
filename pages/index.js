@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
-import {   Col, Modal, Row } from "react-bootstrap";
+import {Col, Modal, Row } from "react-bootstrap";
 import FooterBottom from "../Components/Homepage/Footer/footer-bottom";
 import FooterTop from "../Components/Homepage/Footer/footer-top";
 import NumberList from "../Components/Homepage/NumberList";
