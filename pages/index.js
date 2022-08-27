@@ -92,48 +92,48 @@ export default function Home({ data, indexData, socialMedia }) {
                   </Modal.Header>
                   <Modal.Body >
                     <Row className="text-center">
-                      <Col>
+                      <Col xs="auto" sm={2}  md={4}>
                         {/* facebook  */}
                         {
                           <FacebookComponent data={socialMedia.find((eachData) => eachData?.media_name === 'fb')} shape={true} />
                         }
                       </Col>
-                      <Col>
+                      <Col xs="auto" sm={2}  md={4}>
                         {/* Twitter */}
                         {
                           <TwitterComponent data={socialMedia.find((eachData) => eachData?.media_name === 'twitter')} shape={true} />
                         }
                       </Col>
-                      <Col>
+                      <Col xs="auto" sm={2}  md={4}>
                         {/* telegram  */}
                         {
                           <TelegramComponent data={socialMedia.find((eachData) => eachData?.media_name === 'telegram')} shape={true} />
                         }
                       </Col>
-                      <Col>
+                      <Col xs="auto" sm={2}  md={4}>
                         <PinterestComponent data={socialMedia.find((eachData) => eachData?.media_name === 'pinterest')} />
                       </Col>
-                      <Col>
+                      <Col xs="auto" sm={2}  md={4}>
                         {
                           <RedditComponent data={socialMedia.find((eachData) => eachData?.media_name === 'reddit')} />
                         }
                       </Col>
-                      <Col>
+                      <Col xs="auto" sm={2}  md={4}>
                         {
                           <LinkedinComponent data={socialMedia.find((eachData) => eachData?.media_name === 'linkedin')} />
                         }
                       </Col>
-                      <Col>
+                      <Col xs="auto" sm={2}  md={4}>
                         {
                           <MessengerComponent data={socialMedia.find((eachData) => eachData?.media_name === 'messenger')} />
                         }
                       </Col>
-                      <Col>
+                      <Col xs="auto" sm={2}  md={4}>
                         {
                           <MailComponent data={socialMedia.find((eachData) => eachData?.media_name === 'mail')} />
                         }
                       </Col>
-                      <Col>
+                      <Col xs="auto" sm={2}  md={4}>
                         {
                           <VkshareComponent data={socialMedia.find((eachData) => eachData?.media_name === 'vkShare')} />
                         }
