@@ -1,0 +1,51 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#card_section:hover {
+  cursor: pointer;
+  color: black;
+  background-color: rgb(210, 206, 206);
+  /* background: hsla(197, 14%, 57%, 1);
+
+  background: linear-gradient(90deg, hsla(197, 14%, 57%, 1) 0%, hsla(192, 17%, 94%, 1) 100%);
+  
+  background: -moz-linear-gradient(90deg, hsla(197, 14%, 57%, 1) 0%, hsla(192, 17%, 94%, 1) 100%);
+  
+  background: -webkit-linear-gradient(90deg, hsla(197, 14%, 57%, 1) 0%, hsla(192, 17%, 94%, 1) 100%);
+  
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8399A2", endColorstr="#EEF2F3", GradientType=1 ); */
+
+}
+
+/* #top_div {
+  background-image: url('/image/top_div_cover_photo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+/* #footer_section {
+  background-image: url('/image/top_div_cover_photo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+#country_list_top {
+  background-image: url('/image/top_div_cover_photo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
