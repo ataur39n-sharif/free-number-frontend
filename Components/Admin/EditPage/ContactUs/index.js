@@ -37,13 +37,17 @@ const tailFormItemLayout = {
 const ContactUsPage = ({ pageData }) => {
     const [form] = Form.useForm();
 
+    // console.log('contact us page data', pageData);
+
     const onFinish = async (values) => {
         try {
-            // const updateData = await axios.put('https://test-api.ataur.dev/update-index-data', {
-            //     website_title: values?.title,
-            //     meta_description: values?.meta_description,
-            //     keywords: values?.keywords
-            // })
+            console.log(values);
+            const updateData = await axios.put('http://localhost:5000/page/contact_us', {
+                title: values?.title,
+                meta_description: values?.meta_description,
+                keyword: values?.keywords
+            })
+            console.log(updateData);
             message.success('Success')
         } catch (error) {
             message.error(error.message)
@@ -56,21 +60,21 @@ const ContactUsPage = ({ pageData }) => {
                 {...formItemLayout}
                 form={form}
                 name="indexData"
-                // initialValues={{
-                //     "title": pageData?.website_title,
-                //     "meta_description": pageData?.meta_description,
-                //     "keywords": pageData?.keywords
-                // }}
+                initialValues={{
+                    "title": pageData?.title,
+                    "meta_description": pageData?.meta_description,
+                    "keywords": pageData?.keyword
+                }}
                 onFinish={onFinish}
                 scrollToFirstError
             >
                 <Form.Item
                     name="title"
-                    label="Website title"
+                    label="Page title"
                     rules={[
                         {
                             required: true,
-                            message: 'Website title is required.',
+                            message: 'Page title is required.',
                         },
                     ]}
                 >
@@ -115,14 +119,3 @@ const ContactUsPage = ({ pageData }) => {
 };
 
 export default ContactUsPage;
-
-// export async function getServerSideProps(context) {
-//     const res = await fetch('https://test-api.ataur.dev/index-data')
-//     const pageData = await res.json()
-//     //console.log('data', data);
-//     return {
-//         props: {
-//             pageData: pageData?.data
-//         }, // will be passed to the page component as props
-//     }
-// }

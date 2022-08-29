@@ -86,11 +86,11 @@ const ChooseComponent = ({ pathName, pageData }) => {
         case 'number_page':
             return <NumberPageBlog pageData={pageData?.numberPage} />;
         case 'single_country_page':
-            return <SingleCountryPage />;
+            return <SingleCountryPage pageData={pageData?.allPagesData.find(eachPage => eachPage?.page_name === 'single_country_page')}/>;
         case 'all_country_page':
-            return <AllCountryPage />;
+            return <AllCountryPage pageData={pageData?.allPagesData.find(eachPage => eachPage?.page_name === 'all_country_page')}/>;
         case 'contact_us_page':
-            return <ContactUsPage />;
+            return <ContactUsPage pageData={pageData?.allPagesData.find(eachPage => eachPage?.page_name === 'contact_us')} />;
         case 'homepage_blog':
             return <NumberPageBlog pageData={pageData?.numberPage} />;
         case 'single_number_blog':

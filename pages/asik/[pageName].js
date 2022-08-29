@@ -8,7 +8,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const Admin = ({ pageData }) => {
     const router = useRouter()
 
-    //console.log(pageData);
+    // console.log(pageData);
     return (
         <Layout
             style={{
@@ -25,7 +25,7 @@ export default Admin;
 
 
 export async function getServerSideProps(context) {
-    const res = await fetch('https://test-api.ataur.dev/all-page-data')
+    const res = await fetch('http://localhost:5000/all-page-data')
     const pageData = await res.json()
     //console.log('data abc', pageData);
     return {
