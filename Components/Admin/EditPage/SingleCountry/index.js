@@ -39,7 +39,7 @@ const SingleCountryPage = ({ pageData }) => {
 
     const onFinish = async (values) => {
         try {
-            const updateData = await axios.put('http://localhost:5000/page/single_country_pag', {
+            const updateData = await axios.put('http://localhost:5000/page/single_country_page', {
                 title: values?.title,
                 meta_description: values?.meta_description,
                 keyword: values?.keywords

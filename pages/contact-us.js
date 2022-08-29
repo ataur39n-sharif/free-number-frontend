@@ -1,9 +1,10 @@
 import axios from "axios";
+import Head from "next/head";
 import { useState } from "react";
 import { Col, Row, Toast, ToastContainer } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-const Contact = () => {
+const Contact = ({ pageData }) => {
     const [show, setShow] = useState(false);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = async (data) => {
@@ -19,7 +20,14 @@ const Contact = () => {
             setShow(true)
         }
     };
-    return (
+
+    // console.log('pageData', pageData);
+    return (<>
+        <Head>
+            <title>{pageData ? pageData?.title : "Demo Title"}</title>
+            <meta name="description" content={pageData ? pageData?.meta_description : "Demo description"} />
+            <meta name="keywords" content={pageData ? pageData?.keyword : "keywords list"} />
+        </Head>
         <div className="container">
             <h1 className="text-center m-5">Contact us</h1>
             <Row className="d-flex justify-content-center">
@@ -55,7 +63,20 @@ const Contact = () => {
             </Row>
 
         </div>
+    </>
+
     )
 }
 
 export default Contact
+
+export async function getServerSideProps(context) {
+    const pageDataReq = await fetch('http://localhost:5000/page/contact_us')
+    const pageData = await pageDataReq.json()
+
+    return {
+        props: {
+            pageData: pageData.success ? pageData.data : null
+        },
+    };
+}
