@@ -39,7 +39,6 @@ const SingleCountryPage = ({ pageData }) => {
 
     const onFinish = async (values) => {
         try {
-            console.log(values);
             const updateData = await axios.put('http://localhost:5000/page/single_country_pag', {
                 title: values?.title,
                 meta_description: values?.meta_description,
@@ -111,6 +110,10 @@ const SingleCountryPage = ({ pageData }) => {
                     </Button>
                 </Form.Item>
             </Form>
+            <div>
+                <h5>Hints :</h5>
+                <p>1 .use "country_name" code where Country name will set dynamically</p>
+            </div>
         </div>
     );
 };
