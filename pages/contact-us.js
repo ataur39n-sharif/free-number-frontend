@@ -21,7 +21,6 @@ const Contact = ({ pageData }) => {
         }
     };
 
-    // console.log('pageData', pageData);
     return (<>
         <Head>
             <title>{pageData ? pageData?.title : "Demo Title"}</title>
@@ -71,7 +70,7 @@ const Contact = ({ pageData }) => {
 export default Contact
 
 export async function getServerSideProps(context) {
-    const pageDataReq = await fetch('http://localhost:5000/page/contact_us')
+    const pageDataReq = await fetch('https://api.receivesmsonline.io/page/contact_us')
     const pageData = await pageDataReq.json()
 
     return {

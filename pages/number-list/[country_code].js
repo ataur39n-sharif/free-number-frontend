@@ -144,7 +144,7 @@ export async function getServerSideProps(context) {
     })
     const value = await result.json()
 
-    const pageDataReq = await fetch('http://localhost:5000/page/single_country_page')
+    const pageDataReq = await fetch('https://api.receivesmsonline.io/page/single_country_page')
     const pageData = await pageDataReq.json()
 
     return {

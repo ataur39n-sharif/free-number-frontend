@@ -130,7 +130,7 @@ const AllCountries = ({ pageData }) => {
 export default AllCountries;
 
 export async function getServerSideProps(context) {
-  const pageDataReq = await fetch('http://localhost:5000/page/all_country_page')
+  const pageDataReq = await fetch('https://api.receivesmsonline.io/page/all_country_page')
   const pageData = await pageDataReq.json()
 
   return {
