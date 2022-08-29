@@ -46,7 +46,7 @@ export default function Home({ data, indexData, socialMedia }) {
             }}
           >
             <Image
-              src="/image/top_div_cover_photo.jpg"
+              src="/image/sms_bg.jpg"
               alt="top_div_bg_img"
               objectFit="cover"
               layout="fill"

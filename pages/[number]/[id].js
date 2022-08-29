@@ -120,9 +120,8 @@ const NumberPage = ({ data, pageData }) => {
     return (
         <>
             <Head>
-                {/* <title> free {countryInfo?.country_name} number +{id} </title> */}
-                <title>{pageData ? pageData?.page_title.replaceAll('country_name', countryInfo?.country_name)?.replaceAll('phone_number', `+${id}`) : "Demo Title"}</title>
-                <meta name="description" content={pageData ? pageData?.meta_description?.replaceAll('country_name', countryInfo?.country_name)?.replaceAll('phone_number', `+${id}`) : "Demo description"} />
+                <title>{pageData?.page_title ? pageData?.page_title.split('country_name').join(countryInfo?.country_name).split('phone_number').join(`+${id}`) : "Demo title"}</title>
+                <meta name="description" content={pageData ? pageData?.meta_description.split('country_name').join(countryInfo?.country_name).split('phone_number').join(`+${id}`) : "Demo description"} />
             </Head>
             <div className="container mt-5">
                 <div className="numberInfo m-3  text-center">

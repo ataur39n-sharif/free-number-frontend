@@ -4,7 +4,6 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { Button, Card, Col, Row } from "react-bootstrap"
-import { AiOutlineReload } from "react-icons/ai"
 import NumberListBlog from "../../Components/Blogs/NumberList"
 import NoNumberList from "../../Components/Homepage/NumberList/NoNumberList"
 import { countryList } from "../../utils/countries/countries"
@@ -76,8 +75,8 @@ const IndividualCountryNumList = ({ data, pageData }) => {
     return (
         <>
             <Head>
-                <title>{pageData ? pageData?.title.replaceAll('country_name', countryInfo?.country_name) : "Demo Title"}</title>
-                <meta name="description" content={pageData ? pageData?.meta_description.replaceAll('country_name', countryInfo?.country_name) : "Demo description"} />
+                <title>{pageData ? pageData?.title?.split('country_name').join(countryInfo?.country_name) : "Demo Title"}</title>
+                <meta name="description" content={pageData ? pageData?.meta_description?.split('country_name').join(countryInfo?.country_name) : "Demo description"} />
                 <meta name="keywords" content={pageData ? pageData?.keyword : "keywords list"} />
             </Head>
             <div className="m-5">
