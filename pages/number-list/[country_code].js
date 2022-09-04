@@ -15,7 +15,7 @@ const IndividualCountryNumList = ({ data, pageData }) => {
     const router = useRouter()
     const { country_code } = router.query
 
-    // console.log(pageData);
+    console.log(pageData);
 
     useEffect(() => {
         const list = Object.entries(countryList)
@@ -77,7 +77,7 @@ const IndividualCountryNumList = ({ data, pageData }) => {
             <Head>
                 <title>{pageData ? pageData?.title?.split('country_name').join(countryInfo?.country_name) : "Demo Title"}</title>
                 <meta name="description" content={pageData ? pageData?.meta_description?.split('country_name').join(countryInfo?.country_name) : "Demo description"} />
-                <meta name="keywords" content={pageData ? pageData?.keyword : "keywords list"} />
+                <meta name="keywords" content={pageData ? pageData?.keyword?.split('country_name').join(countryInfo?.country_name) : "keywords list"} />
             </Head>
             <div className="m-5">
                 <div>

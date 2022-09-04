@@ -122,6 +122,8 @@ const NumberPage = ({ data, pageData }) => {
             <Head>
                 <title>{pageData?.page_title ? pageData?.page_title.split('country_name').join(countryInfo?.country_name).split('phone_number').join(`+${id}`) : "Demo title"}</title>
                 <meta name="description" content={pageData ? pageData?.meta_description.split('country_name').join(countryInfo?.country_name).split('phone_number').join(`+${id}`) : "Demo description"} />
+                <meta name="keywords" content={pageData ? pageData?.keywords.split('country_name').join(countryInfo?.country_name).split('phone_number').join(`+${id}`) : "Demo keyword"} />
+
             </Head>
             <div className="container mt-5">
                 <div className="numberInfo m-3  text-center">
