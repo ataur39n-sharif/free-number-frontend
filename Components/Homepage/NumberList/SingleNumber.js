@@ -32,7 +32,7 @@ const SingleNumber = ({ data }) => {
     }, [])
     return (
         <Col style={{ minWidth: '18rem' }} className="m-auto mt-4">
-            <Link href={`/free-${info.country_slug}-number/${data[1].number}`}>
+            <a href={`/free-${info.country_slug}-number/${data[1].number}`}>
                 <Card
                     id="card_section"
                     className="text-center"
@@ -69,7 +69,7 @@ const SingleNumber = ({ data }) => {
                         </Card.Text>
                     </Card.Body>
                 </Card>
-            </Link>
+            </a>
         </Col >
     )
 }

@@ -5,9 +5,10 @@ import ContentSection from '../../Components/Admin/Layout';
 import SideBar from '../../Components/Admin/Sidebar';
 const { Header, Content, Footer, Sider } = Layout;
 
-const Admin = ({ pageData }) => {
+const Admin = ({ pageData, blogList }) => {
     const router = useRouter()
 
+    console.log('form admin',blogList)
     // console.log(pageData);
     return (
         <Layout
@@ -16,7 +17,7 @@ const Admin = ({ pageData }) => {
             }}
         >
             <SideBar />
-            <ContentSection pageData={pageData} />
+            <ContentSection pageData={pageData} blogList={blogList} />
         </Layout>
     );
 };
@@ -27,10 +28,14 @@ export default Admin;
 export async function getServerSideProps(context) {
     const res = await fetch('https://api.receivesmsonline.io/all-page-data')
     const pageData = await res.json()
-    //console.log('data abc', pageData);
+
+    const blog = await fetch('http://localhost:5000/blog')
+    const blogResult = await blog.json()
+    console.log('data abc', blogResult);
     return {
         props: {
-            pageData:pageData?.pageData
+            pageData: pageData?.pageData,
+            blogList: blogResult?.blogList
         }, // will be passed to the page component as props
     }
 }

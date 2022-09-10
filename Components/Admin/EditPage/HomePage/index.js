@@ -32,7 +32,7 @@ const tailFormItemLayout = {
     },
 };
 
-const HomePageBlog = ({ pageData }) => {
+const HomePage = ({ pageData }) => {
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
@@ -89,4 +89,4 @@ const HomePageBlog = ({ pageData }) => {
     );
 };
 
-export default HomePageBlog;
+export default HomePage;

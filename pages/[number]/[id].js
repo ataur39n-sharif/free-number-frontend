@@ -12,7 +12,7 @@ import SingleNumPageBlog from "../../Components/Blogs/NumberPage/SingleNumPageBl
 import { countryList } from "../../utils/countries/countries";
 
 
-const NumberPage = ({ data, pageData }) => {
+const NumberPage = ({ data, pageData, blogData }) => {
     const router = useRouter();
     const { id } = router.query;
     const [countryInfo, setCountryInfo] = useState({
@@ -115,7 +115,7 @@ const NumberPage = ({ data, pageData }) => {
         btnGurbageArray.push(i);
     }
 
-    console.log(data, pageData)
+    // console.log(data, pageData)
 
     return (
         <>
@@ -215,7 +215,7 @@ const NumberPage = ({ data, pageData }) => {
                 }
 
                 {/* blog */}
-                <SingleNumPageBlog countryName={countryInfo.country_name} />
+                <SingleNumPageBlog countryName={countryInfo.country_name} blogData={blogData} number={id} />
 
                 {/* toast section */}
 
@@ -247,11 +247,15 @@ export async function getServerSideProps(context) {
     const pageDataReq = await fetch('https://test-api.ataur.dev/number-page-data')
     const pageData = await pageDataReq.json()
 
+    const blogReq = await fetch('http://localhost:5000/blog/number_page')
+    const blogData = await blogReq.json()
+
     return {
         props: {
             data: success && msgList.length ? msgList : null,
             allRentList: null,
-            pageData: pageData.success ? pageData.data : null
+            pageData: pageData.success ? pageData.data : null,
+            blogData: blogData.success ? blogData.blog : null
         },
     };
 }

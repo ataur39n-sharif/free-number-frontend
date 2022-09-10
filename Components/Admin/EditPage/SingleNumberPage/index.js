@@ -32,7 +32,7 @@ const tailFormItemLayout = {
     },
 };
 
-const NumberPageBlog = ({ pageData }) => {
+const NumberPage = ({ pageData }) => {
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
@@ -123,4 +123,4 @@ const NumberPageBlog = ({ pageData }) => {
     );
 };
 
-export default NumberPageBlog;
+export default NumberPage;

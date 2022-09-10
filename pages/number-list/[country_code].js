@@ -8,7 +8,7 @@ import NumberListBlog from "../../Components/Blogs/NumberList"
 import NoNumberList from "../../Components/Homepage/NumberList/NoNumberList"
 import { countryList } from "../../utils/countries/countries"
 
-const IndividualCountryNumList = ({ data, pageData }) => {
+const IndividualCountryNumList = ({ data, pageData ,blogData}) => {
     const [allData, setAllData] = useState([])
     const [currentData, setCurrentData] = useState([])
     const [countryInfo, setCountryInfo] = useState({})
@@ -98,7 +98,7 @@ const IndividualCountryNumList = ({ data, pageData }) => {
                                     //console.log(each);
                                     return (
                                         <Col lg={4} md={6} sm={12} style={{ minWidth: '15rem' }} className="m-auto mt-5" key={i}>
-                                            <Link href={`/number/${each?.number_id}`}>
+                                            <a href={`/number/${each?.number_id}`}>
                                                 <Card
                                                     id="card_section"
                                                     className="text-center"
@@ -112,14 +112,14 @@ const IndividualCountryNumList = ({ data, pageData }) => {
                                                         </Card.Text>
                                                     </Card.Body>
                                                 </Card>
-                                            </Link>
+                                            </a>
 
                                         </Col>
                                     )
                                 })
                             }
                         </Row>
-                        <NumberListBlog country_code={country_code} />
+                        <NumberListBlog country_code={country_code} blogData={blogData} />
                     </>
                 }
 
@@ -146,10 +146,14 @@ export async function getServerSideProps(context) {
     const pageDataReq = await fetch('https://api.receivesmsonline.io/page/single_country_page')
     const pageData = await pageDataReq.json()
 
+    const blogReq = await fetch('http://localhost:5000/blog/country_page')
+    const blogData = await blogReq.json()
+
     return {
         props: {
             data: value || null,
-            pageData: pageData.success ? pageData.data : null
+            pageData: pageData.success ? pageData.data : null,
+            blogData: blogData.success ? blogData.blog : null
         }
     }
 }

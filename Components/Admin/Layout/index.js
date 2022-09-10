@@ -6,7 +6,7 @@ import ChooseComponent from "./chooseComponent";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const ContentSection = ({pageData}) => {
+const ContentSection = ({ pageData, blogList }) => {
     const [pathList, setPathList] = useState([])
     const router = useRouter()
     const { pageName } = router.query
@@ -42,13 +42,13 @@ const ContentSection = ({pageData}) => {
                     }}
                 >
                     {
-                        pathList.map((eachPath,i) => {
+                        pathList.map((eachPath, i) => {
                             return (<Breadcrumb.Item key={i}>{eachPath}</Breadcrumb.Item>)
                         })
                     }
                 </Breadcrumb>
 
-                <ChooseComponent pathName={pageName} pageData={pageData} />
+                <ChooseComponent pathName={pageName} pageData={pageData} blogList={blogList} />
 
             </Content>
         </Layout>

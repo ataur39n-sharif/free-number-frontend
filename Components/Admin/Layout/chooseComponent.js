@@ -1,7 +1,5 @@
 import DashBoard from "../Dashboard";
-import HomePageBlog from "../EditPage/HomePageBlog";
 import IndexPage from "../EditPage/IndexPage";
-import NumberPageBlog from "../EditPage/SingleNumberPage";
 import SocialMedia from "../SocialMedia";
 
 import {
@@ -15,6 +13,11 @@ import React from 'react';
 import ContactUsPage from "../EditPage/ContactUs";
 import AllCountryPage from "../EditPage/AllCountry";
 import SingleCountryPage from "../EditPage/SingleCountry";
+import CountryPageBlog from "../EditBlog/CountryPageBlog";
+import NumberPage from "../EditPage/SingleNumberPage";
+import NumberPageBlog from "../EditBlog/NumberPageBlog";
+import HomePage from "../EditPage/HomePage";
+import HomePageBlog from "../EditBlog/HomePageBlog";
 
 const formItemLayout = {
     labelCol: {
@@ -41,7 +44,7 @@ const tailFormItemLayout = {
     },
 };
 
-const ChooseComponent = ({ pathName, pageData }) => {
+const ChooseComponent = ({ pathName, pageData, blogList }) => {
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
@@ -75,28 +78,29 @@ const ChooseComponent = ({ pathName, pageData }) => {
         })
     }
 
+    console.log('blog list',blogList)
 
     switch (pathName) {
         case 'index_page':
             return <IndexPage pageData={pageData?.indexPage} />;
         case 'index_page_home':
             return <IndexPage pageData={pageData?.indexPage} />;
-        case 'homepage_blog':
-            return <HomePageBlog pageData={pageData?.homepage} />;
+        // case 'homepage_blog':
+        //     return <HomePage pageData={pageData?.homepage} />;
         case 'number_page':
-            return <NumberPageBlog pageData={pageData?.numberPage} />;
+            return <NumberPage pageData={pageData?.numberPage} />;
         case 'single_country_page':
-            return <SingleCountryPage pageData={pageData?.allPagesData.find(eachPage => eachPage?.page_name === 'single_country_page')}/>;
+            return <SingleCountryPage pageData={pageData?.allPagesData.find(eachPage => eachPage?.page_name === 'single_country_page')} />;
         case 'all_country_page':
-            return <AllCountryPage pageData={pageData?.allPagesData.find(eachPage => eachPage?.page_name === 'all_country_page')}/>;
+            return <AllCountryPage pageData={pageData?.allPagesData.find(eachPage => eachPage?.page_name === 'all_country_page')} />;
         case 'contact_us_page':
             return <ContactUsPage pageData={pageData?.allPagesData.find(eachPage => eachPage?.page_name === 'contact_us')} />;
         case 'homepage_blog':
-            return <NumberPageBlog pageData={pageData?.numberPage} />;
+            return <HomePageBlog />;
         case 'single_number_blog':
-            return <NumberPageBlog pageData={pageData?.numberPage} />;
+            return <NumberPageBlog pageData={blogList?.find((eachBlog => eachBlog?.blog_page_name === 'number_page'))} />;
         case 'single_country_blog':
-            return <NumberPageBlog pageData={pageData?.numberPage} />;
+            return <CountryPageBlog pageData={blogList?.find((eachBlog => eachBlog?.blog_page_name === 'country_page'))}/>;
 
         case 'fb':
             const fb = pageData?.socialMedia.find((each) => each.media_name === 'fb')

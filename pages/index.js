@@ -169,7 +169,7 @@ export async function getServerSideProps() {
   const socialMediaReq = await fetch('https://test-api.ataur.dev/all-social-media')
   const socialMedia = await socialMediaReq.json()
 
-  const result = await fetch(`https://numbers.messagebird.com/v1/phone-numbers`, {
+  const result = await fetch(`https://numbers.messagebird.com/v1/phone-numbers?limit=100`, {
     method: "get",
     headers: {
       'Authorization': 'AccessKey XM7Qv4P6xzebLjyNueNHahiu0'
