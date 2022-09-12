@@ -29,7 +29,7 @@ export async function getServerSideProps(context) {
     const res = await fetch('https://api.receivesmsonline.io/all-page-data')
     const pageData = await res.json()
 
-    const blog = await fetch('http://localhost:5000/blog')
+    const blog = await fetch('https://api.receivesmsonline.io/blog')
     const blogResult = await blog.json()
     console.log('data abc', blogResult);
     return {

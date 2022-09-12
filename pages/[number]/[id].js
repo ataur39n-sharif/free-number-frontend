@@ -215,7 +215,7 @@ const NumberPage = ({ data, pageData, blogData }) => {
                 }
 
                 {/* blog */}
-                <SingleNumPageBlog countryName={countryInfo.country_name} blogData={blogData} number={id} />
+                <SingleNumPageBlog countryName={countryInfo?.country_name} blogData={blogData} number={id} />
 
                 {/* toast section */}
 
@@ -247,7 +247,7 @@ export async function getServerSideProps(context) {
     const pageDataReq = await fetch('https://test-api.ataur.dev/number-page-data')
     const pageData = await pageDataReq.json()
 
-    const blogReq = await fetch('http://localhost:5000/blog/number_page')
+    const blogReq = await fetch('https://api.receivesmsonline.io/blog/number_page')
     const blogData = await blogReq.json()
 
     return {

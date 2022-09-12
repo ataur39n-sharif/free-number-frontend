@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { countryList } from "../../../utils/countries/countries"
 
-const NumberListBlog = ({ country_code ,blogData}) => {
+const NumberListBlog = ({ country_code, blogData }) => {
     const [countryInfo, setCountryInfo] = useState({})
+    const [blogAddCount, setBlogAddCount] = useState(0)
 
     useEffect(() => {
         const list = Object.entries(countryList)
@@ -10,14 +11,36 @@ const NumberListBlog = ({ country_code ,blogData}) => {
         if (data) {
             setCountryInfo(data[1])
         }
+
+        if (blogAddCount === 0) {
+            //for title 
+            const blogTitleDiv = document.createElement('div')
+            const blogTitle = blogData && blogData?.title?.split('country_name').join(data[1].name)
+            blogTitleDiv.innerHTML = blogTitle
+
+            const mainTitleDiv = document.getElementById('title')
+            mainTitleDiv.appendChild(blogTitleDiv)
+
+            //for discription
+
+            const blogDescriptionDiv = document.createElement('div')
+            const blogDescription = blogData && blogData?.description?.split('country_name').join(data[1].name)
+            blogDescriptionDiv.innerHTML = blogDescription
+
+            const mainDescriptionDiv = document.getElementById('description')
+            mainDescriptionDiv.appendChild(blogDescriptionDiv)
+
+            blogAddCount++;
+        }
     }, [])
+console.log(blogAddCount)
     return (
         <div>
             <div>
                 {/* <h3 className="text-center m-5">About Receive SMS Online {countryInfo?.name}</h3> */}
                 {/* <h5 className="text-center m-5">Are you Looking for a way to receive SMS online without giving out your real number?</h5> */}
-                <div className="text-center mt-5">
-                    {blogData?.title?.split('country_name').join(countryInfo?.name)}
+                <div className="text-center mt-5" id="title">
+
                 </div>
 
                 {/* <div>
@@ -33,8 +56,8 @@ const NumberListBlog = ({ country_code ,blogData}) => {
                     </p>
                 </div> */}
 
-                <div className="">
-                    {blogData?.description?.split('country_name').join(countryInfo?.name)}
+                <div className="" id="description">
+                    {/* {blogData?.description?.split('country_name').join(countryInfo?.name)} */}
                 </div>
             </div>
         </div>

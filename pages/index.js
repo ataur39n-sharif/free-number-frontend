@@ -26,7 +26,6 @@ export default function Home({ data, indexData, socialMedia }) {
         <title>{indexData ? indexData?.website_title : 'Demo text'}</title>
         <meta name="description" content={indexData ? indexData?.meta_description : 'Demo description'} />
         <meta name="keywords" content={indexData ? indexData?.keywords : "keywords list"} />
-        <meta name="google-site-verification" content="DedDOkfWhkNfja96rNE_tgDKGyEv3LdIdqnyh4-0uEU" />
         <link rel="icon" href="/image/favicon_free-number-logo.png" />
       </Head>
       <main style={{ minWidth: "18rem", maxWidth: "100vw" }}>

@@ -15,7 +15,7 @@ const IndividualCountryNumList = ({ data, pageData ,blogData}) => {
     const router = useRouter()
     const { country_code } = router.query
 
-    console.log(pageData);
+    // console.log(pageData);
 
     useEffect(() => {
         const list = Object.entries(countryList)
@@ -146,7 +146,7 @@ export async function getServerSideProps(context) {
     const pageDataReq = await fetch('https://api.receivesmsonline.io/page/single_country_page')
     const pageData = await pageDataReq.json()
 
-    const blogReq = await fetch('http://localhost:5000/blog/country_page')
+    const blogReq = await fetch('https://api.receivesmsonline.io/blog/country_page')
     const blogData = await blogReq.json()
 
     return {
