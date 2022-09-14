@@ -1,16 +1,20 @@
 import { getServerSideSitemap } from 'next-sitemap'
+import { countryList } from '../../utils/countries/countries'
 
 export async function getServerSideProps(context) {
     const res = await fetch('http://localhost:8080/number/list')
     const response = await res.json()
 
-    let countryCode = []
-    response?.list?.map((eachData) => {
-        const listed = countryCode.find((code) => code === eachData.country_code)
-        if (!listed) {
-            countryCode.push(eachData.country_code)
-        }
-    })
+    let country_slugs = []
+    // response?.list?.map((eachData) => {
+    //     const listed = countryCode.find((slug) => slug === eachData.country_slug)
+    //     if (!listed) {
+    //         countryCode.push(eachData.country_slug)
+    //     }
+    // })
+
+    const list = Object.entries(countryList)
+    list.map((each) => country_slugs.push(each[1].slug))
 
     let fields = []
     response?.list?.map((eachData) => (
@@ -20,9 +24,9 @@ export async function getServerSideProps(context) {
         })
     ))
 
-    countryCode?.map((eachCode) => (
+    country_slugs?.map((slug) => (
         fields.push({
-            loc: `https://receivesmsonline.io/number-list/${eachCode}`,
+            loc: `https://receivesmsonline.io/countries/${slug}`,
             lastmod: new Date().toISOString()
         })
     ))

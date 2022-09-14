@@ -6,8 +6,8 @@ module.exports = {
     exclude: ['/asik'],
     robotsTxtOptions: {
         policies: [
-            { userAgent: "*", disallow: "/asik/*" },
-            { userAgent: "*", disallow: "/asik/*" }
+            { userAgent: "*", disallow: "/asik" },
+            { userAgent: "*", allow: "/" }
         ]
     },
     additionalSitemaps:[
