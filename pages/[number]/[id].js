@@ -111,7 +111,7 @@ const NumberPage = ({ data, pageData, blogData }) => {
         btnGurbageArray.push(i);
     }
 
-    console.log("data", blogData)
+    // console.log("data", blogData)
 
     return (
         <>

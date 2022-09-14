@@ -51,7 +51,7 @@ const InactiveNumber = ({ list, pageData }) => {
                     style={{ minHeight: "10vh" }}
                 >
                     <div className=" mt-5 p-5">
-                        <h3 className="">All Regions Phone Number List</h3>
+                        <h3 className="">In-active Phone Number List</h3>
                         <p>
                             We currently provide Free 49 Regions Virtual Temporary Phone
                             Numbers.
@@ -83,7 +83,7 @@ const InactiveNumber = ({ list, pageData }) => {
                                                             alt="Country_Flag"
                                                         />
                                                         <Card.Body>
-                                                            {/* <Card.Title id="phone_no">{each?.phone_number}</Card.Title> */}
+                                                            <Card.Title id="phone_no">+{each?.phone_number}</Card.Title>
                                                             <Card.Text
                                                                 id="country_name"
                                                                 className="text-secondary"
