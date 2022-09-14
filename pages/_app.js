@@ -16,8 +16,9 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/image/favicon_free-number-logo.png" />
         <meta name="google-site-verification" content="wk-WEHa5B0KzVRrubMPJhtwgZ1yDMQezezPaLD7S-lY" />
       </Head>
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-LDYT60EWVX"></Script>
+      <Script id='adsManager' async src="https://www.googletagmanager.com/gtag/js?id=G-LDYT60EWVX"></Script>
       <Script
+      id='adsManager_Config'
         dangerouslySetInnerHTML={{
           __html: `
           window.dataLayer = window.dataLayer || [];

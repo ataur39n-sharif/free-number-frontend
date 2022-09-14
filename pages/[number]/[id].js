@@ -18,17 +18,16 @@ const NumberPage = ({ data, pageData, blogData }) => {
     const [countryInfo, setCountryInfo] = useState({
         country_name: "",
         country_code: "",
+        country_slug: "",
         current_time: "",
         timezone: {},
         img: "",
     });
     const [allData, setAllData] = useState({});
-    const [refreshCount, setRefreshCount] = useState(10)
     const [show, setShow] = useState(false)
-
+    const [blogAddCount, setBlogAddCount] = useState(0)
 
     useEffect(() => {
-        // setRefreshCount(10)
         const smsList = data?.length ? Object.entries(data) : [];
 
         //valid a phone number
@@ -45,36 +44,33 @@ const NumberPage = ({ data, pageData, blogData }) => {
             const tempSchema = {
                 country_name: data ? data[1].name : numberInfo.country,
                 country_code: numberInfo.country,
-                // current_time: d,
-                // timeZone: getTimezone(country["time-zone-in-capital"]),
                 img: `/images/${numberInfo?.country?.toLocaleLowerCase()}.png`,
             };
             setCountryInfo(tempSchema);
+
+            //blog code
+            if (blogAddCount === 0) {
+                //for title 
+                const blogTitleDiv = document.createElement('div')
+                const blogTitle = blogData && blogData?.title?.split('country_name').join(data && data[1].name)?.split('phone_number').join(`+${id}`)
+                blogTitleDiv.innerHTML = blogTitle
+
+                const mainTitleDiv = document.getElementById('title')
+                mainTitleDiv.appendChild(blogTitleDiv)
+
+                //for discription
+
+                const blogDescriptionDiv = document.createElement('div')
+                const blogDescription = blogData && blogData?.description?.split('country_name').join(data && data[1].name)?.split('phone_number').join(`+${id}`)
+                blogDescriptionDiv.innerHTML = blogDescription
+
+                const mainDescriptionDiv = document.getElementById('description')
+                mainDescriptionDiv.appendChild(blogDescriptionDiv)
+
+                blogAddCount++;
+            }
         }
     }, []);
-
-    //auto reload every 10s
-    // useEffect(() => {
-    //     setInterval(() => {
-    //         loadAgain()
-    //     }, 10000)
-    // }, [])
-
-    //auto reload time counter
-    // useEffect(() => {
-    //     const timer = setInterval(() => {
-    //         if (refreshCount === 0) {
-    //             setRefreshCount(10)
-    //         } else {
-    //             setRefreshCount(refreshCount - 1)
-    //         }
-    //     }, 1000)
-
-    //     return () => {
-    //         clearInterval(timer)
-    //     }
-
-    // }, [refreshCount])
 
     useEffect(() => {
         if (show) {
@@ -115,7 +111,7 @@ const NumberPage = ({ data, pageData, blogData }) => {
         btnGurbageArray.push(i);
     }
 
-    // console.log(data, pageData)
+    console.log("data", blogData)
 
     return (
         <>
@@ -215,7 +211,16 @@ const NumberPage = ({ data, pageData, blogData }) => {
                 }
 
                 {/* blog */}
-                <SingleNumPageBlog countryName={countryInfo?.country_name} blogData={blogData} number={id} />
+                {/* <SingleNumPageBlog countryName={countryInfo?.country_name} blogData={blogData} number={id} /> */}
+
+                <div className=" m-5">
+                    <div className="text-center" id="title">
+
+                    </div>
+                    <div id="description">
+
+                    </div>
+                </div>
 
                 {/* toast section */}
 
@@ -249,6 +254,8 @@ export async function getServerSideProps(context) {
 
     const blogReq = await fetch('https://api.receivesmsonline.io/blog/number_page')
     const blogData = await blogReq.json()
+
+    // const res = await fetch()
 
     return {
         props: {

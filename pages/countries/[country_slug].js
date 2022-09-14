@@ -8,69 +8,65 @@ import NumberListBlog from "../../Components/Blogs/NumberList"
 import NoNumberList from "../../Components/Homepage/NumberList/NoNumberList"
 import { countryList } from "../../utils/countries/countries"
 
-const IndividualCountryNumList = ({ data, pageData ,blogData}) => {
+const IndividualCountryNumList = ({ data, pageData, blogData, numList }) => {
     const [allData, setAllData] = useState([])
     const [currentData, setCurrentData] = useState([])
+
+    const [numberList, setNumberList] = useState([])
     const [countryInfo, setCountryInfo] = useState({})
+    const [blogAddCount, setBlogAddCount] = useState(0)
+
     const router = useRouter()
-    const { country_code } = router.query
+    const { country_slug } = router.query
 
-    // console.log(pageData);
-
+    //slug
     useEffect(() => {
+
+        //number list
+        let selectCountryNumberList = []
+        numList.map((each) => {
+            if (each.status === 'active' && each.country_slug === country_slug) {
+                selectCountryNumberList.push(each)
+            }
+        })
+        setNumberList(selectCountryNumberList)
+
+        //country info
         const list = Object.entries(countryList)
-        if (data.items.length) {
-            const numList = Object.entries(data.items)
-            //console.log(numList);
-            numList.map(each => {
-                const phoneNumber = parsePhoneNumber(`+${each[1].number}`)
-                const data = list.find(each => each[0] === phoneNumber.country.toLowerCase())
-                if (data) {
-                    const tempSchema = {
-                        country_name: data[1].name,
-                        country_code: phoneNumber.country,
-                        phone_number: phoneNumber.number,
-                        number_id: each[1].number,
-                        country_calling_code: `+${phoneNumber.countryCallingCode}`,
-                        img: `/images/${phoneNumber.country.toLowerCase()}.png`,
-                    }
-                    //console.log(tempSchema);
-                    const alreadyListed = allData.find(each => each?.phone_number === tempSchema.phone_number)
-                    if (!alreadyListed) {
-                        const previous = [...allData]
-                        previous.push(tempSchema)
+        const currentCountry = list.find((each) => each[1].slug.toLowerCase() === country_slug.toLowerCase())
+        setCountryInfo({
+            country_name: currentCountry ? currentCountry[1]?.name : country_slug,
+            country_slug: currentCountry ? currentCountry[1]?.slug : country_slug,
+            flag: `/images/${currentCountry ? currentCountry[0]?.toLowerCase() : country_slug}.png`
+        })
 
-                        const currData = previous.filter(each => {
-                            return each.country_code.toLowerCase() === country_code.toLowerCase()
-                        })
-                        setCurrentData(currData)
+        //blog code
+        if (blogAddCount === 0) {
+            //for title 
+            const blogTitleDiv = document.createElement('div')
+            const blogTitle = blogData && blogData?.title?.split('country_name').join(currentCountry && currentCountry[1].name.toUpperCase())
+            blogTitleDiv.innerHTML = blogTitle
 
-                        setAllData(previous)
-                    }
-                }
-            })
+            const mainTitleDiv = document.getElementById('title')
+            mainTitleDiv.appendChild(blogTitleDiv)
+
+            //for discription
+
+            const blogDescriptionDiv = document.createElement('div')
+            const blogDescription = blogData && blogData?.description?.split('country_name').join(currentCountry && currentCountry[1].name.toUpperCase())
+            blogDescriptionDiv.innerHTML = blogDescription
+
+            const mainDescriptionDiv = document.getElementById('description')
+            mainDescriptionDiv.appendChild(blogDescriptionDiv)
+
+            setBlogAddCount(blogAddCount++)
         }
-    }, [allData])
-
-    useEffect(() => {
-        const list = Object.entries(countryList)
-        const data = list.find(each => each[0] === country_code)
-        const tempData = {
-            country_name: data[1].name,
-            flag: `/images/${country_code.toLowerCase()}.png`,
-        }
-        setCountryInfo(tempData)
     }, [])
 
     //selected countries number list 
     const handleMove = (code) => {
-        window.location.replace(`/number-list/${code}`)
+        window.location.replace(`/countries/${code}`)
     }
-    //update message
-    const loadAgain = () => {
-        window.location.reload(false)
-    }
-
 
     return (
         <>
@@ -82,29 +78,27 @@ const IndividualCountryNumList = ({ data, pageData ,blogData}) => {
             <div className="m-5">
                 <div>
                     <div className="numberInfo m-3  text-center">
-                        <h1 style={{ 'cursor': 'pointer' }} onClick={() => handleMove(country_code.toLowerCase())}>
+                        <h1 style={{ 'cursor': 'pointer' }} onClick={() => handleMove(country_slug.toLowerCase())}>
                             <img src={countryInfo?.flag} alt="country_flag" height="35" className="m-2" />
                             <p><strong>{`${countryInfo?.country_name} Phone Number`}</strong></p>
                         </h1>
-                        {/* <Button className="m-5" variant="outline-primary" onClick={() => loadAgain()}> <AiOutlineReload /> Update List</Button> */}
                     </div>
                 </div>
                 {
-                    currentData?.length > 0 &&
+                    numberList?.length > 0 &&
                     <>
                         <Row className="container m-auto">
                             {
-                                currentData?.map((each, i) => {
-                                    //console.log(each);
+                                numberList?.map((each, i) => {
                                     return (
                                         <Col lg={4} md={6} sm={12} style={{ minWidth: '15rem' }} className="m-auto mt-5" key={i}>
-                                            <a href={`/number/${each?.number_id}`}>
+                                            <a href={`/free-${countryInfo?.country_slug}-number/${each?.phone_number}`}>
                                                 <Card
                                                     id="card_section"
                                                     className="text-center"
                                                     style={{ height: "30vh" }}
                                                 >
-                                                    <Card.Img className="p-3" id="country_flag" src={each?.img} style={{ minHeight: "17vh", minWidth: "30px" }} alt="Country_Flag" />
+                                                    <Card.Img className="p-3" id="country_flag" src={countryInfo?.flag} style={{ minHeight: "17vh", minWidth: "30px" }} alt="Country_Flag" />
                                                     <Card.Body>
                                                         <Card.Title id="phone_no">{each?.phone_number}</Card.Title>
                                                         <Card.Text id="country_name" className="text-secondary">
@@ -119,14 +113,20 @@ const IndividualCountryNumList = ({ data, pageData ,blogData}) => {
                                 })
                             }
                         </Row>
-                        <NumberListBlog country_code={country_code} blogData={blogData} />
                     </>
                 }
 
                 {
-                    currentData?.length <= 0 &&
-                    <NoNumberList country_code={country_code} />
+                    numberList?.length <= 0 && <NoNumberList />
                 }
+                <div className=" m-5">
+                    <div className="text-center" id="title">
+
+                    </div>
+                    <div id="description">
+
+                    </div>
+                </div>
             </div >
         </>
     )
@@ -135,12 +135,7 @@ const IndividualCountryNumList = ({ data, pageData ,blogData}) => {
 export default IndividualCountryNumList
 
 export async function getServerSideProps(context) {
-    const result = await fetch(`https://numbers.messagebird.com/v1/phone-numbers?country=${context.query.country_code}`, {
-        method: "get",
-        headers: {
-            'Authorization': 'AccessKey XM7Qv4P6xzebLjyNueNHahiu0'
-        }
-    })
+    const result = await fetch('http://localhost:8080/number/list')
     const value = await result.json()
 
     const pageDataReq = await fetch('https://api.receivesmsonline.io/page/single_country_page')
@@ -152,6 +147,7 @@ export async function getServerSideProps(context) {
     return {
         props: {
             data: value || null,
+            numList: value.success ? value?.list : [],
             pageData: pageData.success ? pageData.data : null,
             blogData: blogData.success ? blogData.blog : null
         }

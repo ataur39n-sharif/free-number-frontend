@@ -19,7 +19,7 @@ import VkshareComponent from "../Components/SocialMedia/Vkshare.social";
 
 export default function Home({ data, indexData, socialMedia }) {
   const [showShareList, setShowShareList] = useState(false)
-  console.log(data);
+// console.log(data)
   return (
     <>
       <Head>

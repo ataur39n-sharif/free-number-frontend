@@ -4,8 +4,6 @@ import { countryList } from "../../../utils/countries/countries"
 import NumberListBlog from "../../Blogs/NumberList"
 
 const NoNumberList = () => {
-    const router = useRouter()
-    const { country_code } = router.query
 
     return (
         <div id="no_number_list mt-5">
@@ -15,8 +13,6 @@ const NoNumberList = () => {
                     <p>Currently No Number AvailAble</p>
                 </div>
             </div>
-            <NumberListBlog country_code={country_code} />
-
         </div>
     )
 }

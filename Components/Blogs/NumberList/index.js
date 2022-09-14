@@ -30,13 +30,13 @@ const NumberListBlog = ({ country_code, blogData }) => {
             const mainDescriptionDiv = document.getElementById('description')
             mainDescriptionDiv.appendChild(blogDescriptionDiv)
 
-            blogAddCount++;
+            setBlogAddCount(blogAddCount++);
         }
     }, [])
-console.log(blogAddCount)
+    console.log(blogData)
     return (
         <div>
-            <div>
+            <div className="m-4">
                 {/* <h3 className="text-center m-5">About Receive SMS Online {countryInfo?.name}</h3> */}
                 {/* <h5 className="text-center m-5">Are you Looking for a way to receive SMS online without giving out your real number?</h5> */}
                 <div className="text-center mt-5" id="title">

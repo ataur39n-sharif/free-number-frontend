@@ -83,7 +83,7 @@ const AllCountries = ({ pageData }) => {
                       className="m-auto mt-4"
                       key={i}
                     >
-                      <Link href={`/number-list/${each?.country_code}`}>
+                      <a href={`/number-list/${each?.country_code}`}>
                         <Card id="card_section" className="text-center">
                           <Card.Img
                             className="p-3"
@@ -102,7 +102,7 @@ const AllCountries = ({ pageData }) => {
                             </Card.Text>
                           </Card.Body>
                         </Card>
-                      </Link>
+                      </a>
                     </Col>
                   );
                 })}
