@@ -8,9 +8,7 @@ import NumberListBlog from "../../Components/Blogs/NumberList"
 import NoNumberList from "../../Components/Homepage/NumberList/NoNumberList"
 import { countryList } from "../../utils/countries/countries"
 
-const IndividualCountryNumList = ({ data, pageData, blogData, numList }) => {
-    const [allData, setAllData] = useState([])
-    const [currentData, setCurrentData] = useState([])
+const IndividualCountryNumList = ({ pageData, blogData, numList }) => {
 
     const [numberList, setNumberList] = useState([])
     const [countryInfo, setCountryInfo] = useState({})
@@ -146,7 +144,6 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            data: value || null,
             numList: value.success ? value?.list : [],
             pageData: pageData.success ? pageData.data : null,
             blogData: blogData.success ? blogData.blog : null

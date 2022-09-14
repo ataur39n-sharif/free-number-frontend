@@ -18,13 +18,13 @@ const AllCountries = ({ pageData }) => {
     list.map((each) => {
       const dataSchema = {
         country_name: each[1].name.toUpperCase(),
+        country_slug: each[1].slug,
         country_code: each[0],
         img: `/images/${each[0]}.png`,
       };
       if (activeList.includes(dataSchema?.country_name)) {
         currentData.push(dataSchema);
       }
-
     });
 
     setAllData(currentData.sort((a, b) => {
@@ -83,7 +83,7 @@ const AllCountries = ({ pageData }) => {
                       className="m-auto mt-4"
                       key={i}
                     >
-                      <a href={`/number-list/${each?.country_code}`}>
+                      <a href={`/countries/${each?.country_slug}`}>
                         <Card id="card_section" className="text-center">
                           <Card.Img
                             className="p-3"
