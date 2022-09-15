@@ -84,6 +84,12 @@ const NumberPageBlog = ({ pageData }) => {
                     </Button>
                 </Form.Item>
             </Form>
+            <div>
+                <h5>Note :</h5>
+                <p>1. use "country_name" code where Country name will set dynamically</p>
+                <p>2. use "phone_number" code where Phone number will set dynamically</p>
+                <p>3. Use any rich text editor and paste here only html code . example : i.<a href="https://richtexteditor.com/" target="_blank">Richtext editor</a>, ii. <a href="https://onlinehtmleditor.dev/" target="_blank">Online text editor</a></p>
+            </div>
         </div>
     );
 };

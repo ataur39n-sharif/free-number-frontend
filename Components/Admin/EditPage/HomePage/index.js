@@ -48,8 +48,6 @@ const HomePage = ({ pageData }) => {
         }
     };
 
-
-
     return (
         <div className='m-auto'>
             <Form

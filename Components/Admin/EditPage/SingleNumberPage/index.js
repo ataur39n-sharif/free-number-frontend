@@ -114,7 +114,7 @@ const NumberPage = ({ pageData }) => {
             </Form>
 
             <div>
-                <h5>Hints :</h5>
+                <h5>Note :</h5>
                 <p>1 .use "country_name" code where Country name will set dynamically</p>
                 <p>2 .use "phone_number" code where Phone number will set dynamically</p>
 
