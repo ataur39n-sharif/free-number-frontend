@@ -6,12 +6,6 @@ export async function getServerSideProps(context) {
     const response = await res.json()
 
     let country_slugs = []
-    // response?.list?.map((eachData) => {
-    //     const listed = countryCode.find((slug) => slug === eachData.country_slug)
-    //     if (!listed) {
-    //         countryCode.push(eachData.country_slug)
-    //     }
-    // })
 
     const list = Object.entries(countryList)
     list.map((each) => country_slugs.push(each[1].slug))

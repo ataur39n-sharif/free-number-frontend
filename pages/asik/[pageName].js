@@ -28,11 +28,10 @@ export async function getServerSideProps(context) {
 
     const blog = await fetch('https://api.receivesmsonline.io/blog')
     const blogResult = await blog.json()
-    console.log('data abc', blogResult);
     return {
         props: {
             pageData: pageData?.pageData,
             blogList: blogResult?.blogList
-        }, // will be passed to the page component as props
+        },
     }
 }

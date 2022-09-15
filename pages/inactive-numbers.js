@@ -37,6 +37,7 @@ const InactiveNumber = ({ list, pageData }) => {
         btnGurbageArray.push(i);
     }
 
+
     return (
         <>
             <Head>
@@ -137,9 +138,12 @@ export async function getServerSideProps() {
     const result = await fetch('http://localhost:8080/number/list')
     const value = await result.json()
 
+    const data = await fetch('http://localhost:8080/page/inactive_number')
+    const resData = await data.json()
     return {
         props: {
-            list: value.success ? value.list : []
+            list: value.success ? value.list : [],
+            pageData: resData.success ? resData.data : null
         }
     }
 }

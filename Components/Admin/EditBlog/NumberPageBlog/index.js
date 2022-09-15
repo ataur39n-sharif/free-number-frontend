@@ -36,13 +36,11 @@ const NumberPageBlog = ({ pageData }) => {
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
-        console.log('Received values of form: ', values);
         try {
             const updateData = await axios.put('https://api.receivesmsonline.io/blog/number_page', {
                 title: values?.title,
                 description: values?.description
             })
-            console.log(updateData)
             message.success('Success')
         } catch (error) {
             message.error(error.message)

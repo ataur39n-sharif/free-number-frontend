@@ -48,8 +48,6 @@ const HomePage = ({ pageData }) => {
         }
     };
 
-    //console.log('homepage data', pageData);
-
 
 
     return (

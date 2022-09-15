@@ -39,13 +39,11 @@ const InactiveNumber = ({ pageData }) => {
 
     const onFinish = async (values) => {
         try {
-            console.log(values)
             const updateData = await axios.put('https://api.receivesmsonline.io/page/inactive_number', {
                 title: values?.title,
                 meta_description: values?.meta_description,
                 keyword: values?.keywords
             })
-            console.log(updateData);
             message.success('Success')
         } catch (error) {
             message.error(error.message)

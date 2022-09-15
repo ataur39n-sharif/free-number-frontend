@@ -46,7 +46,6 @@ const ContactUsPage = ({ pageData }) => {
                 meta_description: values?.meta_description,
                 keyword: values?.keywords
             })
-            console.log(updateData);
             message.success('Success')
         } catch (error) {
             message.error(error.message)

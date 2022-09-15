@@ -33,7 +33,6 @@ const NumberListBlog = ({ country_code, blogData }) => {
             setBlogAddCount(blogAddCount++);
         }
     }, [])
-    console.log(blogData)
     return (
         <div>
             <div className="m-4">

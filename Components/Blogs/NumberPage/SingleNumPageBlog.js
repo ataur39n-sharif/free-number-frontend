@@ -4,7 +4,6 @@ const SingleNumPageBlog = ({ countryName, blogData, number }) => {
     const [blogAddCount, setBlogAddCount] = useState(0)
 
     useEffect(() => {
-        console.log(countryName)
         if (blogAddCount === 0) {
             //for title 
             const blogTitleDiv = document.createElement('div')

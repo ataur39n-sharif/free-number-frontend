@@ -42,7 +42,6 @@ const CountryPageBlog = ({ pageData }) => {
                 title: values?.title,
                 description: values?.description
             })
-            console.log(updateData)
             message.success('Success')
         } catch (error) {
             message.error(error.message)
