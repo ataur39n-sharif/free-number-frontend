@@ -34,16 +34,18 @@ const tailFormItemLayout = {
     },
 };
 
-const IndexPage = ({ pageData }) => {
+const InactiveNumber = ({ pageData }) => {
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
         try {
-            const updateData = await axios.put('https://test-api.ataur.dev/update-index-data', {
-                website_title: values?.title,
+            console.log(values)
+            const updateData = await axios.put('https://api.receivesmsonline.io/page/inactive_number', {
+                title: values?.title,
                 meta_description: values?.meta_description,
-                keywords: values?.keywords
+                keyword: values?.keywords
             })
+            console.log(updateData);
             message.success('Success')
         } catch (error) {
             message.error(error.message)
@@ -57,20 +59,20 @@ const IndexPage = ({ pageData }) => {
                 form={form}
                 name="indexData"
                 initialValues={{
-                    "title": pageData?.website_title,
+                    "title": pageData?.title,
                     "meta_description": pageData?.meta_description,
-                    "keywords": pageData?.keywords
+                    "keywords": pageData?.keyword
                 }}
                 onFinish={onFinish}
                 scrollToFirstError
             >
                 <Form.Item
                     name="title"
-                    label="Website title"
+                    label="Page title"
                     rules={[
                         {
                             required: true,
-                            message: 'Website title is required.',
+                            message: 'Page title is required.',
                         },
                     ]}
                 >
@@ -114,4 +116,4 @@ const IndexPage = ({ pageData }) => {
     );
 };
 
-export default IndexPage;
+export default InactiveNumber;

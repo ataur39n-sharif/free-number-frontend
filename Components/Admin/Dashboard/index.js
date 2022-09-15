@@ -1,7 +1,9 @@
+import AdminNumberComponent from "../Numbers"
+
 const DashBoard = () => {
     return (
         <div>
-            this is DashBoard
+            <AdminNumberComponent />
         </div>
     )
 }

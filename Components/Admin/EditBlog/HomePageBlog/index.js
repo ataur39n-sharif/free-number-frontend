@@ -36,12 +36,26 @@ const HomePageBlog = ({ pageData }) => {
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
-        //console.log('Received values of form: ', values);
+        console.log('Received values of form: ', values);
         try {
-            // const updateData = await axios.put('https://test-api.ataur.dev/update-homepage-data', {
-            //     page_title: values?.title,
-            //     meta_description: values?.meta_description
-            // })
+            const data = {
+                title: values?.title,
+                others: {
+                    sub_title: values.sub_title,
+                    section1_description: values.section1_description,
+                    section1_title: values.section1_title,
+                    section2_description: values.section2_description,
+                    section2_title: values.section2_title,
+                    section3_description: values.section3_description,
+                    section3_title: values.section3_title,
+                    section4_description: values.section4_description,
+                    section4_title: values.section4_title,
+
+                }
+            }
+            console.log(data)
+            const updateData = await axios.put('http://localhost:8080/blog/homepage_blog', data)
+            console.log(updateData)
             message.success('Success')
         } catch (error) {
             message.error(error.message)
@@ -57,8 +71,16 @@ const HomePageBlog = ({ pageData }) => {
                 form={form}
                 name="indexData"
                 initialValues={{
-                    "title": pageData?.page_title,
-                    "meta_description": pageData?.meta_description
+                    title: pageData?.title,
+                    sub_title: pageData?.others?.sub_title,
+                    section1_description: pageData?.others?.section1_description,
+                    section1_title: pageData?.others?.section1_title,
+                    section2_description: pageData?.others?.section2_description,
+                    section2_title: pageData?.others?.section2_title,
+                    section3_description: pageData?.others?.section3_description,
+                    section3_title: pageData?.others?.section3_title,
+                    section4_description: pageData?.others?.section4_description,
+                    section4_title: pageData?.others?.section4_title,
                 }}
                 onFinish={onFinish}
                 scrollToFirstError
@@ -69,13 +91,82 @@ const HomePageBlog = ({ pageData }) => {
                 >
                     <Input />
                 </Form.Item>
-
                 <Form.Item
-                    name="meta_description"
-                    label="Blog-description"
+                    name="sub_title"
+                    label="Blog sub-title"
                 >
-                    <Input.TextArea showCount />
+                    <Input />
                 </Form.Item>
+
+                <section>
+                    <div>
+                        <p>Section : 1</p>
+                    </div>
+                    <Form.Item
+                        name="section1_title"
+                        label="Section-1 title"
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        name="section1_description"
+                        label="Section 1 description"
+                    >
+                        <Input.TextArea showCount />
+                    </Form.Item>
+                </section>
+                <section>
+                    <div>
+                        <p>Section : 2</p>
+                    </div>
+                    <Form.Item
+                        name="section2_title"
+                        label="Section-2 title"
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        name="section2_description"
+                        label="Section 2 description"
+                    >
+                        <Input.TextArea showCount />
+                    </Form.Item>
+                </section>
+                <section>
+                    <div>
+                        <p>Section : 3</p>
+                    </div>
+                    <Form.Item
+                        name="section3_title"
+                        label="Section-3 title"
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        name="section3_description"
+                        label="Section 3 description"
+                    >
+                        <Input.TextArea showCount />
+                    </Form.Item>
+                </section>
+                <section>
+                    <div>
+                        <p>Section : 4</p>
+                    </div>
+                    <Form.Item
+                        name="section4_title"
+                        label="Section-4 title"
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        name="section4_description"
+                        label="Section 4 description"
+                    >
+                        <Input.TextArea showCount />
+                    </Form.Item>
+                </section>
+
 
                 <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">

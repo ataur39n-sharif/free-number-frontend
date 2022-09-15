@@ -17,10 +17,11 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-    getItem('Index Page', 'index_page_home', <HomeOutlined />),
+    getItem('Number List', 'number-list', <HomeOutlined />),
     getItem('Edit Page', 'edit', <EditOutlined />, [
         getItem('Home Page', 'index_page', <FolderOpenOutlined />),
         getItem('Single number page', 'number_page', <NumberOutlined />),
+        getItem('Inactive number', 'inactive_number_page', <NumberOutlined />),
         getItem('Single country page', 'single_country_page', <NumberOutlined />),
         getItem('All country page', 'all_country_page', <NumberOutlined />),
         getItem('Contact us', 'contact_us_page', <NumberOutlined />),

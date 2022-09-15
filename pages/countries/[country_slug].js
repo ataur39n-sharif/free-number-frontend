@@ -98,7 +98,7 @@ const IndividualCountryNumList = ({ pageData, blogData, numList }) => {
                                                 >
                                                     <Card.Img className="p-3" id="country_flag" src={countryInfo?.flag} style={{ minHeight: "17vh", minWidth: "30px" }} alt="Country_Flag" />
                                                     <Card.Body>
-                                                        <Card.Title id="phone_no">{each?.phone_number}</Card.Title>
+                                                        <Card.Title id="phone_no">+{each?.phone_number}</Card.Title>
                                                         <Card.Text id="country_name" className="text-secondary">
                                                             {each?.country_name}
                                                         </Card.Text>

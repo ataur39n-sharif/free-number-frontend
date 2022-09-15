@@ -14,8 +14,8 @@ const InactiveNumber = ({ list, pageData }) => {
                 }
             })
             setNumberList(inactiveNumbers.sort((a, b) => {
-                let x = a[1].country.toUpperCase()
-                let y = b[1].country.toUpperCase()
+                let x = a?.country_name?.toUpperCase()
+                let y = b?.country_name?.toUpperCase()
                 return x == y ? 0 : x > y ? 1 : -1;
             }))
         }

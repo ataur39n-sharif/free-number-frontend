@@ -17,9 +17,9 @@ import TelegramComponent from "../Components/SocialMedia/Teletegram.social";
 import TwitterComponent from "../Components/SocialMedia/Twitter.social";
 import VkshareComponent from "../Components/SocialMedia/Vkshare.social";
 
-export default function Home({ data, indexData, socialMedia }) {
+export default function Home({ data, indexData, socialMedia, homeBlog }) {
   const [showShareList, setShowShareList] = useState(false)
-// console.log(data)
+  // console.log(data)
   return (
     <>
       <Head>
@@ -152,7 +152,7 @@ export default function Home({ data, indexData, socialMedia }) {
 
 
         <section id="footer_section" className="mt-4 p-3 text-dark">
-          <FooterTop />
+          <FooterTop blog={homeBlog} />
           <FooterBottom />
         </section>
       </main>
@@ -176,13 +176,16 @@ export async function getServerSideProps() {
   });
   const value = await result.json();
 
+  const hBlog = await fetch('http://localhost:8080/blog/homepage_blog')
+  const homeBlogRes = await hBlog.json()
 
 
   return {
     props: {
       data: value,
       indexData: indexData.success ? indexData.data : null,
-      socialMedia: socialMedia.success ? socialMedia.data : null
+      socialMedia: socialMedia.success ? socialMedia.data : null,
+      homeBlog: homeBlogRes.success ? homeBlogRes.blog : null
     },
   };
 }

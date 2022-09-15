@@ -18,6 +18,8 @@ import NumberPage from "../EditPage/SingleNumberPage";
 import NumberPageBlog from "../EditBlog/NumberPageBlog";
 import HomePage from "../EditPage/HomePage";
 import HomePageBlog from "../EditBlog/HomePageBlog";
+import AdminNumberComponent from "../Numbers";
+import InactiveNumber from "../EditPage/InactiveNumber";
 
 const formItemLayout = {
     labelCol: {
@@ -78,15 +80,13 @@ const ChooseComponent = ({ pathName, pageData, blogList }) => {
         })
     }
 
-    console.log('blog list',blogList)
-
     switch (pathName) {
+        case 'number-list':
+            return <AdminNumberComponent />;
         case 'index_page':
             return <IndexPage pageData={pageData?.indexPage} />;
-        case 'index_page_home':
-            return <IndexPage pageData={pageData?.indexPage} />;
-        // case 'homepage_blog':
-        //     return <HomePage pageData={pageData?.homepage} />;
+        case 'inactive_number_page':
+            return <InactiveNumber pageData={pageData?.allPagesData.find(eachPage => eachPage?.page_name === 'inactive_number')} />;
         case 'number_page':
             return <NumberPage pageData={pageData?.numberPage} />;
         case 'single_country_page':
@@ -96,11 +96,11 @@ const ChooseComponent = ({ pathName, pageData, blogList }) => {
         case 'contact_us_page':
             return <ContactUsPage pageData={pageData?.allPagesData.find(eachPage => eachPage?.page_name === 'contact_us')} />;
         case 'homepage_blog':
-            return <HomePageBlog />;
+            return <HomePageBlog pageData={blogList?.find((eachBlog => eachBlog?.blog_page_name === 'homepage_blog'))} />;
         case 'single_number_blog':
             return <NumberPageBlog pageData={blogList?.find((eachBlog => eachBlog?.blog_page_name === 'number_page'))} />;
         case 'single_country_blog':
-            return <CountryPageBlog pageData={blogList?.find((eachBlog => eachBlog?.blog_page_name === 'country_page'))}/>;
+            return <CountryPageBlog pageData={blogList?.find((eachBlog => eachBlog?.blog_page_name === 'country_page'))} />;
 
         case 'fb':
             const fb = pageData?.socialMedia.find((each) => each.media_name === 'fb')

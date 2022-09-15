@@ -7,9 +7,6 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const Admin = ({ pageData, blogList }) => {
     const router = useRouter()
-
-    console.log('form admin',blogList)
-    // console.log(pageData);
     return (
         <Layout
             style={{
