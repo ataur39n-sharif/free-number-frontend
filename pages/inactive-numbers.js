@@ -135,10 +135,10 @@ export default InactiveNumber
 
 
 export async function getServerSideProps() {
-    const result = await fetch('http://localhost:8080/number/list')
+    const result = await fetch('https://api.receivesmsonline.io/number/list')
     const value = await result.json()
 
-    const data = await fetch('http://localhost:8080/page/inactive_number')
+    const data = await fetch('https://api.receivesmsonline.io/page/inactive_number')
     const resData = await data.json()
     return {
         props: {

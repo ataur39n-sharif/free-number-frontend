@@ -114,7 +114,7 @@ const AdminNumberComponent = () => {
     const handleStatus = async (record) => {
         try {
             // console.log(record)
-            const res = await axios.put(`http://localhost:8080/number/status/${record.number}`, {
+            const res = await axios.put(`https://api.receivesmsonline.io/number/status/${record.number}`, {
                 status: record.status === 'active' ? "inactive" : "active"
             })
             // console.log(res)
@@ -172,7 +172,7 @@ const AdminNumberComponent = () => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:8080/number/list')
+        axios.get('https://api.receivesmsonline.io/number/list')
             .then(res => {
                 let list = []
                 res.data?.list?.map((data, i) => {
@@ -192,7 +192,7 @@ const AdminNumberComponent = () => {
     const handleSync = async () => {
         try {
             setLoading(true)
-            const res = await axios.get('http://localhost:8080/number/sync')
+            const res = await axios.get('https://api.receivesmsonline.io/number/sync')
             if (res.data.success) {
                 setDataChange(!dataChange)
                 setLoading(false)

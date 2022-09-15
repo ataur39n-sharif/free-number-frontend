@@ -87,7 +87,7 @@ const NumberPage = ({ data, pageData, blogData }) => {
     };
     //selected countries number list
     const handleMove = (code) => {
-        router.replace(`/number-list/${code}`);
+        router.replace(`/countries/${code}`);
     };
     //update message
     const loadAgain = () => {
@@ -125,7 +125,7 @@ const NumberPage = ({ data, pageData, blogData }) => {
                 <div className="numberInfo m-3  text-center">
                     <div
                         style={{ cursor: "pointer" }}
-                        onClick={() => handleMove(countryInfo?.country_code.toLowerCase())}
+                        onClick={() => handleMove(countryInfo?.country_name.toLowerCase())}
                     >
                         <img
                             src={countryInfo.img}

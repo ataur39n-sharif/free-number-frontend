@@ -176,7 +176,7 @@ export async function getServerSideProps() {
   });
   const value = await result.json();
 
-  const hBlog = await fetch('http://localhost:8080/blog/homepage_blog')
+  const hBlog = await fetch('https://api.receivesmsonline.io/blog/homepage_blog')
   const homeBlogRes = await hBlog.json()
 
 
