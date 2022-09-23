@@ -7,32 +7,10 @@ import { countryList } from "../../../utils/countries/countries";
 // import Image from "next/image";
 
 const SingleNumber = ({ data }) => {
-    const [info, setInfo] = useState({
-        country_name: "",
-        country_code: "",
-        country_slug: "",
-        img: ""
-    })
-    const phoneNumber = parsePhoneNumber(`+${data[1].number}`)
 
-    useEffect(() => {
-        if (phoneNumber) {
-            const list = Object.entries(countryList)
-            const data = list.find(each => each[0] === phoneNumber.country.toLowerCase())
-            if (data) {
-                const tempSchema = {
-                    country_name: data[1].name,
-                    country_code: phoneNumber.country,
-                    country_slug: data[1].slug,
-                    img: `/images/${phoneNumber.country.toLowerCase()}.png`
-                }
-                setInfo(tempSchema)
-            }
-        }
-    }, [])
     return (
         <Col style={{ minWidth: '18rem' }} className="m-auto mt-4">
-            <a href={`/free-${info.country_slug}-number/${data[1].number}`}>
+            <a href={`/free-${data?.country_slug}-number/${data?.phone_number}`}>
                 <Card
                     id="card_section"
                     className="text-center"
@@ -61,11 +39,11 @@ const SingleNumber = ({ data }) => {
                         // 100vw"
                         quality={50}
                     /> */}
-                    <Card.Img className="p-3" id="country_flag" src={info?.img} style={{ minHeight: "17vh", minWidth: "30px" }} alt="Country_Flag" />
+                    <Card.Img className="p-3" id="country_flag" src={`/images/${data?.country_code.toLowerCase()}.png`} style={{ minHeight: "17vh", minWidth: "30px" }} alt="Country_Flag" />
                     <Card.Body>
-                        <Card.Title id="phone_no">{phoneNumber?.number}</Card.Title>
+                        <Card.Title id="phone_no">{data?.phone_number}</Card.Title>
                         <Card.Text id="country_name" className="text-secondary">
-                            {info?.country_name}
+                            {data?.country_name}
                         </Card.Text>
                     </Card.Body>
                 </Card>

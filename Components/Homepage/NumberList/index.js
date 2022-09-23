@@ -3,23 +3,39 @@ import { Row } from "react-bootstrap";
 import SingleNumber from "./SingleNumber";
 
 const NumberList = ({ value }) => {
-  const arr = Object.entries(value).sort((a, b) => {
-    let x = a[1].country.toUpperCase()
-    let y = b[1].country.toUpperCase()
-    return x == y ? 0 : x > y ? 1 : -1;
-  });
+
+  const [arr, setArr] = useState([])
+  const [alert, setAlert] = useState(false)
+
+  useState(() => {
+    const sortedData = value.sort((a, b) => {
+      let x = a.country_code.toUpperCase()
+      let y = b.country_code.toUpperCase()
+      return x == y ? 0 : x > y ? 1 : -1;
+    })
+    setArr(sortedData)
+  }, [])
+
+
 
   // pagination index handler
   const [pIndex, setPIndex] = useState(0);
 
   // pagination handler using buttons
-  const gotoNext = () => pIndex < arr.length - 20 && setPIndex(pIndex + 20);
-  const gotoPrevious = () =>
-    pIndex > 20 ? setPIndex(pIndex - 20) : setPIndex(0);
+  const gotoNext = () => {
+    setAlert(!alert)
+    return pIndex < arr.length - 15 && setPIndex(pIndex + 15)
+  };
+  const gotoPrevious = () => {
+    setAlert(!alert)
+    return pIndex > 15 ? setPIndex(pIndex - 15) : setPIndex(0);
+  }
+
   const goto = (num) => {
+    setAlert(!alert)
     setPIndex(num);
   };
-  const middleBtnAmount = Math.ceil(arr.length / 20);
+  const middleBtnAmount = Math.ceil(arr.length / 15);
   let btnGurbageArray = [];
   for (let i = 0; i < middleBtnAmount; i++) {
     btnGurbageArray.push(i);
@@ -29,7 +45,8 @@ const NumberList = ({ value }) => {
     <>
       <div className="container" style={{ minHeight: "51vh" }}>
         <Row lg={4} md={2} sm={1}>
-          {arr?.slice(pIndex, pIndex + 20).map((each, i) => {
+          {arr.slice(pIndex, pIndex + 15).map((each, i) => {
+            // console.log(pIndex)
             return <SingleNumber data={each} key={i} />;
           })}
         </Row>
@@ -42,8 +59,8 @@ const NumberList = ({ value }) => {
           return (
             <button
               key={i}
-              onClick={() => goto(pageNumber * 20)}
-              className={`${pIndex / 20 === pageNumber && "current-page"
+              onClick={() => goto(pageNumber * 15)}
+              className={`${pIndex / 15 === pageNumber && "current-page"
                 } btn px-3 py-1`}
             >
               {pageNumber + 1}

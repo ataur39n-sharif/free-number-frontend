@@ -52,7 +52,7 @@ const ChooseComponent = ({ pathName, pageData, blogList }) => {
     const onFinish = async (values) => {
         //console.log('Received values of form: ', values);
         try {
-            const updateData = await axios.put('https://test-api.ataur.dev/update-social-media', {
+            const updateData = await axios.put('https://api.receivesmsonline.io/update-social-media', {
                 url: values?.url,
                 text_title: values?.title,
                 hashTag: values?.hashtag,

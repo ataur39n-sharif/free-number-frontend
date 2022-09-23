@@ -10,7 +10,7 @@ module.exports = {
             { userAgent: "*", allow: "/" }
         ]
     },
-    additionalSitemaps:[
+    additionalSitemaps: [
         'https://receivesmsonline.io/server-sitemap.xml',
         'https://receivesmsonline.io/sitemap.xml'
     ]

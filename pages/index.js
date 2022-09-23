@@ -17,7 +17,7 @@ import TelegramComponent from "../Components/SocialMedia/Teletegram.social";
 import TwitterComponent from "../Components/SocialMedia/Twitter.social";
 import VkshareComponent from "../Components/SocialMedia/Vkshare.social";
 
-export default function Home({ data, indexData, socialMedia, homeBlog }) {
+export default function Home({ numberList, indexData, socialMedia, homeBlog }) {
   const [showShareList, setShowShareList] = useState(false)
   // console.log(data)
   return (
@@ -59,9 +59,9 @@ export default function Home({ data, indexData, socialMedia, homeBlog }) {
         </section>
 
         <section id="numberList">
-          {data?.count < 1 && <NoNumberList className="container" />}
-          {data?.count > 0 && (
-            <NumberList value={data.items} className="container" />
+          {numberList?.length < 1 && <NoNumberList className="container" />}
+          {numberList?.length > 0 && (
+            <NumberList value={numberList} className="container" />
           )}
         </section>
         <div className="social-share">
@@ -162,19 +162,23 @@ export default function Home({ data, indexData, socialMedia, homeBlog }) {
 
 export async function getServerSideProps() {
 
-  const indexDataReq = await fetch('https://test-api.ataur.dev/index-data')
+  const indexDataReq = await fetch('https://api.receivesmsonline.io/index-data')
   const indexData = await indexDataReq.json()
 
-  const socialMediaReq = await fetch('https://test-api.ataur.dev/all-social-media')
+  const socialMediaReq = await fetch('https://api.receivesmsonline.io/all-social-media')
   const socialMedia = await socialMediaReq.json()
 
-  const result = await fetch(`https://numbers.messagebird.com/v1/phone-numbers?limit=100`, {
-    method: "get",
-    headers: {
-      'Authorization': 'AccessKey XM7Qv4P6xzebLjyNueNHahiu0'
-    }
-  });
-  const value = await result.json();
+  // const result = await fetch(`https://numbers.messagebird.com/v1/phone-numbers?limit=100`, {
+  //   method: "get",
+  //   headers: {
+  //     'Authorization': 'AccessKey XM7Qv4P6xzebLjyNueNHahiu0'
+  //   }
+  // });
+  // const value = await result.json();
+  const res = await fetch('https://api.receivesmsonline.io/number/list')
+  const response = await res.json()
+  const value = response.success && response?.list?.filter((eachNumber) => eachNumber.status === 'active')
+  console.log(value)
 
   const hBlog = await fetch('https://api.receivesmsonline.io/blog/homepage_blog')
   const homeBlogRes = await hBlog.json()
@@ -182,7 +186,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      data: value,
+      numberList: value,
       indexData: indexData.success ? indexData.data : null,
       socialMedia: socialMedia.success ? socialMedia.data : null,
       homeBlog: homeBlogRes.success ? homeBlogRes.blog : null

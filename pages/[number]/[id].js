@@ -245,11 +245,11 @@ export default NumberPage;
 
 export async function getServerSideProps(context) {
     const result = await fetch(
-        `https://test-api.ataur.dev/all-sms/${context.query.id}`
+        `https://api.receivesmsonline.io/all-sms/${context.query.id}`
     );
     const { success, msgList } = await result.json();
 
-    const pageDataReq = await fetch('https://test-api.ataur.dev/number-page-data')
+    const pageDataReq = await fetch('https://api.receivesmsonline.io/number-page-data')
     const pageData = await pageDataReq.json()
 
     const blogReq = await fetch('https://api.receivesmsonline.io/blog/number_page')
