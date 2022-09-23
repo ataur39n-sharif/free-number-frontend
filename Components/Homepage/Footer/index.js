@@ -12,7 +12,7 @@ const Footer = () => {
                 </Col>
                 <Col md={6}>
                     <div className="m-2">
-                        <Link href='/allcountries'><span style={{ cursor: "pointer" }}>All Countries List</span></Link> -
+                        <Link href='/contact-us'><span style={{ cursor: "pointer" }}>Contact us</span></Link> -
                         <Link href='/blog'><span style={{ cursor: "pointer" }}> Blog</span></Link> -
                         <Link href='/privacy'><span style={{ cursor: "pointer" }}> Privacy Policy</span></Link> -
                         <Link href='/faqs'><span style={{ cursor: "pointer" }}> FAQs</span></Link> -

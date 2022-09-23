@@ -178,7 +178,6 @@ export async function getServerSideProps() {
   const res = await fetch('https://api.receivesmsonline.io/number/list')
   const response = await res.json()
   const value = response.success && response?.list?.filter((eachNumber) => eachNumber.status === 'active')
-  console.log(value)
 
   const hBlog = await fetch('https://api.receivesmsonline.io/blog/homepage_blog')
   const homeBlogRes = await hBlog.json()

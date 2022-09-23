@@ -11,14 +11,12 @@ const NavBar = () => {
                 <Nav className="ms-auto">
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/countries/united-states">USA</Nav.Link>
-                    <Nav.Link href="/countries/united-kingdom">UK</Nav.Link>
-                    <Nav.Link href="/countries/russia">Russia</Nav.Link>
                     <Nav.Link href="/countries/canada">Canada</Nav.Link>
-                    <Nav.Link href="/countries/france">France</Nav.Link>
+                    <Nav.Link href="/countries/sweden">Sweden</Nav.Link>
                     <Nav.Link href="/countries/australia">Australia</Nav.Link>
                     <Nav.Link href="/all-countries">All Countries</Nav.Link>
                     <Nav.Link href="/inactive-numbers">Inactive numbers</Nav.Link>
-                    <Nav.Link href="/contact-us">Contact us</Nav.Link>
+                    {/* <Nav.Link href="/contact-us">Contact us</Nav.Link> */}
                 </Nav>
             </Navbar.Collapse>
             {/* </Container> */}
