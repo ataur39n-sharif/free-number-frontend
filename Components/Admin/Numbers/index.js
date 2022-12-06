@@ -156,7 +156,6 @@ const AdminNumberComponent = () => {
             onFilter: (value, record) => record.status.indexOf(value) === 0,
             render: (_, record) =>
                 <Button variant={record.status === 'active' ? "success" : "danger"}>{record.status}</Button>
-
         },
         {
             title: 'Action',
