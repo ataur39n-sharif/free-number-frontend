@@ -9,8 +9,8 @@ const NumberList = ({ value }) => {
 
   useState(() => {
     const sortedData = value.sort((a, b) => {
-      let x = a.country_code.toUpperCase()
-      let y = b.country_code.toUpperCase()
+      let x = a.country_name.toUpperCase()
+      let y = b.country_name.toUpperCase()
       return x == y ? 0 : x > y ? 1 : -1;
     })
     setArr(sortedData)
