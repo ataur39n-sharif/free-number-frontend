@@ -176,10 +176,12 @@ const NumberPage = ({ data, pageData, blogData }) => {
                                         [{each[1].sender}]
                                     </Col>
                                     <Col md={3} sm={12} className="p-2">
-                                        [{moment(each[1].createdAt).from(moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"))}]
+                                        {
+                                            each[1]?.data_humans ? each[1].data_humans : <span>[{moment(each[1].createdAt).from(moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"))}]</span>
+                                        }
                                     </Col>
                                     <Col md={6} sm={12} className="p-2">
-                                        {each[1].message}
+                                        {each[1].message?.split('received from OnlineSIM.ru')?.join('')}
                                     </Col>
                                 </Row>
                             );
@@ -245,7 +247,7 @@ export default NumberPage;
 
 export async function getServerSideProps(context) {
     const result = await fetch(
-        `https://api.receivesmsonline.io/all-sms/${context.query.id}`
+        `http://localhost:8080/all-sms/${context.query.id}`
     );
     const { success, msgList } = await result.json();
 
