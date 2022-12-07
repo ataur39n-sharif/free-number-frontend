@@ -191,7 +191,7 @@ const AdminNumberComponent = () => {
     const handleSync = async () => {
         try {
             setLoading(true)
-            const res = await axios.get('https://api.receivesmsonline.io/number/sync')
+            const res = await axios.get('http://localhost:8080/number/sync')
             if (res.data.success) {
                 setDataChange(!dataChange)
                 setLoading(false)

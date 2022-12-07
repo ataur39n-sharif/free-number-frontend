@@ -87,7 +87,7 @@ const NumberPage = ({ data, pageData, blogData }) => {
     };
     //selected countries number list
     const handleMove = (code) => {
-        router.replace(`/countries/${code}`);
+        router.replace(`/countries/${code?.toLowerCase()?.split(' ')?.join('-')}`);
     };
     //update message
     const loadAgain = () => {
@@ -125,7 +125,7 @@ const NumberPage = ({ data, pageData, blogData }) => {
                 <div className="numberInfo m-3  text-center">
                     <div
                         style={{ cursor: "pointer" }}
-                        onClick={() => handleMove(countryInfo?.country_name.toLowerCase())}
+                        onClick={() => handleMove(countryInfo?.country_name)}
                     >
                         <img
                             src={countryInfo.img}
@@ -245,7 +245,7 @@ export default NumberPage;
 
 export async function getServerSideProps(context) {
     const result = await fetch(
-        `https://api.receivesmsonline.io/all-sms/${context.query.id}`
+        `http://localhost:8080/all-sms/${context.query.id}`
     );
     const { success, msgList } = await result.json();
 
