@@ -16,10 +16,6 @@ export const countryList = {
         "name": "United Kingdom",
         "slug": "united-kingdom"
     },
-    "gb": {
-        "name": "Britain",
-        "slug": "united-kingdom"
-    },
     "lv": {
         "name": "Latvia",
         "slug": "latvia"
@@ -191,7 +187,11 @@ export const countryList = {
     "ci": {
         "name": "Ivory Coast",
         "slug": "ivory-coast"
-    }
+    },
+    "ie": {
+        "name": "Ireland",
+        "slug": "ireland"
+    },
 
 }
 
@@ -1829,8 +1829,8 @@ export const countryList = {
 //         "slug": "united-kingdom"
 //     },
 //     "us": {
-//         "name": "United States",
-//         "size": {
+    //         "size": {
+    //         "name": "United States",
 //             "height": 650,
 //             "width": 1235
 //         },

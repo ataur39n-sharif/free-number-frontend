@@ -247,7 +247,7 @@ export default NumberPage;
 
 export async function getServerSideProps(context) {
     const result = await fetch(
-        `https://api.receivesmsonline.io/all-sms/${context.query.id}`
+        `https://real-jade-chimpanzee-vest.cyclic.app/all-sms/${context.query.id}`
     );
     const { success, msgList } = await result.json();
 
