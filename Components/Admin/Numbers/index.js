@@ -129,8 +129,12 @@ const AdminNumberComponent = () => {
             title: 'Country Name',
             dataIndex: 'countryName',
             key: 'countryName',
-            sorter: (a, b) => a.countryName.length - b.countryName.length,
-            sortDirections: ['descend', 'ascend'],
+            sorter: (a, b) => {
+                let x = a.countryName.toUpperCase()
+                let y = b.countryName.toUpperCase()
+                return x == y ? 0 : x > y ? 1 : -1;
+            },
+            sortDirections: ['ascend', 'descend'],
         },
         {
             title: 'Phone number',
