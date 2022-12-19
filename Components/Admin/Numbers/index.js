@@ -196,6 +196,8 @@ const AdminNumberComponent = () => {
         try {
             setLoading(true)
             const res = await axios.get('https://real-jade-chimpanzee-vest.cyclic.app/number/sync')
+            // const res = await axios.get('http://localhost:5000/number/sync')
+
             if (res.data.success) {
                 setDataChange(!dataChange)
                 setLoading(false)

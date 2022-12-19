@@ -192,7 +192,10 @@ export const countryList = {
         "name": "Ireland",
         "slug": "ireland"
     },
-
+    "br": {
+        "name": "Brasil",
+        "slug": "brasil"
+    },
 }
 
 // export const countryList = {
