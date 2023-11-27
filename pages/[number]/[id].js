@@ -1,14 +1,12 @@
 import copy from "copy-text-to-clipboard";
-import { getTimezone } from "countries-and-timezones";
 import { parsePhoneNumber } from "libphonenumber-js";
 import moment from "moment";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Button, Col, Row, Toast, ToastContainer } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import { AiOutlineReload } from "react-icons/ai";
 import { FaCopy } from "react-icons/fa";
-import SingleNumPageBlog from "../../Components/Blogs/NumberPage/SingleNumPageBlog";
 import { countryList } from "../../utils/countries/countries";
 
 
@@ -247,17 +245,17 @@ export default NumberPage;
 
 export async function getServerSideProps(context) {
     const result = await fetch(
-        `https://real-jade-chimpanzee-vest.cyclic.app/all-sms/${context.query.id}`
+        `https://api.receivesmsonline.io/all-sms/${context.query.id}`
     );
     // const result = await fetch(
     //     `http://localhost:5000/all-sms/${context.query.id}`
     // );
     const { success, msgList } = await result.json();
 
-    const pageDataReq = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/number-page-data')
+    const pageDataReq = await fetch('https://api.receivesmsonline.io/number-page-data')
     const pageData = await pageDataReq.json()
 
-    const blogReq = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/blog/number_page')
+    const blogReq = await fetch('https://api.receivesmsonline.io/blog/number_page')
     const blogData = await blogReq.json()
 
     // const res = await fetch()

@@ -3,23 +3,20 @@ import IndexPage from "../EditPage/IndexPage";
 import SocialMedia from "../SocialMedia";
 
 import {
-    Button,
     Form,
-    Input,
-    message,
+    message
 } from 'antd';
 import axios from 'axios';
 import React from 'react';
-import ContactUsPage from "../EditPage/ContactUs";
-import AllCountryPage from "../EditPage/AllCountry";
-import SingleCountryPage from "../EditPage/SingleCountry";
 import CountryPageBlog from "../EditBlog/CountryPageBlog";
-import NumberPage from "../EditPage/SingleNumberPage";
-import NumberPageBlog from "../EditBlog/NumberPageBlog";
-import HomePage from "../EditPage/HomePage";
 import HomePageBlog from "../EditBlog/HomePageBlog";
-import AdminNumberComponent from "../Numbers";
+import NumberPageBlog from "../EditBlog/NumberPageBlog";
+import AllCountryPage from "../EditPage/AllCountry";
+import ContactUsPage from "../EditPage/ContactUs";
 import InactiveNumber from "../EditPage/InactiveNumber";
+import SingleCountryPage from "../EditPage/SingleCountry";
+import NumberPage from "../EditPage/SingleNumberPage";
+import AdminNumberComponent from "../Numbers";
 
 const formItemLayout = {
     labelCol: {
@@ -52,7 +49,7 @@ const ChooseComponent = ({ pathName, pageData, blogList }) => {
     const onFinish = async (values) => {
         //console.log('Received values of form: ', values);
         try {
-            const updateData = await axios.put('https://real-jade-chimpanzee-vest.cyclic.app/update-social-media', {
+            const updateData = await axios.put('https://api.receivesmsonline.io/update-social-media', {
                 url: values?.url,
                 text_title: values?.title,
                 hashTag: values?.hashtag,

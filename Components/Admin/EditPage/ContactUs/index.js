@@ -2,12 +2,10 @@ import {
     Button,
     Form,
     Input,
-    message,
-    Upload,
+    message
 } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import React from 'react';
 
 const formItemLayout = {
     labelCol: {
@@ -41,7 +39,7 @@ const ContactUsPage = ({ pageData }) => {
 
     const onFinish = async (values) => {
         try {
-            const updateData = await axios.put('https://real-jade-chimpanzee-vest.cyclic.app/page/contact_us', {
+            const updateData = await axios.put('https://api.receivesmsonline.io/page/contact_us', {
                 title: values?.title,
                 meta_description: values?.meta_description,
                 keyword: values?.keywords

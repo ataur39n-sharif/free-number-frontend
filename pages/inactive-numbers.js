@@ -135,10 +135,10 @@ export default InactiveNumber
 
 
 export async function getServerSideProps() {
-    const result = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/number/list')
+    const result = await fetch('https://api.receivesmsonline.io/number/list')
     const value = await result.json()
 
-    const data = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/page/inactive_number')
+    const data = await fetch('https://api.receivesmsonline.io/page/inactive_number')
     const resData = await data.json()
     return {
         props: {

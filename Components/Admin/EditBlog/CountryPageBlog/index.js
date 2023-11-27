@@ -38,7 +38,7 @@ const CountryPageBlog = ({ pageData }) => {
     const onFinish = async (values) => {
         console.log('Received values of form: ', values);
         try {
-            const updateData = await axios.put('https://real-jade-chimpanzee-vest.cyclic.app/blog/country_page', {
+            const updateData = await axios.put('https://api.receivesmsonline.io/blog/country_page', {
                 title: values?.title,
                 description: values?.description
             })

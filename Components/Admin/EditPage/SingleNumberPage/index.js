@@ -38,7 +38,7 @@ const NumberPage = ({ pageData }) => {
     const onFinish = async (values) => {
         //console.log('Received values of form: ', values);
         try {
-            const updateData = await axios.put('https://real-jade-chimpanzee-vest.cyclic.app/update-number-page-data', {
+            const updateData = await axios.put('https://api.receivesmsonline.io/update-number-page-data', {
                 page_title: values?.page_title,
                 meta_description: values?.meta_description,
                 blog_title: values?.blog_title,

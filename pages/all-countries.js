@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { countryList } from "../utils/countries/countries";
@@ -130,7 +129,7 @@ const AllCountries = ({ pageData }) => {
 export default AllCountries;
 
 export async function getServerSideProps(context) {
-  const pageDataReq = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/page/all_country_page')
+  const pageDataReq = await fetch('https://api.receivesmsonline.io/page/all_country_page')
   const pageData = await pageDataReq.json()
 
   return {

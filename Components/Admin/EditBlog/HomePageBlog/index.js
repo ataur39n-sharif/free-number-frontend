@@ -52,7 +52,7 @@ const HomePageBlog = ({ pageData }) => {
 
                 }
             }
-            const updateData = await axios.put('https://real-jade-chimpanzee-vest.cyclic.app/blog/homepage_blog', data)
+            const updateData = await axios.put('https://api.receivesmsonline.io/blog/homepage_blog', data)
             message.success('Success')
         } catch (error) {
             message.error(error.message)
