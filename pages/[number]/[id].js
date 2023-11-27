@@ -249,12 +249,15 @@ export async function getServerSideProps(context) {
     const result = await fetch(
         `https://real-jade-chimpanzee-vest.cyclic.app/all-sms/${context.query.id}`
     );
+    // const result = await fetch(
+    //     `http://localhost:5000/all-sms/${context.query.id}`
+    // );
     const { success, msgList } = await result.json();
 
-    const pageDataReq = await fetch('https://api.receivesmsonline.io/number-page-data')
+    const pageDataReq = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/number-page-data')
     const pageData = await pageDataReq.json()
 
-    const blogReq = await fetch('https://api.receivesmsonline.io/blog/number_page')
+    const blogReq = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/blog/number_page')
     const blogData = await blogReq.json()
 
     // const res = await fetch()

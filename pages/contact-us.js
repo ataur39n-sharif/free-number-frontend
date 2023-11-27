@@ -70,7 +70,7 @@ const Contact = ({ pageData }) => {
 export default Contact
 
 export async function getServerSideProps(context) {
-    const pageDataReq = await fetch('https://api.receivesmsonline.io/page/contact_us')
+    const pageDataReq = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/page/contact_us')
     const pageData = await pageDataReq.json()
 
     return {

@@ -38,7 +38,7 @@ const HomePage = ({ pageData }) => {
     const onFinish = async (values) => {
         // //console.log('Received values of form: ', values);
         try {
-            const updateData = await axios.put('https://api.receivesmsonline.io/update-homepage-data', {
+            const updateData = await axios.put('https://real-jade-chimpanzee-vest.cyclic.app/update-homepage-data', {
                 page_title: values?.title,
                 meta_description: values?.meta_description
             })

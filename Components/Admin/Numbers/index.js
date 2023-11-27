@@ -114,7 +114,7 @@ const AdminNumberComponent = () => {
     const handleStatus = async (record) => {
         try {
             // console.log(record)
-            const res = await axios.put(`https://api.receivesmsonline.io/number/status/${record.number}`, {
+            const res = await axios.put(`https://real-jade-chimpanzee-vest.cyclic.app/number/status/${record.number}`, {
                 status: record.status === 'active' ? "inactive" : "active"
             })
             // console.log(res)
@@ -175,7 +175,7 @@ const AdminNumberComponent = () => {
 
     useEffect(() => {
 
-        axios.get('https://api.receivesmsonline.io/number/list')
+        axios.get('https://real-jade-chimpanzee-vest.cyclic.app/number/list')
             .then(res => {
                 let list = []
                 res.data?.list?.map((data, i) => {

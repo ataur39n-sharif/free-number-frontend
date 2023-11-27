@@ -41,7 +41,7 @@ const ContactUsPage = ({ pageData }) => {
 
     const onFinish = async (values) => {
         try {
-            const updateData = await axios.put('https://api.receivesmsonline.io/page/contact_us', {
+            const updateData = await axios.put('https://real-jade-chimpanzee-vest.cyclic.app/page/contact_us', {
                 title: values?.title,
                 meta_description: values?.meta_description,
                 keyword: values?.keywords

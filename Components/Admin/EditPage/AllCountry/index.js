@@ -39,7 +39,7 @@ const AllCountryPage = ({ pageData }) => {
 
     const onFinish = async (values) => {
         try {
-            const updateData = await axios.put('https://api.receivesmsonline.io/page/all_country_page', {
+            const updateData = await axios.put('https://real-jade-chimpanzee-vest.cyclic.app/page/all_country_page', {
                 title: values?.title,
                 meta_description: values?.meta_description,
                 keyword: values?.keywords

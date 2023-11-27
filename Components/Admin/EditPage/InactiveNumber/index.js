@@ -39,7 +39,7 @@ const InactiveNumber = ({ pageData }) => {
 
     const onFinish = async (values) => {
         try {
-            const updateData = await axios.put('https://api.receivesmsonline.io/page/inactive_number', {
+            const updateData = await axios.put('https://real-jade-chimpanzee-vest.cyclic.app/page/inactive_number', {
                 title: values?.title,
                 meta_description: values?.meta_description,
                 keyword: values?.keywords

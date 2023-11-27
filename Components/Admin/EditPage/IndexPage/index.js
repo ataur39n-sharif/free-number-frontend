@@ -39,7 +39,7 @@ const IndexPage = ({ pageData }) => {
 
     const onFinish = async (values) => {
         try {
-            const updateData = await axios.put('https://api.receivesmsonline.io/update-index-data', {
+            const updateData = await axios.put('https://real-jade-chimpanzee-vest.cyclic.app/update-index-data', {
                 website_title: values?.title,
                 meta_description: values?.meta_description,
                 keywords: values?.keywords

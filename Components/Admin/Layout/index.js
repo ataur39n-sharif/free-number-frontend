@@ -58,7 +58,7 @@ const ContentSection = ({ pageData, blogList }) => {
 export default ContentSection
 
 // export async function getServerSideProps(context) {
-//     const res = await fetch('https://api.receivesmsonline.io/index-data')
+//     const res = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/index-data')
 //     const pageData = await res.json()
 //     //console.log('data abc', pageData);
 //     return {

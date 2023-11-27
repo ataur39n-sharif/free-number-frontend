@@ -2,7 +2,7 @@ import { getServerSideSitemap } from 'next-sitemap'
 import { countryList } from '../../utils/countries/countries'
 
 export async function getServerSideProps(context) {
-    const res = await fetch('https://api.receivesmsonline.io/number/list')
+    const res = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/number/list')
     const response = await res.json()
 
     let country_slugs = ["australia",

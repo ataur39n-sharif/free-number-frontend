@@ -133,13 +133,13 @@ const IndividualCountryNumList = ({ pageData, blogData, numList }) => {
 export default IndividualCountryNumList
 
 export async function getServerSideProps(context) {
-    const result = await fetch('https://api.receivesmsonline.io/number/list')
+    const result = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/number/list')
     const value = await result.json()
 
-    const pageDataReq = await fetch('https://api.receivesmsonline.io/page/single_country_page')
+    const pageDataReq = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/page/single_country_page')
     const pageData = await pageDataReq.json()
 
-    const blogReq = await fetch('https://api.receivesmsonline.io/blog/country_page')
+    const blogReq = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/blog/country_page')
     const blogData = await blogReq.json()
 
     return {

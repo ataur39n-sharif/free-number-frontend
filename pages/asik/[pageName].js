@@ -23,10 +23,10 @@ export default Admin;
 
 
 export async function getServerSideProps(context) {
-    const res = await fetch('https://api.receivesmsonline.io/all-page-data')
+    const res = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/all-page-data')
     const pageData = await res.json()
 
-    const blog = await fetch('https://api.receivesmsonline.io/blog')
+    const blog = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/blog')
     const blogResult = await blog.json()
     return {
         props: {

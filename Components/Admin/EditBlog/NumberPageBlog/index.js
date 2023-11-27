@@ -37,7 +37,7 @@ const NumberPageBlog = ({ pageData }) => {
 
     const onFinish = async (values) => {
         try {
-            const updateData = await axios.put('https://api.receivesmsonline.io/blog/number_page', {
+            const updateData = await axios.put('https://real-jade-chimpanzee-vest.cyclic.app/blog/number_page', {
                 title: values?.title,
                 description: values?.description
             })

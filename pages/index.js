@@ -162,10 +162,10 @@ export default function Home({ numberList, indexData, socialMedia, homeBlog }) {
 
 export async function getServerSideProps() {
 
-  const indexDataReq = await fetch('https://api.receivesmsonline.io/index-data')
+  const indexDataReq = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/index-data')
   const indexData = await indexDataReq.json()
 
-  const socialMediaReq = await fetch('https://api.receivesmsonline.io/all-social-media')
+  const socialMediaReq = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/all-social-media')
   const socialMedia = await socialMediaReq.json()
 
   // const result = await fetch(`https://numbers.messagebird.com/v1/phone-numbers?limit=100`, {
@@ -175,11 +175,11 @@ export async function getServerSideProps() {
   //   }
   // });
   // const value = await result.json();
-  const res = await fetch('https://api.receivesmsonline.io/number/list')
+  const res = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/number/list')
   const response = await res.json()
   const value = response.success && response?.list?.filter((eachNumber) => eachNumber.status === 'active')
 
-  const hBlog = await fetch('https://api.receivesmsonline.io/blog/homepage_blog')
+  const hBlog = await fetch('https://real-jade-chimpanzee-vest.cyclic.app/blog/homepage_blog')
   const homeBlogRes = await hBlog.json()
 
 
