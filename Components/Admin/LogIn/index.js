@@ -1,13 +1,20 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
+import axios from 'axios';
 import { useRouter } from 'next/router';
 import React from 'react';
 
 const AdminLogin = () => {
     const router = useRouter()
-    const onFinish = (values) => {
-        //console.log('Received values of form: ', values);
-        router.push('/asik/dashboard')
+
+    const onFinish = async (values) => {
+        try {
+            //console.log('Received values of form: ', values);
+            const { data } = await axios.post('/api/auth', values)
+            data.success && router.push('/asik/dashboard')
+        } catch (error) {
+            alert(error?.response?.data?.message);
+        }
     };
 
     return (
